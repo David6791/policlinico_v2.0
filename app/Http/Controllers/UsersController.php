@@ -24,6 +24,18 @@ class UsersController extends Controller
         return view('admin.crear_medico')->with('rows',$rows)->with('rows1',$rows1);
     }
     public function guardar_datos_medico(Request $request){
-        return $request->all();
+        //return $request->all();
+        DB::table('users')->insert([
+            'name' => $request->name,
+            'email' => $request->mail,
+            'password' => bcrypt($request->pass),
+            'ap_paterno' => $request->apellido_p,
+            'ap_materno' => $request->apellido_m,
+            'tipo_usuario' => $request->tipo,
+            'ci' => $request->ci
+        ]);
+        return redirect()->action(
+            'UsuariosController@index_usuarios'
+        );
     }
 }

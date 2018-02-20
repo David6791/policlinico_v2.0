@@ -12,7 +12,7 @@
                     <th>Ci.</th>
                     <th>Nombres y Apellidos</th>
                     <th>Matricula</th>
-                    <th>Fecha Ingreso</th>
+                    <th>Fecha Registro</th>
                     <th>Accion</th>
                 </tr>
             </thead>
@@ -38,7 +38,7 @@
     <div class="x_footer">
         <div class="row">
             <div class="col-md-10"></div>
-            <div class="col-md-2"><button type="button" class="btn btn-success btn-sm agregar_medico">Agragar Nuevo Medico</button></div>
+            <div class="col-md-2"><button type="button" class="btn btn-success btn-sm agregar_medico">Agregar Nuevo Medico</button></div>
         </div>
     </div>
 </div>

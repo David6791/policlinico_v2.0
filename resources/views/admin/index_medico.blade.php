@@ -25,7 +25,7 @@
                     <td>{{ $lista->name }} {{ $lista->apellidos }}</td>                 
                     <td>{{ $lista->matricula_medico }}</td>
                     <td>{{ $lista->fecha_creacion}}</td>
-                    @if($lista->estado_user==='activo')
+                    @if($lista->estado_user==='Activo')
                         <td style="color:green">{{ $lista->nombre_estado }}</td>
                     @else
                         <td style="color:red">{{ $lista->nombre_estado }}</td>

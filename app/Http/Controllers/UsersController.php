@@ -48,6 +48,8 @@ class UsersController extends Controller
             'password' => bcrypt($request->password),
             'matricula_medico' => $request->matricula         
         ]);
+        $query = "select id from users order by id desc limit 1";
+        $rows=\DB::select(\DB::raw($query));
         
     }
 }

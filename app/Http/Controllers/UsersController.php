@@ -12,30 +12,42 @@ use Auth;
 class UsersController extends Controller
 {
     public function index_medico(){
-        $query2 = "select * from users where tipo_user = 2 order by id asc";
+        $query2 = "select * from users us
+                    left join estados_usuarios esu
+                    on us.estado_user = esu.id_estados
+                    where us.tipo_usuario = 2 order by id asc";
         $rows2=\DB::select(\DB::raw($query2));
         return view('admin.index_medico')->with('row',$rows2);
     }
     public function crear_medico(){
         $query = "select * from tipo_usuarios order by id_tipo asc";
         $rows=\DB::select(\DB::raw($query));
+        $query1 = "select * from estados_civil order by id_estado_civil asc";
+        $rows1=\DB::select(\DB::raw($query1));
         $query2 = "select * from especialidades where tipo_usuario = 2 order by id_especialidad asc";
-        $rows1=\DB::select(\DB::raw($query2));
-        return view('admin.crear_medico')->with('rows',$rows)->with('rows1',$rows1);
+        $rows2=\DB::select(\DB::raw($query2));
+        return view('admin.crear_medico')->with('rows',$rows)->with('rows1',$rows1)->with('rows2',$rows2);
     }
     public function guardar_datos_medico(Request $request){
         //return $request->all();
         DB::table('users')->insert([
-            'name' => $request->name,
-            'email' => $request->mail,
-            'password' => bcrypt($request->pass),
-            'ap_paterno' => $request->apellido_p,
-            'ap_materno' => $request->apellido_m,
-            'tipo_usuario' => $request->tipo,
-            'ci' => $request->ci
+            'ci' => $request->n_documento,
+            'tipo_usuario' => $request->tipo_usuario,
+            'name' => $request->nombres,
+            'apellidos' => $request->apellidos,
+            'genero' => $request->genero,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'estado_civil' => $request->estado_civil,
+            'ocupacion' => $request->ocupacion,
+            'nacionalidad' => $request->nacionalidad,
+            'localidad' => $request->localidad,
+            'domicilio' => $request->domicilio,
+            'telefono' => $request->telefono,
+            'celular' => $request->celular,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'matricula_medico' => $request->matricula         
         ]);
-        return redirect()->action(
-            'UsuariosController@index_usuarios'
-        );
+        
     }
 }

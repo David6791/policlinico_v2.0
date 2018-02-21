@@ -22,13 +22,13 @@
                 <tr>
                     <td>{{ $a++ }}</td>
                     <td>{{ $lista->ci }}</td>
-                    <td>{{ $lista->name }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>                 
-                    <td>{{ $lista->matricula }}</td>
+                    <td>{{ $lista->name }} {{ $lista->apellidos }}</td>                 
+                    <td>{{ $lista->matricula_medico }}</td>
                     <td>{{ $lista->fecha_creacion}}</td>
-                    @if($lista->estado_usuario==='activo')
-                        <td style="color:green">{{ $lista->estado_usuario }}</td>
+                    @if($lista->estado_user==='activo')
+                        <td style="color:green">{{ $lista->nombre_estado }}</td>
                     @else
-                        <td style="color:red">{{ $lista->estado_usuario }}</td>
+                        <td style="color:red">{{ $lista->nombre_estado }}</td>
                     @endif                    
                 </tr>
                 @endforeach

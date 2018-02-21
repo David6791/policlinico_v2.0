@@ -86,10 +86,10 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <div id="gender" class="btn-group" data-toggle="buttons">
                                                     <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                        <input type="radio" name="genero" value="male" data-parsley-multiple="gender"> Masculino &nbsp;
+                                                        <input type="radio" name="genero" value="1" data-parsley-multiple="gender"> Masculino &nbsp;
                                                     </label>
                                                     <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                        <input type="radio" name="genero" value="female" data-parsley-multiple="gender"> Femenino
+                                                        <input type="radio" name="genero" value="2" data-parsley-multiple="gender"> Femenino
                                                     </label>
                                                     </div>
                                                 </div>
@@ -124,7 +124,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">Nombres <span class="required"></span></label>
                                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                                    <input type="text" nombre="nombres" required="required" class="form-control col-md-7 col-xs-12">
+                                                    <input type="text" name="nombres" required="required" class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>                                            
                                         </div>
@@ -132,7 +132,11 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">Estado Civil <span class="required"></span></label>
                                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                                    <input type="text" name="estado_civil" required="required" class="form-control col-md-7 col-xs-12">
+                                                    <select class="select2_group form-control" name="estado_civil">
+                                                        @foreach($rows1 as $lista)
+                                                            <option value="{{$lista->id_estado_civil}}">{{$lista->nombre_estado_civil}}</option>
+                                                        @endforeach
+                                                    </select>                                         
                                                 </div>
                                             </div>
                                         </div>
@@ -148,9 +152,13 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Ocupacion <span class="required"></span></label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tipo Usuario <span class="required"></span></label>
                                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                                    <input type="text" name="ocupacion" required="required" class="form-control col-md-7 col-xs-12">
+                                                    <select class="select2_group form-control" name="tipo_usuario">
+                                                        @foreach($rows as $lista)
+                                                            <option value="{{$lista->id_tipo}}">{{$lista->nombre_tipo}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,7 +172,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Nacionalidad <span class="required"></span></label>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <select class="select2_group form-control">
+                                            <select class="select2_group form-control" name="nacionalidad">
                                                 <option value="1">Boliviano</option>
                                                 <option value="2">Argentino</option>
                                                 <option value="3">Chileno</option>
@@ -211,9 +219,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Email <span class="required"></span></label>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">ocupacion <span class="required"></span></label>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="ocupacion" required="required" class="form-control col-md-7 col-xs-12">
                                         </div>
                                     </div>
                                 </div>
@@ -223,9 +231,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Nombre Usuario <span class="required"></span></label>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Nombre Usuario o Email<span class="required"></span></label>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="usuario" required="required" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="email" required="required" class="form-control col-md-7 col-xs-12">
                                         </div>
                                     </div>                                            
                                 </div>
@@ -264,7 +272,7 @@
                                         </thead>
                                         <?php $a = 1 ?>
                                         <tbody>
-                                            @foreach($rows1 as $lista)
+                                            @foreach($rows2 as $lista)
                                                 <tr>
                                                     <td>{{$a++}}</td>
                                                     <td>{{$lista->nombre_especialidad}}</td>

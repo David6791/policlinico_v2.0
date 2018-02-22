@@ -47,4 +47,21 @@ $(function(){
             }
         })
     })
+    /* para mostrar los datos de un medico. */
+    $(document).on('click','.getVerMedico',function(e){    
+        //alert('hola')  
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/verMedicos',
+            data:{id_medico:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)   
+                
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })
+    })
 })

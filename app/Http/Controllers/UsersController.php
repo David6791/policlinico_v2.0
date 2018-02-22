@@ -50,6 +50,24 @@ class UsersController extends Controller
         ]);
         $query = "select id from users order by id desc limit 1";
         $rows=\DB::select(\DB::raw($query));
-        
+        foreach($request->especialidad as $esp){
+            //return $esp;
+            DB::table('medico_especialidad')->insert([
+                'id_medico' => $rows[0]->id_medico,
+                'id_especialidad' => $esp
+            ]);
+        }  
+    }
+    public function verMedico(Request $request){
+        //return $request->all();
+        $query = "select * from usuarios_especialidades ue
+                    inner join users us
+                    on us.id = ue.id_usuario
+                    inner join especialidades es
+                    on es.id_especialidad = ue.id_especialidad
+                    where id_usuario = 4";
+        $rows=\DB::select(\DB::raw($query));
+        //return $rows;
+        return view('admin.ver_detalles_medico')->with('rows',$rows);
     }
 }

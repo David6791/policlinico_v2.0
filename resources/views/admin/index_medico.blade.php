@@ -13,6 +13,7 @@
                     <th>Nombres y Apellidos</th>
                     <th>Matricula</th>
                     <th>Fecha Registro</th>
+                    <th>Estado</th>
                     <th>Accion</th>
                 </tr>
             </thead>
@@ -29,7 +30,8 @@
                         <td style="color:green">{{ $lista->nombre_estado }}</td>
                     @else
                         <td style="color:red">{{ $lista->nombre_estado }}</td>
-                    @endif                    
+                    @endif   
+                    <td><button class="btn btn-primary btn-xs getVerMedico" name="id_medico" value="{{$lista->id}}">Ver Medico</button></td>                 
                 </tr>
                 @endforeach
             </tbody>

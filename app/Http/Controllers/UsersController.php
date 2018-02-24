@@ -65,9 +65,54 @@ class UsersController extends Controller
                     on us.id = ue.id_usuario
                     inner join especialidades es
                     on es.id_especialidad = ue.id_especialidad
-                    where id_usuario = 4";
-        $rows=\DB::select(\DB::raw($query));
+                    where id_usuario = :id_medico";
+        $rows=\DB::select(\DB::raw($query),array('id_medico'=>$request->id_medico));
+        $query1 = "select es.id_especialidad, es.nombre_especialidad
+        from especialidades es
+        where es.id_especialidad NOT IN
+            (
+                select id_especialidad 
+                from usuarios_especialidades
+                where id_usuario = :id_medico and estado = 'activo'
+            )";
+        $espe=\DB::select(\DB::raw($query1),array('id_medico'=>$request->id_medico));
+
         //return $rows;
-        return view('admin.ver_detalles_medico')->with('rows',$rows);
+        return view('admin.ver_detalles_medico')->with('rows',$rows)->with('espe',$espe);
+    }
+    public function update1(Request $request, $id)
+    {
+        //return $request->all();
+
+        //$query1 = "select agregar_especialidad(:id, :id_espe); ";
+        //return $id;
+        //$rows2 = \DB::select(\DB::raw($query1),array('id_persona'=>$request->id_persona));
+        //return $request->all();
+        /*return array_keys($request->all());
+        if(sizeof($request->all())>1)
+        {*/
+            foreach($request->agregar_especialidad as $esp){
+                //return $esp;
+                if($esp!=0)
+                {
+                    $query1 = "select public.agregar_especialidad(:id, :id_espe)";
+                    $rows2 = \DB::select(\DB::raw($query1),array('id'=>$id,'id_espe'=>$esp));        
+                }
+            }
+            foreach($request->eliminar_especialidad as $esp){
+                //return $esp;
+                if($esp!=0)
+                {
+                    $query2 = "select public.eliminar_especialidad(:id, :id_espe)";
+                    $rows3 = \DB::select(\DB::raw($query2),array('id'=>$id,'id_espe'=>$esp));
+                }
+            }
+            return $id;
+        //}
+        ///[$id,true,'url']
+        /*$query1 = "select * from persona where id_persona = :id_persona";
+        return $id;
+        $rows2 = \DB::select(\DB::raw($query1),array('id_persona'=>$request->id_persona));
+        return $rows2;*/
     }
 }

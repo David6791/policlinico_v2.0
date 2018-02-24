@@ -24,3 +24,5 @@ Route::get('/index_medicos', 'UsersController@index_medico');
 Route::post('/crear_medicos', 'UsersController@crear_medico');
 Route::get('/crear_medico', 'UsersController@guardar_datos_medico');
 Route::post('/verMedicos', 'UsersController@verMedico');
+
+Route::post('update1/{id}', 'UsersController@update1');

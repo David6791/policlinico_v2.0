@@ -83,9 +83,11 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index_medicos" class="load-page">Medicos</a></li>
-                      <li><a href="index2.html">Enfermeras</a></li>
-                      <li><a href="index3.html">Dentista</a></li>
+                      @foreach($row as $lista)
+                        @if($lista->id_tipo != 1)
+                          <li><a href="{{$lista->ruta}}" value="{{$lista->id_tipo}}"  class="load-page">{{$lista->nombre_tipo}}</a></li>
+                        @endif
+                      @endforeach                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>

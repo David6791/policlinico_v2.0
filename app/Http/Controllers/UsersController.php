@@ -19,6 +19,22 @@ class UsersController extends Controller
         $rows2=\DB::select(\DB::raw($query2));
         return view('admin.index_medico')->with('row',$rows2);
     }
+    public function index_enfermera(){
+        $query2 = "select * from users us
+                    left join estados_usuarios esu
+                    on us.estado_user = esu.id_estados
+                    where us.tipo_usuario = 3 order by id asc";
+        $rows2=\DB::select(\DB::raw($query2));
+        return view('admin.index_enfermera')->with('row',$rows2);
+    }
+    public function index_dentista(){
+        $query2 = "select * from users us
+                    left join estados_usuarios esu
+                    on us.estado_user = esu.id_estados
+                    where us.tipo_usuario = 4 order by id asc";
+        $rows2=\DB::select(\DB::raw($query2));
+        return view('admin.index_dentista')->with('row',$rows2);
+    }
     public function crear_medico(){
         $query = "select * from tipo_usuarios order by id_tipo asc";
         $rows=\DB::select(\DB::raw($query));

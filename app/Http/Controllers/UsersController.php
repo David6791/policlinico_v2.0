@@ -36,11 +36,29 @@ class UsersController extends Controller
         return view('admin.index_dentista')->with('row',$rows2);
     }
     public function crear_medico(){
-        $query = "select * from tipo_usuarios order by id_tipo asc";
+        $query = "select * from tipo_usuarios where id_tipo = 2 order by id_tipo asc";
         $rows=\DB::select(\DB::raw($query));
         $query1 = "select * from estados_civil order by id_estado_civil asc";
         $rows1=\DB::select(\DB::raw($query1));
         $query2 = "select * from especialidades where tipo_usuario = 2 order by id_especialidad asc";
+        $rows2=\DB::select(\DB::raw($query2));
+        return view('admin.crear_medico')->with('rows',$rows)->with('rows1',$rows1)->with('rows2',$rows2);
+    }
+    public function crear_enfermera(){
+        $query = "select * from tipo_usuarios where id_tipo = 3 order by id_tipo asc";
+        $rows=\DB::select(\DB::raw($query));
+        $query1 = "select * from estados_civil order by id_estado_civil asc";
+        $rows1=\DB::select(\DB::raw($query1));
+        $query2 = "select * from especialidades where tipo_usuario = 3 order by id_especialidad asc";
+        $rows2=\DB::select(\DB::raw($query2));
+        return view('admin.crear_medico')->with('rows',$rows)->with('rows1',$rows1)->with('rows2',$rows2);
+    }
+    public function crear_dentista(){
+        $query = "select * from tipo_usuarios where id_tipo = 4 order by id_tipo asc";
+        $rows=\DB::select(\DB::raw($query));
+        $query1 = "select * from estados_civil order by id_estado_civil asc";
+        $rows1=\DB::select(\DB::raw($query1));
+        $query2 = "select * from especialidades where tipo_usuario = 4 order by id_especialidad asc";
         $rows2=\DB::select(\DB::raw($query2));
         return view('admin.crear_medico')->with('rows',$rows)->with('rows1',$rows1)->with('rows2',$rows2);
     }
@@ -76,6 +94,8 @@ class UsersController extends Controller
     }
     public function verMedico(Request $request){
         //return $request->all();
+        $query2 = "select tipo_usuario from users where id = :id_medico";
+        $rows2=\DB::select(\DB::raw($query2),array('id_medico'=>$request->id_medico));
         $query = "select * from usuarios_especialidades ue
                     inner join users us
                     on us.id = ue.id_usuario
@@ -85,13 +105,13 @@ class UsersController extends Controller
         $rows=\DB::select(\DB::raw($query),array('id_medico'=>$request->id_medico));
         $query1 = "select es.id_especialidad, es.nombre_especialidad
         from especialidades es
-        where es.id_especialidad NOT IN
+        where es.tipo_usuario = :tip and es.id_especialidad  NOT IN
             (
                 select id_especialidad 
                 from usuarios_especialidades
                 where id_usuario = :id_medico and estado = 'activo'
             )";
-        $espe=\DB::select(\DB::raw($query1),array('id_medico'=>$request->id_medico));
+        $espe=\DB::select(\DB::raw($query1),array('id_medico'=>$request->id_medico,'tip'=>$rows2[0]->tipo_usuario));
 
         //return $rows;
         return view('admin.ver_detalles_medico')->with('rows',$rows)->with('espe',$espe);
@@ -130,5 +150,41 @@ class UsersController extends Controller
         return $id;
         $rows2 = \DB::select(\DB::raw($query1),array('id_persona'=>$request->id_persona));
         return $rows2;*/
+    }
+    public function baja_user(Request $request){
+        //return $request->all();
+        $query2 = "select estado_user, tipo_usuario from users where id = :id";
+        $rows2=\DB::select(\DB::raw($query2),array('id'=>$request->id));
+        //return $rows2;
+        if(($rows2[0]->estado_user)===1){
+            $baja_user = DB::table('users')
+            ->where('id', '=', $request->id)
+            ->update([
+                'estado_user' => 2
+            ]);    
+        }else{
+            $baja_user = DB::table('users')
+            ->where('id', '=', $request->id)
+            ->update([
+                'estado_user' => 1
+            ]);
+        }
+        if(($rows2[0]->tipo_usuario)===2){
+            return redirect()->action(
+                'UsersController@index_medico'
+            );
+        }else{
+            if(($rows2[0]->tipo_usuario)===3){
+                return redirect()->action(
+                    'UsersController@index_enfermera'
+                );
+            }else{
+                if(($rows2[0]->tipo_usuario)===4){
+                    return redirect()->action(
+                        'UsersController@index_dentista'
+                    );
+                }
+            }
+        }    
     }
 }

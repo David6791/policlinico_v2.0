@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Personal;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Auth;
+
+class SpecialtiesController extends Controller
+{
+    public function index_especialidad(){
+        $query = "select id_tipo, nombre_tipo from tipo_usuarios where id_tipo != 1";
+        $rows=\DB::select(\DB::raw($query));
+        $query2 = "select es.id_especialidad, es.nombre_especialidad, es.descripcion_especialidad, es.estado_especialidad, tp.nombre_tipo from especialidades es
+                    inner join tipo_usuarios tp
+                    on tp.id_tipo = es.tipo_usuario order by es.id_especialidad asc";
+        $rows2=\DB::select(\DB::raw($query2));
+
+        return view('admin.index_especialidad')->with('row',$rows2)->with('rows',$rows);
+    }
+    public function crear_especialidad(Request $request){
+        //return $request->all();
+        DB::table('especialidades')->insert([
+            'nombre_especialidad' => $request->nombre_especialidad,
+            'descripcion_especialidad' => $request->descripcion_esp,
+            'tipo_usuario' => $request->tipo_usuario
+        ]);
+        return redirect()->action(
+            'SpecialtiesController@index_especialidad'
+        );
+    }
+}

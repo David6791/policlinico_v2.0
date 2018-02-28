@@ -26,12 +26,12 @@
                     <td>{{ $lista->name }} {{ $lista->apellidos }}</td>                 
                     <td>{{ $lista->matricula_medico }}</td>
                     <td>{{ $lista->fecha_creacion}}</td>
-                    @if($lista->estado_user==='Activo')
-                        <td style="color:green">{{ $lista->nombre_estado }}</td>
+                    @if($lista->estado_user===1)
+                        <td><button class="btn btn-success btn-xs get_BajaUser" name="id_medico" value="{{$lista->id}}">Activo</button></td>
                     @else
-                        <td style="color:red">{{ $lista->nombre_estado }}</td>
+                        <td><button class="btn btn-danger btn-xs get_BajaUser" name="id_medico" value="{{$lista->id}}">Inactivo</button></td>
                     @endif   
-                    <td><button class="btn btn-primary btn-xs getVerMedico" name="id_medico" value="{{$lista->id}}">Ver Medico</button></td>                 
+                    <td><button class="btn btn-primary btn-xs getVerMedico" name="id_medico" value="{{$lista->id}}">Ver Medico</button></td>
                 </tr>
                 @endforeach
             </tbody>

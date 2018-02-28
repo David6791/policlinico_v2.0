@@ -25,9 +25,21 @@ Route::post('/crear_medicos', 'UsersController@crear_medico');
 Route::get('/crear_medico', 'UsersController@guardar_datos_medico');
 Route::post('/verMedicos', 'UsersController@verMedico');
 Route::post('update1/{id}', 'UsersController@update1');
+Route::post('/darBajaUser', 'UsersController@baja_user');
+
 
 
 Route::get('/index_enfermeras', 'UsersController@index_enfermera');
+Route::post('/crear_enfermeras', 'UsersController@crear_enfermera');
+
 
 
 Route::get('/index_dentistas', 'UsersController@index_dentista');
+Route::post('/crear_dentistas', 'UsersController@crear_dentista');
+
+
+
+/* rutas para especialidades */
+Route::get('/index_especialidades', 'SpecialtiesController@index_especialidad');
+Route::post('/crear_especialidad', 'SpecialtiesController@crear_especialidad');
+

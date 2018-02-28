@@ -90,9 +90,9 @@
                       @endforeach                      
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
+                      <li><a href="form.html">Filiacion Paciente</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
                       <li><a href="form_validation.html">Form Validation</a></li>
                       <li><a href="form_wizards.html">Form Wizard</a></li>
@@ -113,9 +113,9 @@
                       <li><a href="calendar.html">Calendar</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-table"></i> Administrar Datos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
+                      <li><a href="index_especialidades" class="load-page">Especialidades</a></li>
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>

@@ -40,7 +40,7 @@
     <div class="x_footer">
         <div class="row">
             <div class="col-md-10"></div>
-            <div class="col-md-2"><button type="button" class="btn btn-success btn-sm agregar_medico">Agregar Nuevo Dentista</button></div>
+            <div class="col-md-2"><button type="button" class="btn btn-success btn-sm agregar_dentista">Agregar Nuevo Dentista</button></div>
         </div>
     </div>
 </div>

@@ -5,8 +5,8 @@
                 <div class="x_title with-border">
                     <h3 class="box-title">Registro Pacientes</h3>
                 </div>
-                <!--form class="form-horizontal sendform" action="{{url('store_pacientes')}}" method="post"-->
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal sendform" action="{{url('store_patients')}}" method="post">
+                <!--form class="form-horizontal" method="post"-->
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="row">
                         <div class="col-md-1">                            
@@ -171,7 +171,24 @@
                                     <h4 class="box-title col-md-12">Tiene algunas de las siguientes patologias, (Aunque esten controladas con medicacion.)</h4>
                                 </div>
                                 <!-- 1 aqui -->
-                                
+                                <div class="box-body">
+                                    @foreach(array_chunk($row, 3) as $chunk)
+                                        <div class="row">                                            
+                                            @foreach($chunk as $add)
+                                                <div class="col-md-4">
+                                                    <div class="form-group col-md-12">
+                                                        <div class="checkbox">
+                                                            <label class="control-label">
+                                                                <input type="checkbox" name="patologias[]" value="{{$add->id_patologia}}">
+                                                                {{$add->nombre_patologia}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                </div>                                
                             </div>
                         </div>                        
                     </div>  
@@ -183,7 +200,41 @@
                                     <h4 class="box-title col-md-12">Datos Medicos</h4>
                                 </div>
                                 <!-- 2 aqui -->
-                                
+                                <div class="box-body">
+                                    @foreach(array_chunk($rows, 1) as $chunk)
+                                    <div class="row">                                            
+                                        @foreach($chunk as $add)
+                                            <div class="col-md-4">
+                                                <div class="form-group col-md-12">                                                     
+                                                    {{$add->nombre_dato_medico}}
+                                                    <div class="row">
+                                                        <div class="radio col-md-6">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label">
+                                                                <input type="radio" name="{{ $add->tipo_dato_medico }}"  value="{{$add->id_dato_medico}}">
+                                                                    Si
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio col-md-6">
+                                                            <label for="inputEmail3" class="col-sm-4 control-label">
+                                                                <input type="radio" name="{{ $add->tipo_dato_medico }}" value="{{$add->id_dato_medico}}">
+                                                                    No
+                                                            </label>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group col-md-12">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="inputEmail3" class="control-label">{{$add->pregunta_dato_medico}}</label>
+                                                        <textarea class="form-control" rows="3" placeholder="Escribir aqui ..." name="{{ $add->tipo_dato_medico }}"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>                  

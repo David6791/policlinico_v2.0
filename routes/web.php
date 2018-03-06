@@ -46,3 +46,5 @@ Route::post('/crear_especialidad', 'SpecialtiesController@crear_especialidad');
 /* Rutas para adminitrar Pacientes... */
 
 Route::get('/formulario_pacientes_nuevos', 'PatientsController@formulario_pacientes_nuevo');
+Route::post('/store_patients', 'PatientsController@store_patient');
+

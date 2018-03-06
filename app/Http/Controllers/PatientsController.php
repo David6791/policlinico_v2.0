@@ -13,7 +13,42 @@ class PatientsController extends Controller
 {
     public function formulario_pacientes_nuevo(){
         //return 'asdasdsad';
-        return view('admin.form_patients');
-        
+        $query = "select * from patologias where estado_patologia = 'activo'";
+        $rows=\DB::select(\DB::raw($query));
+        $query1 = "select * from datos_medicos where estado_dato_medico = 'activo'";
+        $rows1=\DB::select(\DB::raw($query1));
+        return view('admin.form_patients')->with('row',$rows)->with('rows',$rows1);        
+    }
+    public function store_patient(Request $request){
+        //return $request->all();
+        /*DB::table('pacientes')->insert([
+            'ci' => $request->ci,
+            'ap_paterno' => $request->apellido_pat,
+            'ap_materno' => $request->apellido_mat,
+            'nombres' => $request->nombres,
+            'sexo' => $request->sexo,
+            'direccion' => $request->direccion,
+            'telefono' => $request->telefono,
+            'celular' => $request->celular,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'pais_nacimiento' => $request->pais,
+            'ciudad_nacimiento' => $request->ciudad,
+            'provincia' => $request->provincia,
+            'localidad_nacimiento' => $request->localidad
+        ]);
+        $query = "select id from pacientes order by id desc limit 1";
+        $rows=\DB::select(\DB::raw($query));*/
+        if($request->patologias != null){
+            //return 'lleno';
+            foreach($request->patologias as $pat){
+                DB::table('pacientes_patologias')->insert([
+                    'id_paciente' => $rows[0]->id_paciente,
+                    'id_patologia' => $pat
+                ]);
+            }            
+        }            
+        else{
+            return 'vacio';
+        }
     }
 }

@@ -20,7 +20,7 @@ class PatientsController extends Controller
         return view('admin.form_patients')->with('row',$rows)->with('rows',$rows1);        
     }
     public function store_patient(Request $request){
-        //return $request->all();
+        return $request->all();
         /*DB::table('pacientes')->insert([
             'ci' => $request->ci,
             'ap_paterno' => $request->apellido_pat,
@@ -46,9 +46,15 @@ class PatientsController extends Controller
                     'id_patologia' => $pat
                 ]);
             }            
-        }            
-        else{
-            return 'vacio';
+        }
+        if($request->patologias != null){
+            //return 'lleno';
+            foreach($request->patologias as $pat){
+                DB::table('pacientes_patologias')->insert([
+                    'id_paciente' => $rows[0]->id_paciente,
+                    'id_patologia' => $pat
+                ]);
+            }            
         }
     }
 }

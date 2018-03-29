@@ -210,13 +210,13 @@
                                                     <div class="row">
                                                         <div class="radio col-md-6">
                                                             <label for="inputEmail3" class="col-sm-4 control-label">
-                                                                <input type="radio" name="{{ $add->tipo_dato_medico }}"  value="{{$add->id_dato_medico}}">
+                                                                <input type="radio" name="datos_medicos[]"  value="{{$add->id_dato_medico}}">
                                                                     Si
                                                             </label>
                                                         </div>
                                                         <div class="radio col-md-6">
                                                             <label for="inputEmail3" class="col-sm-4 control-label">
-                                                                <input type="radio" name="{{ $add->tipo_dato_medico }}" value="{{$add->id_dato_medico}}">
+                                                                <input type="radio" name="datos_medicos[]" value="{{$add->id_dato_medico}}">
                                                                     No
                                                             </label>
                                                         </div> 

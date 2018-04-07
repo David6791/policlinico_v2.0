@@ -48,3 +48,8 @@ Route::post('/crear_especialidad', 'SpecialtiesController@crear_especialidad');
 Route::get('/formulario_pacientes_nuevos', 'PatientsController@formulario_pacientes_nuevo');
 Route::post('/store_patients', 'PatientsController@store_patient');
 
+
+/* Rutas para Los Horarios */
+
+
+Route::get('/index_schedules','SchedulesController@index_Schedules');

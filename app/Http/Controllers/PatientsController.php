@@ -38,7 +38,7 @@ class PatientsController extends Controller
         ]);
         $query = "select id from pacientes order by id desc limit 1";
         $rows=\DB::select(\DB::raw($query));*/
-        if($request->patologias != null){
+        /*if($request->patologias != null){
             //return 'lleno';
             foreach($request->patologias as $pat){
                 DB::table('pacientes_patologias')->insert([
@@ -55,6 +55,11 @@ class PatientsController extends Controller
                     'id_patologia' => $pat
                 ]);
             }            
+        }*/
+        $query = "select id_dato_medico from datos_medicos";
+        $rows=\DB::select(\DB::raw($query));
+        foreach($rows as $limi){
+            //echo($limi->id_dato_medico);
         }
     }
 }

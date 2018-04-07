@@ -107,4 +107,9 @@ $(function(){
             }
         })
     })
+    $(document).on('click','.sel',function(e){
+        e.preventDefault(e)
+        var valor = document.getElementById("texto").value;
+        alert(valor+'asd')
+    })
 })

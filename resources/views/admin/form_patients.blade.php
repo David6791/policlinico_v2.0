@@ -210,13 +210,13 @@
                                                     <div class="row">
                                                         <div class="radio col-md-6">
                                                             <label for="inputEmail3" class="col-sm-4 control-label">
-                                                                <input type="radio" name="datos_medicos[]"  value="{{$add->id_dato_medico}}">
+                                                                <input type="radio" name="{{$add->id_dato_medico}}[]"  value="{{$add->id_dato_medico}}">
                                                                     Si
                                                             </label>
                                                         </div>
                                                         <div class="radio col-md-6">
                                                             <label for="inputEmail3" class="col-sm-4 control-label">
-                                                                <input type="radio" name="datos_medicos[]" value="{{$add->id_dato_medico}}">
+                                                                <input type="radio" name="{{$add->id_dato_medico}}[]" value="{{$add->id_dato_medico}}">
                                                                     No
                                                             </label>
                                                         </div> 
@@ -227,7 +227,7 @@
                                                 <div class="form-group col-md-12">
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail3" class="control-label">{{$add->pregunta_dato_medico}}</label>
-                                                        <textarea class="form-control" rows="3" placeholder="Escribir aqui ..." name="{{ $add->tipo_dato_medico }}"></textarea>
+                                                        <textarea class="form-control" rows="3" placeholder="Escribir aqui ..." name="{{ $add->id_dato_medico }}"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

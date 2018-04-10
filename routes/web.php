@@ -54,3 +54,4 @@ Route::post('/store_patients', 'PatientsController@store_patient');
 
 Route::get('/index_schedules','SchedulesController@index_Schedules');
 Route::post('/create_schedules','SchedulesController@create_Schedules');
+Route::post('/darBajaSchedules', 'SchedulesController@darBajaSchedule');

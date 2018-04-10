@@ -104,7 +104,7 @@
                     <ul class="nav child_menu">
                       <li><a href="index_schedules" class="load-page">Horarios</a></li>
                       <li><a href="media_gallery.html">Asignacion de Horarios</a></li>
-                      <li><a href="typography.html">Typography</a></li>
+                      <li><a href="typography.html">Impresion de Horarios</a></li>
                       <li><a href="icons.html">Icons</a></li>
                       <li><a href="glyphicons.html">Glyphicons</a></li>
                       <li><a href="widgets.html">Widgets</a></li>

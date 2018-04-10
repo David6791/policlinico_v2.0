@@ -107,6 +107,64 @@ $(function(){
             }
         })
     })
+    $(document).on('submit','.sendform_schedules',function(e){
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){            
+                swal(
+                    'Felicidades',
+                    'Los datos de se guardaron correctamente',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
+    /* Baja Horarios para asignacion de usuarios */
+    $(document).on('click','.get_BajaSchedule',function(e){   
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/darBajaSchedules',
+            data:{id:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)   
+                
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })
+    })
+    $(document).on('click','.get_EditSchedule',function(e){   
+        alert('Hola')
+
+        /*e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/darBajaSchedules',
+            data:{id:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)   
+                
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })*/
+    })
     $(document).on('click','.sel',function(e){
         e.preventDefault(e)
         var valor = document.getElementById("texto").value;

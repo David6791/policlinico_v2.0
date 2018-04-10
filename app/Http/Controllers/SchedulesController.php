@@ -16,4 +16,7 @@ class SchedulesController extends Controller
         $rows=\DB::select(\DB::raw($query));
         return view('admin.index_schedules')->with('row',$rows);  
     }
+    public function create_Schedules(Request $request){
+        return $request->all();
+    }
 }

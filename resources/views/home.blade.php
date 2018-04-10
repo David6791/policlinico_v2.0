@@ -103,7 +103,7 @@
                   <li><a><i class="fa fa-desktop"></i> Control de Horarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index_schedules" class="load-page">Horarios</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
+                      <li><a href="media_gallery.html">Asignacion de Horarios</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
                       <li><a href="glyphicons.html">Glyphicons</a></li>

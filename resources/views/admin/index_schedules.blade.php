@@ -44,3 +44,86 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Agregar Nuevo Turno <label for=""></label></h4>
+        </div>
+        <div class="modal-body">
+            <!--form class="sendform1" action="{{url('crear_turno')}}" method="post"-->
+            <form class="sendform1" action="{{url('create_schedules')}}" method="post">            
+                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                <div class="row">
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <label for="">Nombre Horario</label>
+                                <input name="name_hour" class="form-control" type="text" value="">
+                        </div>               
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <label for="">Hora Inicio</label>
+                            <div class="form-group">
+                                <div class='input-group date' id='myDatepicker3'>
+                                    <input name="hour_start" type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>               
+                    </div>
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <label for="">Hora Fin</label>
+                            <div class="form-group">
+                                <div class='input-group date' id='myDatepicker2'>
+                                    <input name="hour_end" type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>               
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">Descripcion</label>
+                            <textarea class="form-control  col-md-6" rows="3" placeholder="Escribir ..." name="hour_description"></textarea>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                        <div class="col-md-8"></div>
+                        <div class="col-md-2">                        
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>                    
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">            
+        </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$('#myDatepicker3').datetimepicker({
+        format: 'hh:mm A'
+    });
+$('#myDatepicker2').datetimepicker({
+        format: 'hh:mm A'
+    });
+$('#datatable').DataTable();
+</script>

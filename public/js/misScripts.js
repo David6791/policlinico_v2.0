@@ -149,21 +149,23 @@ $(function(){
         })
     })
     $(document).on('click','.get_EditSchedule',function(e){   
-        alert('Hola')
-
-        /*e.preventDefault(e)
+        e.preventDefault(e)
         $.ajax({
             type:'POST',
-            url:'/darBajaSchedules',
-            data:{id:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            url:'/edit_Schedules',
+            data:{id_Schedules:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
             success:function(data){
-                $("#contentGlobal").html(data)   
-                
+                $('#exampleModal1').modal({
+                    show: 'true',
+                    backdrop: 'static',
+                    keyboard: false,
+                })  
+                $('#name_schedules').val(data[0].name_shedules)
             },
             error:function(data){
                 //console.log(data)
             }
-        })*/
+        })
     })
     $(document).on('click','.sel',function(e){
         e.preventDefault(e)

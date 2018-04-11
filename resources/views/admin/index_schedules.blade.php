@@ -31,7 +31,7 @@
                     @else
                     <td><button class="btn btn-danger btn-xs get_BajaSchedule" name="id_medico" value="{{$lista->id_schedule}}">Inactivo</button></td>
                     @endif 
-                    <td><div class="col-md-2"><button type="button" class="btn btn-primary btn-xs get_EditSchedule" >Editar Horario</button></div></td>
+                    <td><div class="col-md-2"><button type="button" class="btn btn-primary btn-xs get_EditSchedule" value="{{$lista->id_schedule}}">Editar Horario</button></div></td>
                 </tr>
                 @endforeach
             </tbody>
@@ -132,7 +132,7 @@
                     <div class="col-md-6">  
                         <div class="form-group">
                             <label for="">Nombre Horario</label>
-                                <input name="name_schedules" class="form-control" type="text" value="">
+                                <input name="name_schedules" class="form-control" type="text" value="" id="name_schedules"/>
                         </div>               
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                             <label for="">Hora Inicio</label>
                             <div class="form-group">
                                 <div class='input-group date' id='myDatepicker3'>
-                                    <input name="hour_start" type='text' class="form-control" />
+                                    <input name="hour_start" type='text' class="form-control" id="hour_start"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -155,7 +155,7 @@
                             <label for="">Hora Fin</label>
                             <div class="form-group">
                                 <div class='input-group date' id='myDatepicker2'>
-                                    <input name="hour_end" type='text' class="form-control" />
+                                    <input name="hour_end" type='text' class="form-control" id="hour_end"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -168,7 +168,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Descripcion</label>
-                            <textarea class="form-control  col-md-6" rows="3" placeholder="Escribir ..." name="hour_description"></textarea>
+                            <textarea class="form-control  col-md-6" rows="3" placeholder="Escribir ..." name="hour_description" id="hour_description"></textarea>
                         </div>
                     </div>
                 </div><br>

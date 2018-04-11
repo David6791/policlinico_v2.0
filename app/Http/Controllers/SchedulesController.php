@@ -50,4 +50,10 @@ class SchedulesController extends Controller
             'SchedulesController@index_Schedules'
         );
     }
+    public function dedit_Schedule(Request $request){
+        //return $request->all();
+        $query2 = "select * from schedules where id_schedule = :id";
+        $rows2=\DB::select(\DB::raw($query2),array('id'=>$request->id_Schedules));
+        return $rows2;
+    }
 }

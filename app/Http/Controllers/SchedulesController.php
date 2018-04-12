@@ -50,10 +50,24 @@ class SchedulesController extends Controller
             'SchedulesController@index_Schedules'
         );
     }
-    public function dedit_Schedule(Request $request){
+    public function edit_Schedule(Request $request){
         //return $request->all();
         $query2 = "select * from schedules where id_schedule = :id";
         $rows2=\DB::select(\DB::raw($query2),array('id'=>$request->id_Schedules));
         return $rows2;
+    }
+    public function save_Schedule(Request $request){
+        //return $request->all();
+        $edit_schedule = DB::table('schedules')
+            ->where('id_schedule', '=', $request->id_schedule)
+            ->update([
+                'name_schedules' => $request->name_schedules,
+                'schedules_start' => $request->hour_start ,
+                'schedules_end' => $request->hour_end,
+                'description' => $request->hour_description
+            ]);
+        return redirect()->action(
+            'SchedulesController@index_Schedules'
+        );
     }
 }

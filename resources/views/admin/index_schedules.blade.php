@@ -48,7 +48,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" id="close_save_modal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="exampleModalLabel">Agregar Nuevo Turno <label for=""></label></h4>
         </div>
         <div class="modal-body">
@@ -126,8 +126,9 @@
         </div>
         <div class="modal-body">
             <!--form class="sendform1" action="{{url('crear_turno')}}" method="post"-->
-            <form class="sendform_schedules" action="{{url('create_schedules')}}" method="post">            
+            <form class="sendform_schedules1" action="{{url('save_schedules')}}" method="post">            
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                <input type="hidden" name="id_schedule" id="id_schedule" value="<?php echo csrf_token(); ?>">
                 <div class="row">
                     <div class="col-md-6">  
                         <div class="form-group">

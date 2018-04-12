@@ -24,12 +24,12 @@
                     <td>{{ $lista->nombre_especialidad }}</td>                
                     <td>{{ $lista->descripcion_especialidad }}</td>
                     @if($lista->estado_especialidad==='Activo')
-                        <td style="color:green">{{ $lista->estado_especialidad }}</td>
+                        <td><button class="btn btn-success btn-xs get_BajaSpecialty" name="id_especialidad" value="{{$lista->id_especialidad}}">{{ $lista->estado_especialidad }}</button></td>
                     @else
-                        <td style="color:red">{{ $lista->estado_especialidad }}</td>
+                        <td><button class="btn btn-danger btn-xs get_BajaSpecialty" name="id_especialidad" value="{{$lista->id_especialidad}}">{{ $lista->estado_especialidad }}</button></td>                        
                     @endif   
                     <td>{{ $lista->nombre_tipo}}</td>
-                    <td><button class="btn btn-primary btn-xs getVerMedico" name="id_medico" value="{{$lista->id_especialidad}}">Ver Especialidad</button></td>               
+                    <td><button class="btn btn-primary btn-xs getVerMedico" name="id_medico" value="{{$lista->id_especialidad}}">Editar Especialidad</button></td>               
                 </tr>
                 @endforeach
             </tbody>

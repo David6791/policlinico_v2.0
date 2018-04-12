@@ -32,4 +32,26 @@ class SpecialtiesController extends Controller
             'SpecialtiesController@index_especialidad'
         );
     }
+    public function darBajaSpecialty(Request $request){
+        //return $request->all();
+        //return $request->estado_especialidad;
+        $query2 = "select estado_especialidad from especialidades where id_especialidad = :id";
+        $rows2=\DB::select(\DB::raw($query2),array('id'=>$request->id));
+        if(($rows2[0]->estado_especialidad)==='Activo'){
+            $baja_specialties = DB::table('especialidades')
+            ->where('id_especialidad', '=', $request->id)
+            ->update([
+                'estado_especialidad' => 'Inactivo'
+            ]);    
+        }else{
+            $baja_specialties = DB::table('especialidades')
+            ->where('id_especialidad', '=', $request->id)
+            ->update([
+                'estado_especialidad' => 'Activo'
+            ]);
+        }
+        return redirect()->action(
+            'SpecialtiesController@index_especialidad'
+        );
+    }
 }

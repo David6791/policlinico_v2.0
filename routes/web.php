@@ -42,6 +42,7 @@ Route::post('/crear_dentistas', 'UsersController@crear_dentista');
 /* rutas para especialidades */
 Route::get('/index_especialidades', 'SpecialtiesController@index_especialidad');
 Route::post('/crear_especialidad', 'SpecialtiesController@crear_especialidad');
+Route::post('/darBajaSpecialtys', 'SpecialtiesController@darBajaSpecialty');
 
 /* Rutas para adminitrar Pacientes... */
 
@@ -55,4 +56,5 @@ Route::post('/store_patients', 'PatientsController@store_patient');
 Route::get('/index_schedules','SchedulesController@index_Schedules');
 Route::post('/create_schedules','SchedulesController@create_Schedules');
 Route::post('/darBajaSchedules', 'SchedulesController@darBajaSchedule');
-Route::post('/edit_Schedules', 'SchedulesController@dedit_Schedule');
+Route::post('/edit_Schedules', 'SchedulesController@edit_Schedule');
+Route::post('/save_schedules', 'SchedulesController@save_Schedule');

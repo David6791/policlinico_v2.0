@@ -217,6 +217,56 @@ $(function(){
             }
         })        
     })
+    /* Editar Especialidades */
+    $(document).on('click','.editSpecialties',function(e){         
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/editSpecialties',
+            data:{id_specialties:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#editSpecialtiesModal').modal({
+                    show: 'true',
+                    backdrop: 'static',
+                    keyboard: false,
+                })  
+                $('#name_specialties').val(data[0].nombre_especialidad)
+                $('#description').val(data[0].descripcion_especialidad)
+                $('#id_specialties').val(data[0].id_especialidad)
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })        
+    })
+    // Guardar datos editados de Especialidades
+    $(document).on('submit','.sendform_save_edit_Specialties',function(e){
+        $('#close_save_modal').trigger('click') 
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $("#contentGlobal").html(data)          
+                swal(
+                    'Felicidades',
+                    'Los datos de se guardaron correctamente',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
     $(document).on('click','.sel',function(e){
         e.preventDefault(e)
         var valor = document.getElementById("texto").value;

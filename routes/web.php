@@ -43,6 +43,8 @@ Route::post('/crear_dentistas', 'UsersController@crear_dentista');
 Route::get('/index_especialidades', 'SpecialtiesController@index_especialidad');
 Route::post('/crear_especialidad', 'SpecialtiesController@crear_especialidad');
 Route::post('/darBajaSpecialtys', 'SpecialtiesController@darBajaSpecialty');
+Route::post('/editSpecialties', 'SpecialtiesController@editSpecialtie');
+Route::post('/saveSpecialties', 'SpecialtiesController@saveSpecialtie');
 
 /* Rutas para adminitrar Pacientes... */
 

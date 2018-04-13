@@ -54,4 +54,13 @@ class SpecialtiesController extends Controller
             'SpecialtiesController@index_especialidad'
         );
     }
+    public function editSpecialtie(Request $request){
+        $query2 = "select * from especialidades where id_especialidad = :id";
+        $rows2=\DB::select(\DB::raw($query2),array('id'=>$request->id_specialties));
+        return $rows2;
+    }
+    public function saveSpecialtie(Request $request){
+        //return $request->all();
+        
+    }
 }

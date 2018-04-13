@@ -61,6 +61,15 @@ class SpecialtiesController extends Controller
     }
     public function saveSpecialtie(Request $request){
         //return $request->all();
-        
+        $save_edit_specialties = DB::table('especialidades')
+            ->where('id_especialidad', '=', $request->id_specialties)
+            ->update([
+                'nombre_especialidad' => $request->nombre_especialidad,
+                'descripcion_especialidad' => $request->descripcion_esp,
+                'tipo_usuario' => $request->tipo_usuario
+        ]); 
+        return redirect()->action(
+            'SpecialtiesController@index_especialidad'
+        );
     }
 }

@@ -66,8 +66,9 @@ class SchedulesController extends Controller
                 'schedules_end' => $request->hour_end,
                 'description' => $request->hour_description
             ]);
+
         return redirect()->action(
-            'SchedulesController@index_Schedules'
+            'SchedulesController@index_Schedules'                   
         );
     }
 }

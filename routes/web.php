@@ -60,3 +60,8 @@ Route::post('/create_schedules','SchedulesController@create_Schedules');
 Route::post('/darBajaSchedules', 'SchedulesController@darBajaSchedule');
 Route::post('/edit_Schedules', 'SchedulesController@edit_Schedule');
 Route::post('/save_schedules', 'SchedulesController@save_Schedule');
+
+
+/* Rutas de Asignacion de Horarios a los Usuarios */
+Route::get('/index_assignment','AssignmentsController@index_Assignments');
+Route::post('/create_assignments','AssignmentsController@create_Assignments');

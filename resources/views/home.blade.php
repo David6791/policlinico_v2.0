@@ -42,6 +42,7 @@
     <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ion.rangeSlider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ion.rangeSlider.skinFlat.css') }}" rel="stylesheet">
+    
 
     <link href="{{asset('css/datepicker.css')}}" rel="stylesheet" type="text/css">
 
@@ -103,7 +104,7 @@
                   <li><a><i class="fa fa-desktop"></i> Control de Horarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index_schedules" class="load-page">Horarios</a></li>
-                      <li><a href="media_gallery.html">Asignacion de Horarios</a></li>
+                      <li><a href="index_assignment" class="load-page">Asignacion de Horarios</a></li>
                       <li><a href="typography.html">Impresion de Horarios</a></li>
                       <li><a href="icons.html">Icons</a></li>
                       <li><a href="glyphicons.html">Glyphicons</a></li>

@@ -267,6 +267,34 @@ $(function(){
             }
         })
     })
+    // Guardar datos de Nueva Asignacion de Horarios a Usuarios
+    $(document).on('submit','.send_form_assignments',function(e){
+        $('#close_save_modal').trigger('click') 
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $("#contentGlobal").html(data)          
+                swal(
+                    'Felicidades',
+                    'Los datos de se guardaron correctamente',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
     $(document).on('click','.sel',function(e){
         e.preventDefault(e)
         var valor = document.getElementById("texto").value;

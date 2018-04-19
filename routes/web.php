@@ -65,3 +65,4 @@ Route::post('/save_schedules', 'SchedulesController@save_Schedule');
 /* Rutas de Asignacion de Horarios a los Usuarios */
 Route::get('/index_assignment','AssignmentsController@index_Assignments');
 Route::post('/create_assignments','AssignmentsController@create_Assignments');
+Route::post('/view_Assignments','AssignmentsController@view_Assignment');

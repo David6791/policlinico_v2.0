@@ -24,10 +24,10 @@
                     <td>{{ $lista->name }} {{ $lista->apellidos }}</td>
                     <td>{{ $lista->nombre_tipo }}</td>
                     <td>
-                        {{ $lista->name_schedules[0] }}
+                        <button class="btn btn-success btn-xs viewAssignments" name="id_user" value="{{$lista->id_user}}">Ver Asignaciones</button>
                     </td>
-                    <td>{{ $lista->date_creation }}</td>
-                    <td><button class="btn btn-primary btn-xs editSpecialties" name="id_medico" value="{{$lista->id_medical_assignments}}">Editar Especialidad</button></td>               
+                    <td>{{ $lista->nombre_tipo }}</td>
+                    <td><button class="btn btn-primary btn-xs editSpecialties" name="id_medico" value="{{$lista->id_user}}">Editar Especialidad</button></td>               
                 </tr>
                 @endforeach
             </tbody>
@@ -90,6 +90,78 @@
                         @endforeach
                         </tbody>
                       </table>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                        <div class="col-md-8"></div>
+                        <div class="col-md-2">                        
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>                    
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">            
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalViewAssignments" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Crear Nueva Asignacion <label for=""></label></h4>
+        </div>
+        <div class="modal-body">
+            <!--form class="sendform1" action="{{url('crear_turno')}}" method="post"-->
+            <form class="send_form_assignments" action="{{url('create_assignments')}}" method="post">            
+                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                <div class="row">                    
+                    <div class="col-md-8">  
+                        <div class="form-group">
+                            <label for="">Nombres y Apellidos</label>
+                                <p id="view_name"></p>                            
+                        </div>               
+                    </div>
+                    <div class="col-md-4">  
+                        <div class="form-group">
+                            <label for="">Tipo Usuario</label>
+                                <p id="view_tipo"></p>                         
+                        </div>               
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped jambo_table bulk_action">
+                            <thead>
+                            <tr class="headings">                            
+                                <th class="column-title">Nombre Turno </th>
+                                <th class="column-title">Hora Inicio </th>
+                                <th class="column-title">Hora Fin </th>
+                                <th class="column-title no-link last"><span class="nobr">Seleccionar</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            @foreach($schedul as $list)  
+                                <tr class="even pointer"> 
+                                    <td class="a-center "> {{$list->name_schedules}} </td>
+                                    <td class="a-center "> {{$list->schedules_start}} </td>
+                                    <td class="a-center "> {{$list->schedules_end}} </td>
+                                    <td class="a-center "> <input type="checkbox" class="flat" name="add_schedule[]" value="{{$list->id_schedule}}"></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div><br>
                 <div class="row">

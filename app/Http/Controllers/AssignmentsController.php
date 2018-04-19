@@ -29,7 +29,22 @@ class AssignmentsController extends Controller
                             INNER JOIN schedules sch
                             ON sch.id_schedule = mass.id_schedul group by  us.name, mass.id_user, us.apellidos, tus.nombre_tipo ORDER BY mass.id_user";
         $rows=\DB::select(\DB::raw($query));
+        
+        //return $rows;
+
+        /*for ($i = 0; $i < count($rows->cx); $i++){
+            dd($rows[$i]->cx);
+        }
+        return $rows->cx[0];*/
+
+
+
+        //$b= preg_split("/[,]/",$a);
+        //print_r($b);
         //return var_dump($rows[1]->cx);
+        //$b= preg_split("/[,]/",$rows->cx);
+        //$explode = implode("," ,$rows->cx);
+        //return $explode;
         $query1 = "SELECT us.id, us.name, us.apellidos, tus.nombre_tipo FROM users us
                             LEFT JOIN medical_assignments mass
                         ON mass.id_user = us.id
@@ -50,5 +65,17 @@ class AssignmentsController extends Controller
                 'id_schedul' => $esp
             ]);
         }  
+    }
+    public function view_Assignment(Request $request){
+        $query = "SELECT tus.nombre_tipo, us.name, us.apellidos, sch.name_schedules, sch.schedules_start, sch.schedules_end FROM medical_assignments mass 
+                            INNER JOIN users us
+                        ON us.id = mass.id_user
+                            INNER JOIN tipo_usuarios tus
+                        ON us.tipo_usuario = tus.id_tipo
+                            INNER JOIN schedules sch
+                        ON sch.id_schedule = mass.id_schedul
+                    WHERE id_user = :id";
+        $rows=\DB::select(\DB::raw($query),array('id'=>$request->id_user));
+        return $rows;
     }
 }

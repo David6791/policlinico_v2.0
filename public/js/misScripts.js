@@ -295,6 +295,26 @@ $(function(){
             }
         })
     })
+    $(document).on('click','.viewAssignments',function(e){ 
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/view_Assignments',
+            data:{id_user:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#modalViewAssignments').modal({
+                    show: 'true',
+                    backdrop: 'static',
+                    keyboard: false,
+                })  
+                $('#view_name').text(data[0].name +" "+ data[0].apellidos)
+                $('#view_tipo').text(data[0].nombre_tipo)
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })        
+    })
     $(document).on('click','.sel',function(e){
         e.preventDefault(e)
         var valor = document.getElementById("texto").value;

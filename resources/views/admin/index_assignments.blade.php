@@ -21,10 +21,12 @@
                 @foreach($rows as $lista)
                 <tr>
                     <td>{{ $a++ }}</td>
-                    <td>{{ $lista->name }} {{ $lista->apellidos }}</td>                
+                    <td>{{ $lista->name }} {{ $lista->apellidos }}</td>
                     <td>{{ $lista->nombre_tipo }}</td>
-                    <td>{{ $lista->name_schedules }}</td>
-                    <td>{{ $lista->date_creation }}</td>    
+                    <td>
+                        {{ $lista->name_schedules[0] }}
+                    </td>
+                    <td>{{ $lista->date_creation }}</td>
                     <td><button class="btn btn-primary btn-xs editSpecialties" name="id_medico" value="{{$lista->id_medical_assignments}}">Editar Especialidad</button></td>               
                 </tr>
                 @endforeach
@@ -53,7 +55,7 @@
                     <div class="col-md-12">  
                         <div class="form-group">
                             <label for="">Usuario Especialidad</label>
-                                <select name="tipo_usuario" id="" class="select2_group form-control">
+                                <select name="id_user" id="" class="select2_group form-control">
                                     @foreach($users as $list)                                    
                                         <option value="{{$list->id}}">{{$list->nombre_tipo}}: {{$list->name}} {{$list->apellidos}}</option>                                                         
                                     @endforeach

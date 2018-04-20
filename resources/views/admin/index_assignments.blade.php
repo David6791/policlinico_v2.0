@@ -137,7 +137,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped jambo_table bulk_action">
+                        <table class="table table-striped jambo_table bulk_action tabla_llenar">
                             <thead>
                             <tr class="headings">                            
                                 <th class="column-title">Nombre Turno </th>
@@ -152,14 +152,7 @@
                             </thead>
 
                             <tbody>
-                            @foreach($schedul as $list)  
-                                <tr class="even pointer"> 
-                                    <td class="a-center "> {{$list->name_schedules}} </td>
-                                    <td class="a-center "> {{$list->schedules_start}} </td>
-                                    <td class="a-center "> {{$list->schedules_end}} </td>
-                                    <td class="a-center "> <input type="checkbox" class="flat" name="add_schedule[]" value="{{$list->id_schedule}}"></td>
-                                </tr>
-                            @endforeach
+                            
                             </tbody>
                         </table>
                     </div>

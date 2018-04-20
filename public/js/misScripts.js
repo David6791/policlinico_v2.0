@@ -269,7 +269,7 @@ $(function(){
     })
     // Guardar datos de Nueva Asignacion de Horarios a Usuarios
     $(document).on('submit','.send_form_assignments',function(e){
-        $('#close_save_modal').trigger('click') 
+        $('#exampleModal').modal('toggle')
         $.ajaxSetup({
             header:$('meta[name="_token"]').attr('content')
         })
@@ -295,7 +295,8 @@ $(function(){
             }
         })
     })
-    $(document).on('click','.viewAssignments',function(e){ 
+    $(document).on('click','.viewAssignments',function(e){
+        $('.tabla_llenar tbody tr').closest('tr').remove() 
         e.preventDefault(e)
         $.ajax({
             type:'POST',
@@ -309,6 +310,13 @@ $(function(){
                 })  
                 $('#view_name').text(data[0].name +" "+ data[0].apellidos)
                 $('#view_tipo').text(data[0].nombre_tipo)
+                var da = (data).length
+                //console.log(da)
+                for(var i = 0; i < da ; i++)
+                {
+                    $('.tabla_llenar tbody').append('<tr style="text-align:center"><td>'+data[i].name_schedules+'</td><td>'+data[i].schedules_start+'</td><td>'+data[i].schedules_end+'</td><td>'+data[i].state+'</td><td style="text-align:center"></td></tr>')
+                }
+                
             },
             error:function(data){
                 //console.log(data)

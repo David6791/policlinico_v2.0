@@ -64,10 +64,13 @@ class AssignmentsController extends Controller
                 'id_user' => $request->id_user,
                 'id_schedul' => $esp
             ]);
-        }  
+        }
+        return redirect()->action(
+            'AssignmentsController@index_Assignments'                   
+        );
     }
     public function view_Assignment(Request $request){
-        $query = "SELECT tus.nombre_tipo, us.name, us.apellidos, sch.name_schedules, sch.schedules_start, sch.schedules_end FROM medical_assignments mass 
+        $query = "SELECT tus.nombre_tipo, us.name, us.apellidos, sch.name_schedules, sch.schedules_start, sch.schedules_end, sch.state FROM medical_assignments mass 
                             INNER JOIN users us
                         ON us.id = mass.id_user
                             INNER JOIN tipo_usuarios tus

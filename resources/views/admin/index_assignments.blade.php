@@ -27,7 +27,7 @@
                         <button class="btn btn-success btn-xs viewAssignments" name="id_user" value="{{$lista->id_user}}">Ver Asignaciones</button>
                     </td>
                     <td>{{ $lista->nombre_tipo }}</td>
-                    <td><button class="btn btn-primary btn-xs editSpecialties" name="id_medico" value="{{$lista->id_user}}">Editar Especialidad</button></td>               
+                    <td><button class="btn btn-primary btn-xs editAssignments" name="id_assignments" value="{{$lista->id_user}}">Editar Especialidad</button></td>               
                 </tr>
                 @endforeach
             </tbody>
@@ -115,7 +115,7 @@
         <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="exampleModalLabel">Crear Nueva Asignacion <label for=""></label></h4>
+            <h4 class="modal-title" id="exampleModalLabel">Ver todas las Asignacion <label for=""></label></h4>
         </div>
         <div class="modal-body">
             <!--form class="sendform1" action="{{url('crear_turno')}}" method="post"-->
@@ -148,6 +148,82 @@
                                 <th class="bulk-actions" colspan="7">
                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                                 </th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                        <div class="col-md-8"></div>
+                        <div class="col-md-2">                        
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>                    
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">            
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalEditAssignments" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Editar Asignaciones <label for=""></label></h4>
+        </div>
+        <div class="modal-body">
+            <!--form class="sendform1" action="{{url('crear_turno')}}" method="post"-->
+            <form class="send_form_assignments_edit" action="{{url('save_edit_assignments')}}" method="post">            
+                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                <input type="hidden" name="id_user" id="id_user1" value="">
+                <div class="row">                    
+                    <div class="col-md-8">  
+                        <div class="form-group">
+                            <label for="">Nombres y Apellidos</label>
+                                <p id="view_name1"></p>                            
+                        </div>               
+                    </div>
+                    <div class="col-md-4">  
+                        <div class="form-group">
+                            <label for="">Tipo Usuario</label>
+                                <p id="view_tipo1"></p>                         
+                        </div>               
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-striped jambo_table bulk_action table_add">
+                            <thead>
+                            <tr class="headings">                            
+                                <th class="column-title">Nro. </th>
+                                <th class="column-title">Nombre Turno </th>
+                                <th class="column-title">Eliminar</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-striped jambo_table bulk_action table_remove">
+                            <thead>
+                            <tr class="headings">                            
+                                <th class="column-title">Nro. </th>
+                                <th class="column-title">Nombre Turno </th>
+                                <th class="column-title">Agregar</th>
                             </tr>
                             </thead>
 

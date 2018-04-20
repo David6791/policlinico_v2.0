@@ -66,3 +66,5 @@ Route::post('/save_schedules', 'SchedulesController@save_Schedule');
 Route::get('/index_assignment','AssignmentsController@index_Assignments');
 Route::post('/create_assignments','AssignmentsController@create_Assignments');
 Route::post('/view_Assignments','AssignmentsController@view_Assignment');
+Route::post('/edit_Assignments','AssignmentsController@edit_Assignment');
+Route::post('/save_edit_assignments','AssignmentsController@save_edit_assignment');

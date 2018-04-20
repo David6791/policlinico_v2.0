@@ -314,7 +314,7 @@ $(function(){
                 //console.log(da)
                 for(var i = 0; i < da ; i++)
                 {
-                    $('.tabla_llenar tbody').append('<tr style="text-align:center"><td>'+data[i].name_schedules+'</td><td>'+data[i].schedules_start+'</td><td>'+data[i].schedules_end+'</td><td>'+data[i].state+'</td><td style="text-align:center"></td></tr>')
+                    $('.tabla_llenar tbody').append('<tr style="text-align:center"><td>'+data[i].name_schedules+'</td><td>'+data[i].schedules_start+'</td><td>'+data[i].schedules_end+'</td><td>'+data[i].state+'</td></tr>')
                 }
                 
             },
@@ -322,6 +322,71 @@ $(function(){
                 //console.log(data)
             }
         })        
+    })
+    $(document).on('click','.editAssignments',function(e){
+        $('.table_add tbody tr').closest('tr').remove() 
+        $('.table_remove tbody tr').closest('tr').remove() 
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/edit_Assignments',
+            data:{id_user:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#modalEditAssignments').modal({
+                    show: 'true',
+                    backdrop: 'static',
+                    keyboard: false,
+                })  
+                $('#id_user1').val(data.datos[0].id_user)
+                $('#view_name1').text(data.datos[0].name +" "+ data.datos[0].apellidos)
+                $('#view_tipo1').text(data.datos[0].nombre_tipo)
+                var da = (data.datos).length
+                var da1 = (data.datos1).length
+                var x = 0
+                console.log(da)
+                for(var i = 0; i < da ; i++)
+                {
+                    x = i+1
+                    $('.table_add tbody').append('<tr style="text-align:center"><td>'+x+'</td><td>'+data.datos[i].name_schedules+'</td><td><input type="checkbox" name="schedul_add[]" value="'+data.datos[i].id_schedule+'"></td></tr>')
+                }
+                for(var i = 0; i < da1 ; i++)
+                {
+                    x = i +1
+                    $('.table_remove tbody').append('<tr style="text-align:center"><td>'+x+'</td><td>'+data.datos1[i].name_schedules+'</td><td><input type="checkbox" name="schedul_remove[]" value="'+data.datos1[i].id_schedule+'"></td></tr>')
+                }
+                
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })        
+    })
+    /* Editar asignacion de Horarios a  usuarios  */
+    $(document).on('submit','.send_form_assignments_edit',function(e){
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $("#contentGlobal").html(data)          
+                swal(
+                    'Felicidades',
+                    'Los datos de se guardaron correctamente',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
     })
     $(document).on('click','.sel',function(e){
         e.preventDefault(e)

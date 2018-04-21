@@ -68,3 +68,7 @@ Route::post('/create_assignments','AssignmentsController@create_Assignments');
 Route::post('/view_Assignments','AssignmentsController@view_Assignment');
 Route::post('/edit_Assignments','AssignmentsController@edit_Assignment');
 Route::post('/save_edit_assignments','AssignmentsController@save_edit_assignment');
+
+
+/* Rutas para administrar citas medicas */
+Route::get('/view_medical_appointment','MedicalAppointmentController@index_Appointment');

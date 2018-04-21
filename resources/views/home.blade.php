@@ -120,9 +120,9 @@
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Citas Medicas <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class=""></i> Citas Medicas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Crear Cita Medica</a></li>
+                      <li><a href="view_medical_appointment" class="load-page">Crear Cita Medica</a></li>
                       <li><a href="chartjs2.html">Buscar Cita Medica</a></li>
                       <li><a href="morisjs.html">Ver Citas Medicas </a></li>
                       <li><a href="echarts.html">ECharts</a></li>

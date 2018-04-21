@@ -124,7 +124,7 @@
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">Crear Cita Medica</a></li>
                       <li><a href="chartjs2.html">Buscar Cita Medica</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
+                      <li><a href="morisjs.html">Ver Citas Medicas </a></li>
                       <li><a href="echarts.html">ECharts</a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>

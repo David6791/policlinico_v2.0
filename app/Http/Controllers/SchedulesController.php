@@ -17,7 +17,7 @@ class SchedulesController extends Controller
         return view('admin.index_schedules')->with('row',$rows);  
     }
     public function create_Schedules(Request $request){
-        //return $request->all();
+        //return $request->all();        
         DB::table('schedules')->insert([
             'name_schedules' => $request->name_schedules,
             'schedules_start' => $request->hour_start,

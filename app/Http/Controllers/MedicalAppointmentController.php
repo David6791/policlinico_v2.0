@@ -29,4 +29,7 @@ class MedicalAppointmentController extends Controller
         $rows=\DB::select(\DB::raw($query));
         return view('admin.index_medical_appointments')->with('row',$rows);
     }
+    public function create_Medical_Appointment(Request $request){
+        return ("Hola");
+    }
 }

@@ -122,9 +122,9 @@
                   </li>
                   <li><a><i class=""></i> Citas Medicas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="view_medical_appointment" class="load-page">Crear Cita Medica</a></li>
-                      <li><a href="chartjs2.html">Buscar Cita Medica</a></li>
-                      <li><a href="morisjs.html">Ver Citas Medicas </a></li>
+                      <li><a href="view_medical_appointment" class="load-page">Ver Citas Medicas </a></li>
+                      <li><a href="create_medical_appointment" class="load-page">Crear Cita Medica </a></li>
+                      <li><a href="morisjs.html">Buscar Cita Medica </a></li>
                       <li><a href="echarts.html">ECharts</a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>

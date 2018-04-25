@@ -388,9 +388,35 @@ $(function(){
             }
         })
     })
-    $(document).on('click','.sel',function(e){
+    /*$(document).on('click','.sel',function(e){
         e.preventDefault(e)
-        var valor = document.getElementById("texto").value;
-        alert(valor+'asd')
+        alert('Medico')
+    })*/
+    /* Funcion para reservar cita medica mediante medico de turno y especialidad */
+    $(document).on('click','.reservationMedic',function(e){
+        e.preventDefault(e)
+        //alert('Medico')
+        $.ajax({
+            type:'GET',
+            url:'/create_medical_appointments',
+            data:$(this).serialize(),
+            success:function(data){
+                $('#load_page_appointsment').html(data)
+                //alert("asdsad")
+            }
+        })       
+    })
+    /* Reservacion de cita medica de acuerdo a fechas disponibles mediante calendario */
+    $(document).on('click','.reservationDate',function(e){
+        e.preventDefault(e)
+        //alert('Fecha')
+        $.ajax({
+            type:'GET',
+            url:'/create_date_appointments',
+            data:$(this).serialize(),
+            success:function(data){
+                $('#load_page_appointsment').html(data)
+            }
+        })
     })
 })

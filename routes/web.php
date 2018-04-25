@@ -72,4 +72,9 @@ Route::post('/save_edit_assignments','AssignmentsController@save_edit_assignment
 
 /* Rutas para administrar citas medicas */
 Route::get('/view_medical_appointment','MedicalAppointmentController@index_Appointment');
+
 Route::get('/create_medical_appointment','MedicalAppointmentController@create_Medical_Appointment');
+
+/* Rutas para escoger metodo cita medica */
+Route::get('/create_medical_appointments','MedicalAppointmentController@create_medical_appointments_a');
+Route::get('/create_date_appointments','MedicalAppointmentController@create_date_appointment_a');

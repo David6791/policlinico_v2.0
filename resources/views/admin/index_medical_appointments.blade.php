@@ -10,6 +10,7 @@
                 <tr>
                     <th>Nro.</th>
                     <th>Nombre Paciente</th>
+                    <th>Fecha Cita</th>
                     <th>Turno</th>
                     <th>Hora</th>
                     <th>Estado Cita Medica</th>
@@ -23,6 +24,7 @@
                 <tr>
                     <td>{{ $a++ }}</td>
                     <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>                
+                    <td>{{ date('m-d-Y', strtotime( $lista->date_appointments )) }}</td>
                     <td>{{ $lista->name_schedules }}</td>
                     <td>{{ $lista->start_time }}</td>
                     <td>{{ $lista->name_state_appointments }}</td>

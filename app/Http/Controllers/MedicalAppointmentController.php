@@ -12,7 +12,7 @@ use Auth;
 class MedicalAppointmentController extends Controller
 {
     public function index_Appointment(){
-        $query = "SELECT map.id_medical_appointments, map.appointment_description, pa.nombres, pa.ap_paterno, pa.ap_materno, mass.id_user, us.name m_name, us.apellidos m_apellidos, sch.name_schedules, ht.start_time, sap.name_state_appointments FROM medical_appointments map
+        $query = "SELECT map.id_medical_appointments, map.appointment_description, pa.nombres, pa.ap_paterno, pa.ap_materno, mass.id_user, us.name m_name, us.apellidos m_apellidos, sch.name_schedules, ht.start_time, sap.name_state_appointments, map.date_appointments FROM medical_appointments map
                             INNER JOIN pacientes pa
                         ON pa.id_paciente = map.id_patient
                             INNER JOIN medical_assignments mass
@@ -30,6 +30,13 @@ class MedicalAppointmentController extends Controller
         return view('admin.index_medical_appointments')->with('row',$rows);
     }
     public function create_Medical_Appointment(Request $request){
-        return ("Hola");
+        return view('admin.create_medical_appointsments');
+    }
+    public function create_medical_appointments_a(){
+        
+        return view('admin.load_pages.reservation_medic');
+    }
+    public function create_date_appointment_a(){
+        return view('admin.load_pages.reservation_date');
     }
 }

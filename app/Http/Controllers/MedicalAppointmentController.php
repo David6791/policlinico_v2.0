@@ -33,10 +33,16 @@ class MedicalAppointmentController extends Controller
         return view('admin.create_medical_appointsments');
     }
     public function create_medical_appointments_a(){
-        
+
         return view('admin.load_pages.reservation_medic');
     }
     public function create_date_appointment_a(){
-        return view('admin.load_pages.reservation_date');
+        $query = "select * from schedules order by id_schedule";
+        $rows=\DB::select(\DB::raw($query));
+        return view('admin.load_pages.reservation_date')->with('schedul',$rows);
     }
+    public function view_turns_day_date(Request $request){
+        return $request->all();
+    }
+
 }

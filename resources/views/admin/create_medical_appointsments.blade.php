@@ -17,6 +17,11 @@
         <div class="row load_page_appointsment" id="load_page_appointsment">
             
         </div>
+        <div class="row">
+            <table class="table-striped jambo_table bulk_action table_turn_day">
+
+            </table>
+        </div>
     </div>
     <div class="x_footer">
         <div class="row">

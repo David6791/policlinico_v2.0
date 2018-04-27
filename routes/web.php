@@ -78,3 +78,6 @@ Route::get('/create_medical_appointment','MedicalAppointmentController@create_Me
 /* Rutas para escoger metodo cita medica */
 Route::get('/create_medical_appointments','MedicalAppointmentController@create_medical_appointments_a');
 Route::get('/create_date_appointments','MedicalAppointmentController@create_date_appointment_a');
+
+
+Route::get('/view_turns_day_date','MedicalAppointmentController@view_turns_day_date');

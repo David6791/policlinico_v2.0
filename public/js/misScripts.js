@@ -419,4 +419,19 @@ $(function(){
             }
         })
     })
+    /* Funcion para revisar los turnos segun los datos de la fecha */
+    $(document).on('click','.view_turns_day',function(e){
+        e.preventDefault(e)
+        //alert('Fecha')
+        $.ajax({
+            type:'GET',
+            url:'/view_turns_day_date',
+            data:$(this).serialize(),
+            data:{fecha:$('input:text[name=fecha_viaje]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                //$('#load_page_appointsment').html(data)
+                alert($('input:text[name=fecha_viaje]').val())
+            }
+        })
+    })
 })

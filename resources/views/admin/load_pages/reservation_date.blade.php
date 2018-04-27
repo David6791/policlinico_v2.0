@@ -20,7 +20,7 @@
     <div class="col-md-2">
         <select name="id_user" id="" class="select2_group form-control">
             @foreach($schedul as $list)                                    
-                <option value="{{$list->id}}">{{$list->nombre_tipo}}: {{$list->name}} {{$list->apellidos}}</option>                                                         
+                <option value="{{$list->id_schedule}}">{{$list->name_schedules}}</option>                                                         
             @endforeach
         </select>
     </div>

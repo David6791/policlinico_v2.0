@@ -18,9 +18,9 @@
         </div>        
     </div>
     <div class="col-md-2">
-        <select name="id_user" id="" class="select2_group form-control">
+        <select name="id_user" id="selec_schedule" class="select2_group form-control">
             @foreach($schedul as $list)                                    
-                <option value="{{$list->id_schedule}}">{{$list->name_schedules}}</option>                                                         
+                <option name="{{$list->id_schedule}}" value="{{$list->id_schedule}}">{{$list->name_schedules}}</option>                                                         
             @endforeach
         </select>
     </div>
@@ -31,6 +31,6 @@
 </div>
 <script>
 $('#myDatepicker2').datetimepicker({
-    format: 'DD-MM-YYYY'
+    format: 'MM-DD-YYYY'
 });
 </script>

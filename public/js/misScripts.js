@@ -427,11 +427,20 @@ $(function(){
             type:'GET',
             url:'/view_turns_day_date',
             data:$(this).serialize(),
-            data:{fecha:$('input:text[name=fecha_viaje]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
+            data:{fecha:$('input:text[name=fecha_viaje]').val(),id_turno:document.getElementById("selec_schedule").value,_token:$('meta[name="csrf-token"]').attr('content')},
             success:function(data){
-                //$('#load_page_appointsment').html(data)
-                alert($('input:text[name=fecha_viaje]').val())
+                $('#table_load_turns').html(data)
+                //alert($('input:text[name=fecha_viaje]').val())
             }
         })
     })
+
+    /* Funcion para mostrar horario seleccionado y seleccionar Usuario */
+    $(document).on('click','.create_assignments',function(e){
+        e.preventDefault(e)
+        //alert('asdsadsadadasd')
+        $('#datatable').remove()
+
+    })
+
 })

@@ -62,7 +62,46 @@ SELECT map.id_medical_appointments, map.appointment_description, pa.nombres, pa.
 	ON sap.id_state_appointments = map.state_appointments
 
 
+SELECT ht.id_hour_turn, ht.start_time, ht.end_time, ht.state, ht.id_schedul, sch.name_schedules FROM hour_turns ht
+    INNER JOIN schedules sch
+	ON sch.id_schedule = ht.id_schedul
+    WHERE ht.id_schedul = 1 AND ht.id_hour_turn NOT IN (
+	SELECT id_turn_hour FROM medical_appointments map
+    WHERE date_trunc('day', map.date_appointments) = '05-02-2018'
+)
 
+SELECT ht.id_hour_turn, ht.start_time, ht.end_time, ht.state, ht.id_schedul, sch.name_schedules FROM hour_turns ht
+                    INNER JOIN schedules sch
+                        ON sch.id_schedule = ht.id_schedul
+                    WHERE ht.id_hour_turn NOT IN (
+                   SELECT id_turn_hour FROM medical_appointments map  
+                    WHERE date_trunc('day', map.date_appointments) = '05-02-2018' AND id_schedul = 1)
+
+
+
+
+
+select * from hour_turns 
+
+where id_schedul = 5
+
+
+SELECT * FROM medical_appointments map
+RIGHT JOIN hour_turns ht
+ON map.id_turn_hour = ht.id_hour_turn
+WHERE date_trunc('day', map.date_appointments) = '05-02-2018' and id_hour_turn NOT IN(
+select id_hour_turn from hour_turns 
+)
+
+
+ht.id_hour_turn IS NULL
+
+
+SELECT * FROM hour_turns
+
+SELECT * FROM medical_appointments 
+
+where date_trunc('day', date_appointments) = '05-02-2018'
 
 
 

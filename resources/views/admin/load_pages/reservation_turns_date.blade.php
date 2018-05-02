@@ -21,7 +21,7 @@
                         <td>{{ $lista->end_time }}</td>
                         <td>{{ $lista->state }}</td>
                         <td> {{ $lista->name_schedules }}</td>
-                        <td><button class="btn btn-primary btn-sm create_assignments">Crear Cita</button></td>
+                        <td><button class="btn btn-primary btn-sm create_assignments" value="{{ $lista->id_hour_turn }}">Crear Cita</button></td>
                     </tr>
                 @endforeach
             </tbody>

@@ -20,8 +20,8 @@
         <div class="table_load_turns" id="table_load_turns">
             
         </div>
-        <div class="load_datos_user_appoinments">
-            
+        <div class="load_datos_user_appoinments" id="load_datos_user_appoinments">
+
         </div>
     </div>
     <div class="x_footer">

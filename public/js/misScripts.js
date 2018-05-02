@@ -408,7 +408,7 @@ $(function(){
     })
     /* Reservacion de cita medica de acuerdo a fechas disponibles mediante calendario */
     $(document).on('click','.reservationDate',function(e){
-        e.preventDefault(e)
+        e.preventDefault(e)        
         //alert('Fecha')
         $.ajax({
             type:'GET',
@@ -421,7 +421,8 @@ $(function(){
     })
     /* Funcion para revisar los turnos segun los datos de la fecha */
     $(document).on('click','.view_turns_day',function(e){
-        e.preventDefault(e)
+        //$('#load_datos_user_appoinments').remove()
+        e.preventDefault(e)       
         //alert('Fecha')
         $.ajax({
             type:'GET',
@@ -438,9 +439,24 @@ $(function(){
     /* Funcion para mostrar horario seleccionado y seleccionar Usuario */
     $(document).on('click','.create_assignments',function(e){
         e.preventDefault(e)
-        //alert('asdsadsadadasd')
-        $('#datatable').remove()
-
+        $.ajax({
+            type:'GET',
+            url:'/create_assignments_view_user_medics',
+            data:$(this).serialize(),
+            data:{id:$(this).attr('value'),fecha:$('input:text[name=fecha_viaje]').val(),id_turno:document.getElementById("selec_schedule").value,_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#datatable').remove()
+                //alert(data)
+                $('#load_datos_user_appoinments').html(data)
+                console.log(data.fecha)
+                $('#date_appointsment').val()
+            }
+        })
     })
-
+    $(document).on('click','.search',function(e){
+        e.preventDefault(e)
+        
+        $.ajax({
+        })
+    })
 })

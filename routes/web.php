@@ -81,3 +81,5 @@ Route::get('/create_date_appointments','MedicalAppointmentController@create_date
 
 
 Route::get('/view_turns_day_date','MedicalAppointmentController@view_turns_day_date');
+
+Route::get('/create_assignments_view_user_medics','MedicalAppointmentController@create_assignments_view_user_medic');

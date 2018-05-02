@@ -53,5 +53,22 @@ class MedicalAppointmentController extends Controller
         //return $rows;
         return view('admin.load_pages.reservation_turns_date')->with('turns',$rows);
     }
-
+    public function create_assignments_view_user_medic(Request $request){
+        //return $request->all();
+        $query = "SELECT * FROM hour_turns ht 
+                        INNER JOIN schedules sch
+                        ON sch.id_schedule = ht.id_schedul
+                    WHERE id_hour_turn = :id_hour_turn";
+        $rows=\DB::select(\DB::raw($query),array('id_hour_turn'=>$request->id));
+        $query1 = "SELECT * FROM medical_assignments mass
+                            INNER JOIN users us
+                        ON us.id = mass.id_user
+                            INNER JOIN tipo_usuarios tus
+                        ON tus.id_tipo = us.tipo_usuario
+                    WHERE id_schedul = :id_schedul";
+        $rows1=\DB::select(\DB::raw($query1),array('id_schedul'=>$request->id_turno));
+        $datos = $request->fecha;
+        //return $rows1;
+        return view('admin.load_pages.load_date_reservation')->with('dates',$datos)->with('turno',$rows)->with('medic',$rows1);
+    }
 }

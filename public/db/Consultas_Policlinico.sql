@@ -106,10 +106,18 @@ where date_trunc('day', date_appointments) = '05-02-2018'
 
 
 
+SELECT * FROM hour_turns ht 
+    INNER JOIN schedules sch
+	ON sch.id_schedule = ht.id_schedul
+WHERE id_hour_turn = 1
 
 
-
-
+SELECT * FROM medical_assignments mass
+     INNER JOIN users us
+	ON us.id = mass.id_user
+     INNER JOIN tipo_usuarios tus
+	ON tus.id_tipo = us.tipo_usuario
+WHERE id_schedul = 1
 
 
 

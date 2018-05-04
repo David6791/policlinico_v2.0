@@ -83,3 +83,8 @@ Route::get('/create_date_appointments','MedicalAppointmentController@create_date
 Route::get('/view_turns_day_date','MedicalAppointmentController@view_turns_day_date');
 
 Route::get('/create_assignments_view_user_medics','MedicalAppointmentController@create_assignments_view_user_medic');
+
+Route::post('/load_patient_dates','MedicalAppointmentController@load_patient_date');
+
+/* insertar datos de una cita medica */
+Route::post('/insert_appointsments','MedicalAppointmentController@insert_appointsment');

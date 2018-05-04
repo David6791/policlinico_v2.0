@@ -455,8 +455,36 @@ $(function(){
     })
     $(document).on('click','.search',function(e){
         e.preventDefault(e)
-        
         $.ajax({
+            type:'POST',
+            url:'/load_patient_dates',
+            data:$(this).serialize(),
+            data:{ci_patient:$('input:text[name=ci_patient]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#load_dates_patient').html(data)
+               
+            }
+        })
+    })
+    $(document).on('submit','.sendform_insert_appointsment',function(e){
+        alert("llego")
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        console.log($(this).serialize())
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){
+            
+                
+                
+            },
+            error:function(data){
+                
+            }
         })
     })
 })

@@ -68,7 +68,28 @@ class MedicalAppointmentController extends Controller
                     WHERE id_schedul = :id_schedul";
         $rows1=\DB::select(\DB::raw($query1),array('id_schedul'=>$request->id_turno));
         $datos = $request->fecha;
+        $query2 = "SELECT * FROM types_appointsment";
+        $rows2=\DB::select(\DB::raw($query2));
         //return $rows1;
-        return view('admin.load_pages.load_date_reservation')->with('dates',$datos)->with('turno',$rows)->with('medic',$rows1);
+        return view('admin.load_pages.load_date_reservation')->with('dates',$datos)->with('turno',$rows)->with('medic',$rows1)->with('types',$rows2);
     }
+    public function load_patient_date(Request $request){
+        //return $request->all();
+        $query = "SELECT * FROM pacientes WHERE ci = :ci";
+        $row = \DB::select(\DB::raw($query),array('ci'=>$request->ci_patient));
+        //return $row;
+        return view('admin.load_pages.load_dates_patient')->with('dates_patient',$row);
+    }
+    public function insert_appointsment(Request $request){
+        //return $request->all();
+        DB::table('medical_appointments')->insert([
+            'nombre_especialidad' => $request->nombre_especialidad,
+            'descripcion_especialidad' => $request->descripcion_esp,
+            'tipo_usuario' => $request->tipo_usuario
+        ]);
+        return redirect()->action(
+            'SpecialtiesController@index_especialidad'
+        );
+    }
+
 }

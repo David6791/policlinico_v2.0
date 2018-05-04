@@ -22,7 +22,7 @@
         </div>
         <div class="load_datos_user_appoinments" id="load_datos_user_appoinments">
 
-        </div>
+        </div>             
     </div>
     <div class="x_footer">
         <div class="row">

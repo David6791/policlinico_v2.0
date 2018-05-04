@@ -75,8 +75,21 @@
         </div>
     </div>   
 </div> <br>
+<div class="col-md-1"></div>
+<div class="col-md-12">
+    <div class="form-group">
+        <label for="">Describa brevemente los motivos de la cita Medica</label>
+            <div class="form-group">
+                <textarea name="description_appointment" id="" class="form-group col-md-12">
+
+                </textarea>
+            </div>            
+    </div>
+    
+</div>
+
 <div class="row">
-    <div class="col-md-4"></div>
+    <div class="col-md-5"></div>
     <div class="col-md-4">
         <button type="submit" class="btn btn-primary">Registrar Cita Medica</button>
     </div>

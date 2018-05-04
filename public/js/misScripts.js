@@ -461,13 +461,19 @@ $(function(){
             data:$(this).serialize(),
             data:{ci_patient:$('input:text[name=ci_patient]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
             success:function(data){
-                $('#load_dates_patient').html(data)
-               
+                $('#load_dates_patient').html(data)               
+            },error:function(data){
+                swal(
+                    'Error!',
+                    'El Paciente aun no esta registrado',
+                    'error'
+                  )
             }
+
         })
     })
     $(document).on('submit','.sendform_insert_appointsment',function(e){
-        alert("llego")
+        //alert("llego")
         $.ajaxSetup({
             header:$('meta[name="_token"]').attr('content')
         })
@@ -478,13 +484,61 @@ $(function(){
             url:$(this).attr('action'),
             data:$(this).serialize(),
             success:function(data){
-            
-                
-                
+                $("#contentGlobal").html(data)
+                swal("", "Se Registro Correctamente la Cita Medica.", "success")                
             },
             error:function(data){
                 
             }
+        })
+    })
+    $(document).on('click','.modifi_state_appointment',function(e){  
+        $('#modifi_state_appointment_Modal').modal({
+            show: 'true',
+            backdrop: 'static',
+            keyboard: false,
+        })
+        $('#id_medical_appointments').val(id=$(this).attr('value'))
+    })
+    $(document).on('click','.modifi_appointments',function(e){
+        $('#modifi_state_appointment_Modal').modal('toggle')
+        //alert("llego")
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/modifi_appointments_save',
+            data:$(this).serialize(),
+            data:{id:$(this).attr('value'),id_appointments:$('input:hidden[name=id_medical_appointments]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)            
+            },error:function(data){
+                swal(
+                    'Error!',
+                    'El Paciente aun no esta registrado',
+                    'error'
+                  )
+            }
+
+        })
+    })
+    $(document).on('click','.load_date_medic',function(e){
+        $('.load_list_medics').remove()
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/load_date_medic',
+            data:$(this).serialize(),
+            data:{id_assignments:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)            
+            },error:function(data){
+                swal(
+                    'Error!',
+                    'El Paciente aun no esta registrado',
+                    'error'
+                  )
+            }
+
         })
     })
 })

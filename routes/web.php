@@ -88,3 +88,5 @@ Route::post('/load_patient_dates','MedicalAppointmentController@load_patient_dat
 
 /* insertar datos de una cita medica */
 Route::post('/insert_appointsments','MedicalAppointmentController@insert_appointsment');
+
+Route::post('/modifi_appointments_save','MedicalAppointmentController@modifi_appointment_save');

@@ -27,14 +27,24 @@ class MedicalAppointmentController extends Controller
                         ON sap.id_state_appointments = map.state_appointments
                         ORDER BY map.id_medical_appointments";
         $rows=\DB::select(\DB::raw($query));
-        return view('admin.index_medical_appointments')->with('row',$rows);
+        $query1 = "SELECT * FROM state_appointments";
+        $rows1=\DB::select(\DB::raw($query1));
+        return view('admin.index_medical_appointments')->with('row',$rows)->with('row1',$rows1);
     }
     public function create_Medical_Appointment(Request $request){
         return view('admin.create_medical_appointsments');
     }
     public function create_medical_appointments_a(){
-
-        return view('admin.load_pages.reservation_medic');
+        $query = "SELECT mass.id_medical_assignments, us.id, us.name, us.apellidos, sch.id_schedule, sch.name_schedules, tp.nombre_tipo FROM medical_assignments mass
+                        INNER JOIN users us
+                        ON us.id = mass.id_user
+                        INNER JOIN schedules sch
+                        ON sch.id_schedule = mass.id_schedul
+                        INNER JOIN tipo_usuarios tp
+                        ON us.tipo_usuario = tp.id_tipo
+                    WHERE state_assignments = 'activo'";
+        $rows=\DB::select(\DB::raw($query));
+        return view('admin.load_pages.reservation_medic')->with('medics',$rows);
     }
     public function create_date_appointment_a(){
         $query = "select * from schedules order by id_schedule";
@@ -82,13 +92,31 @@ class MedicalAppointmentController extends Controller
     }
     public function insert_appointsment(Request $request){
         //return $request->all();
+        $query = "SELECT id_medical_assignments FROM medical_assignments WHERE id_user = :id_medic AND id_schedul = :id_schedul";
+        $row = \DB::select(\DB::raw($query),array('id_medic'=>$request->id_medico, 'id_schedul'=>$request->id_schedule));
+        //return $row;
         DB::table('medical_appointments')->insert([
-            'nombre_especialidad' => $request->nombre_especialidad,
-            'descripcion_especialidad' => $request->descripcion_esp,
-            'tipo_usuario' => $request->tipo_usuario
+            'id_patient' => $request->id_patient,
+            'id_medical_assignments' => $row[0]->id_medical_assignments,
+            'id_turn_hour' => $request->id_hour_appointsment,
+            'appointment_description' => $request->description_appointment,
+            'date_appointments' => $request->date_appointsment
         ]);
         return redirect()->action(
-            'SpecialtiesController@index_especialidad'
+            'MedicalAppointmentController@index_Appointment'
+        );
+    }
+    public function modifi_appointment_save(Request $request){
+        //return $request->all();
+        /*$query = "select modify_appointments(:id_appointments, :id_state)";
+        $row = \DB::select(\DB::raw($query),array('id_appointments'=>$request->id_apoointments, 'id_state'=>$request->id));*/
+        $modify_appointments = DB::table('medical_appointments')
+            ->where('id_medical_appointments', '=', $request->id_appointments)
+            ->update([
+                'state_appointments' => $request->id
+            ]);
+        return redirect()->action(
+            'MedicalAppointmentController@index_Appointment'
         );
     }
 

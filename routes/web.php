@@ -90,3 +90,7 @@ Route::post('/load_patient_dates','MedicalAppointmentController@load_patient_dat
 Route::post('/insert_appointsments','MedicalAppointmentController@insert_appointsment');
 
 Route::post('/modifi_appointments_save','MedicalAppointmentController@modifi_appointment_save');
+
+
+/* Cita con Medico disponible */
+Route::post('/select_turns_free','MedicalAppointmentController@select_turn_free');

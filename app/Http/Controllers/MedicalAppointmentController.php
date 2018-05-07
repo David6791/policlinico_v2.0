@@ -119,5 +119,7 @@ class MedicalAppointmentController extends Controller
             'MedicalAppointmentController@index_Appointment'
         );
     }
-
+    public function select_turn_free(Request $request){
+        return $request->all();
+    }
 }

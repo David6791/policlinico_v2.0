@@ -522,15 +522,24 @@ $(function(){
         })
     })
     $(document).on('click','.load_date_medic',function(e){
-        $('.load_list_medics').remove()
+        $('#modalSelect_date').modal({
+            show: 'true',
+            backdrop: 'static',
+            keyboard: false,
+        })     
+        $('#id_schedul').val(id=$(this).attr('value'))   
+    })
+    $(document).on('click','.btn_select_date_cita',function(e){
+        $('#modalSelect_date').modal('toggle')
+        //alert("llego")
         e.preventDefault(e)
         $.ajax({
             type:'POST',
-            url:'/load_date_medic',
+            url:'/select_turns_free',
             data:$(this).serialize(),
-            data:{id_assignments:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            data:{id_schedule:$('input:hidden[name=id_schedul]').val(),fecha:$('input:text[name=fecha]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
             success:function(data){
-                $("#contentGlobal").html(data)            
+                //$("#contentGlobal").html(data)           
             },error:function(data){
                 swal(
                     'Error!',

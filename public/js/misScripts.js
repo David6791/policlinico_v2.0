@@ -540,7 +540,7 @@ $(function(){
             data:{id_schedule:$('input:hidden[name=id_schedul]').val(),fecha:$('input:text[name=fecha]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
             success:function(data){
                 $('#load_list_medics').remove()
-                //$("#contentGlobal").html(data)  
+                //$("#contentGlobal").html(data)
                 $('#table_load_turns').html(data)         
             },error:function(data){
                 swal(
@@ -550,6 +550,54 @@ $(function(){
                   )
             }
 
+        })
+    })
+    $(document).on('click','.create_assignments_medic',function(e){
+        alert("llego")
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/load_dates_medic_patients',
+            data:$(this).serialize(),
+            data:{id_turn:$(this).attr('value'),id_assignments:$('input:hidden[name=id_schedul]').val(),fecha:$('input:hidden[name=fecha]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#load_list_medics').remove()
+                //$("#contentGlobal").html(data)
+                $('#table_load_turns').html(data)
+            },error:function(data){
+                swal(
+                    'Error!',
+                    'El Paciente aun no esta registrado',
+                    'error'
+                  )
+            }
+
+        })
+    })
+    $(document).on('submit','.sendform_insert_appointsment_medic',function(e){
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $("#contentGlobal").html(data)          
+                swal(
+                    'Felicidades',
+                    'Los datos de se guardaron correctamente',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
         })
     })
 })

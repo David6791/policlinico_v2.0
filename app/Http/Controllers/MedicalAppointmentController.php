@@ -128,6 +128,36 @@ class MedicalAppointmentController extends Controller
                    SELECT id_turn_hour FROM medical_appointments map  
                     WHERE date_trunc('day', map.date_appointments) = :date)";
         $rows=\DB::select(\DB::raw($query),array('date'=>$request->fecha,'id_schedul'=>$request->id_schedule));
-        return view('admin.load_pages.reservation_turns_date')->with('turns',$rows);
+        return view('admin.load_pages.load_dates_medic')->with('turns',$rows)->with('date',$request->fecha);
+    }
+    public function load_dates_medic_patient(Request $request){
+        //return $request->all();
+        $query = "SELECT mass.id_medical_assignments, sch.id_schedule, sch.name_schedules, us.id, us.name, us.apellidos, tp.nombre_tipo, ht.id_hour_turn, ht.start_time FROM medical_assignments mass
+                        INNER JOIN schedules sch
+                        ON sch.id_schedule = mass.id_schedul
+                        INNER JOIN users us
+                        ON us.id = mass.id_user
+                        INNER JOIN tipo_usuarios tp
+                        ON tp.id_tipo = us.tipo_usuario
+                        INNER JOIN hour_turns ht
+                        ON ht.id_hour_turn = :id_turn
+                    WHERE id_medical_assignments = :id";
+        $rows=\DB::select(\DB::raw($query),array('id'=>$request->id_assignments,'id_turn'=>$request->id_turn));
+        $query2 = "SELECT * FROM types_appointsment";
+        $rows2=\DB::select(\DB::raw($query2));
+        //return $rows;
+        return view('admin.load_pages.load_dates_medic_patient_form')->with('dates',$rows)->with('date',$request->fecha)->with('types',$rows2)->with('id_assigment',$request->id_assignments);
+    }
+    public function insert_appointsments_medic(Request $request){
+        DB::table('medical_appointments')->insert([
+            'id_patient' => $request->id_patient,
+            'id_medical_assignments' => $request->id_assignments,
+            'id_turn_hour' => $request->id_hour_appointsment,
+            'appointment_description' => $request->description_appointment,
+            'date_appointments' => $request->date_appointsment
+        ]);
+        return redirect()->action(
+            'MedicalAppointmentController@index_Appointment'
+        );
     }
 }

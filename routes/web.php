@@ -94,3 +94,13 @@ Route::post('/modifi_appointments_save','MedicalAppointmentController@modifi_app
 
 /* Cita con Medico disponible */
 Route::post('/select_turns_free','MedicalAppointmentController@select_turn_free');
+
+Route::post('/load_dates_medic_patients','MedicalAppointmentController@load_dates_medic_patient');
+
+
+Route::post('/insert_appointsments_medics','MedicalAppointmentController@insert_appointsments_medic');
+
+
+
+/* Rutas para todo Emergencias */
+Route::get('/view_emergency','EmergenciesController@index_emergency');

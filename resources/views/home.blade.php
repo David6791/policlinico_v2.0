@@ -125,7 +125,7 @@
                       <li><a href="view_medical_appointment" class="load-page">Ver Citas Medicas </a></li>
                       <li><a href="create_medical_appointment" class="load-page">Crear Cita Medica </a></li>
                       <li><a href="morisjs.html">Buscar Cita Medica </a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
+                      <li><a href="view_emergency" class="load-page">Emergencias</a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
                   </li>

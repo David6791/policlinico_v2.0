@@ -1,5 +1,7 @@
 <div class="row">
     <div class="col-md-1"></div>
+    <input type="hidden" name="fecha" id="fecha" value="{{ $date }}">
+    <input type="hidden" name="id_schedul" id="id_schedul" value="{{ $turns[0]->id_schedul }}">
     <div class="col-md-10">
         <table id="datatable" class="table table-striped table-bordered">
             <thead>
@@ -21,7 +23,7 @@
                         <td>{{ $lista->end_time }}</td>
                         <td>{{ $lista->state }}</td>
                         <td> {{ $lista->name_schedules }}</td>
-                        <td><button class="btn btn-primary btn-sm create_assignments" value="{{ $lista->id_hour_turn }}">Crear Cita</button></td>
+                        <td><button class="btn btn-primary btn-sm create_assignments_medic" value="{{ $lista->id_hour_turn }}">Crear Cita</button></td>
                     </tr>
                 @endforeach
             </tbody>

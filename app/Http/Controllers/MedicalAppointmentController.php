@@ -120,6 +120,14 @@ class MedicalAppointmentController extends Controller
         );
     }
     public function select_turn_free(Request $request){
-        return $request->all();
+        //return $request->all();
+        $query = "SELECT ht.id_hour_turn, ht.start_time, ht.end_time, ht.state, ht.id_schedul, sch.name_schedules FROM hour_turns ht
+                    INNER JOIN schedules sch
+                        ON sch.id_schedule = ht.id_schedul
+                    WHERE ht.id_schedul = :id_schedul AND ht.id_hour_turn NOT IN (
+                   SELECT id_turn_hour FROM medical_appointments map  
+                    WHERE date_trunc('day', map.date_appointments) = :date)";
+        $rows=\DB::select(\DB::raw($query),array('date'=>$request->fecha,'id_schedul'=>$request->id_schedule));
+        return view('admin.load_pages.reservation_turns_date')->with('turns',$rows);
     }
 }

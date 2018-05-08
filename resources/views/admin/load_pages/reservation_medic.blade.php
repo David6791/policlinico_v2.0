@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-1"></div>    
-    <div class="col-md-10 load_list_medics">
+    <div class="col-md-10 load_list_medics" id="load_list_medics">
         <label for="">Seleccione Medico</label>
         <table id="datatable" class="table table-striped table-bordered">
             <thead>

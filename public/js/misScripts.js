@@ -539,7 +539,9 @@ $(function(){
             data:$(this).serialize(),
             data:{id_schedule:$('input:hidden[name=id_schedul]').val(),fecha:$('input:text[name=fecha]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
             success:function(data){
-                //$("#contentGlobal").html(data)           
+                $('#load_list_medics').remove()
+                //$("#contentGlobal").html(data)  
+                $('#table_load_turns').html(data)         
             },error:function(data){
                 swal(
                     'Error!',

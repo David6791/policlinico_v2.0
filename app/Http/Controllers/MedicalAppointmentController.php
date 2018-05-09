@@ -100,7 +100,8 @@ class MedicalAppointmentController extends Controller
             'id_medical_assignments' => $row[0]->id_medical_assignments,
             'id_turn_hour' => $request->id_hour_appointsment,
             'appointment_description' => $request->description_appointment,
-            'date_appointments' => $request->date_appointsment
+            'date_appointments' => $request->date_appointsment,
+            'emergency' => 'N'
         ]);
         return redirect()->action(
             'MedicalAppointmentController@index_Appointment'
@@ -154,7 +155,8 @@ class MedicalAppointmentController extends Controller
             'id_medical_assignments' => $request->id_assignments,
             'id_turn_hour' => $request->id_hour_appointsment,
             'appointment_description' => $request->description_appointment,
-            'date_appointments' => $request->date_appointsment
+            'date_appointments' => $request->date_appointsment,
+            'emergency' => 'N'
         ]);
         return redirect()->action(
             'MedicalAppointmentController@index_Appointment'

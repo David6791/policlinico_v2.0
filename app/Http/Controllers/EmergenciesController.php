@@ -12,6 +12,7 @@ use Auth;
 class EmergenciesController extends Controller
 {
     public function index_emergency(){
-        return "Holas Como estas";
+        //return "Holas Como estas";
+        return view('admin.index_emergencies');
     }
 }

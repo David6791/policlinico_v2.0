@@ -600,4 +600,64 @@ $(function(){
             }
         })
     })
+    $(document).on('click','.search_patient',function(e){
+        //alert("llego")
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/search_patients',
+            data:$(this).serialize(),
+            data:{ci_patient:$('input:text[name=ci_patient]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){                
+                //$("#contentGlobal").html(data)
+                //$('#table_load_turns').html(data)
+                $('#name_patient').val(data[0].nombres)
+                $('#apaterno_patient').val(data[0].ap_paterno)
+                $('#amaterno_patient').val(data[0].ap_materno)
+                $('#fnacimiento_patient').val(data[0].fecha_nacimento)
+                $('#sexo').val(data[0].sexo)
+                $('#direccion_patient').val(data[0].direccion)
+                $('#id_patient').val(data[0].id_paciente)
+                swal(
+                    '',
+                    'El Paciente esta registrado',
+                    'success'
+                  )
+            },error:function(data){
+                swal(
+                    'Error!',
+                    'El Paciente aun no esta registrado',
+                    'error'
+                  )
+            }
+
+        })
+    })
+    $(document).on('submit','.store_emergencies',function(e){
+        //alert("asdasdsa")
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $("#contentGlobal").html(data)          
+                swal(
+                    'Felicidades',
+                    'Los datos de se guardaron correctamente',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
 })

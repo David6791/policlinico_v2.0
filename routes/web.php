@@ -104,3 +104,7 @@ Route::post('/insert_appointsments_medics','MedicalAppointmentController@insert_
 
 /* Rutas para todo Emergencias */
 Route::get('/view_emergency','EmergenciesController@index_emergency');
+
+Route::post('/search_patients','EmergenciesController@search_patient');
+
+Route::post('/store_emergencies','EmergenciesController@store_emergency');

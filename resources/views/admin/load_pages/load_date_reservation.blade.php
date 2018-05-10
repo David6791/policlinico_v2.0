@@ -111,7 +111,7 @@
                         </div>  
                     </div>
                         <div class="col-md-2">                        
-                            <button type="button" class="btn btn-primary search">Buscar</button>                            
+                            <button type="button" class="btn btn-primary search">Buscar</button>
                         </div>
                     </div>
                     <div class="row load_dates_patient" id="load_dates_patient">

@@ -1,4 +1,4 @@
-ALTER TABLE state_appointments ALTER COLUMN state SET default 'activo'
+ALTER TABLE medical_appointments ALTER COLUMN state_appointments SET default 2
 
 
 ALTER TABLE medical_appointments ALTER COLUMN data_creation_appointments SET default now()
@@ -104,20 +104,93 @@ SELECT * FROM medical_appointments
 where date_trunc('day', date_appointments) = '05-02-2018'
 
 
+CREATE OR REPLACE FUNCTION public.modify_appointments(
+    _id_apoointments integer,
+    _id_state integer)
+  RETURNS integer AS
+$BODY$
+DECLARE	
+BEGIN
+	update medical_appointments set state_appointments=_id_state where id_medical_appointments = _id_apoointments;
+	return 5;	
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
 
-
-SELECT * FROM hour_turns ht 
+SELECT mass.id_medical_assignments, sch.id_schedule, sch.name_schedules, us.id, us.name, us.apellidos, tp.nombre_tipo, ht.id_hour_turn, ht.start_time FROM medical_assignments mass
     INNER JOIN schedules sch
-	ON sch.id_schedule = ht.id_schedul
-WHERE id_hour_turn = 1
-
-
-SELECT * FROM medical_assignments mass
-     INNER JOIN users us
+	ON sch.id_schedule = mass.id_schedul
+    INNER JOIN users us
 	ON us.id = mass.id_user
-     INNER JOIN tipo_usuarios tus
-	ON tus.id_tipo = us.tipo_usuario
-WHERE id_schedul = 1
+    INNER JOIN tipo_usuarios tp
+	ON tp.id_tipo = us.tipo_usuario
+    INNER JOIN hour_turns ht
+	ON ht.id_hour_turn = 15
+WHERE id_medical_assignments = 1
+(select currval('venta_pasaje_id_venta_pasaje_seq'))::integer;
+CREATE OR REPLACE FUNCTION public.register_emergency(
+    _id_patient integer,
+    _ci_patient integer,
+    _name_patient varchar,
+    _apaterno_patient varchar,
+    _amaterno_patient varchar,
+    _fnacimiento_patient date,
+    _direccion_patient varchar,
+    _sexo_patient varchar,
+    _descryption_emergecy varchar)
+  RETURNS integer AS
+$BODY$
+DECLARE
+	_cantidad integer;
+	_id_patient_new integer;
+BEGIN
+	_cantidad=0;
+	_id_patient_new=0;
+	_cantidad=(select count(id_paciente) from pacientes where id_paciente = _id_patient);
+	if (_cantidad = 0) then
+		insert into pacientes(ci,ap_paterno,ap_materno,nombres,sexo,direccion,fecha_nacimento) values(_ci_patient,_apaterno_patient,_amaterno_patient,_name_patient,_sexo_patient,_direccion_patient,_fnacimiento_patient);
+		_id_patient_new=(select currval('pacientes_id_paciente_seq'))::integer;
+		insert into medical_appointments(id_patient,id_medical_assignments,id_turn_hour,appointment_description,date_appointments,emergency) values(_id_patient_new,6,17,_descryption_emergecy,now(),'S');		
+	else
+		insert into medical_appointments(id_patient,id_medical_assignments,id_turn_hour,appointment_description,date_appointments,emergency) values(_id_patient,6,17,_descryption_emergecy,now(),'S');		
+		
+	end if;
+
+	return 5;	
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

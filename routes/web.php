@@ -111,3 +111,5 @@ Route::post('/store_emergencies','EmergenciesController@store_emergency');
 
 /* Rutas para la atencion de Citas Medicas */
 Route::get('/view_attention_lists','AttentionsController@view_attention_list');
+
+Route::post('/start_appointment_date','AttentionsController@start_appointment_dates');

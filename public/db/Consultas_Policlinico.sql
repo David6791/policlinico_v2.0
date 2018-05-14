@@ -1,4 +1,4 @@
-ALTER TABLE medical_appointments ALTER COLUMN state_appointments SET default 2
+﻿ALTER TABLE medical_appointments ALTER COLUMN state_appointments SET default 2
 
 
 ALTER TABLE medical_appointments ALTER COLUMN data_creation_appointments SET default now()
@@ -160,17 +160,79 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE
+select * from view_list_appoinments(1,'05-14-2018') 
+CREATE OR REPLACE FUNCTION public.view_list_appoinments(
+    IN _id_user integer,
+    IN _date_now date)
+  RETURNS TABLE(r_ci character varying, r_id_medical_appointments integer, r_appointment_description text, r_nombres character varying, r_apaterno character varying, r_amaterno character varying, r_id_user integer, r_m_name character varying, r_m_apellidos character varying, r_name_schedules character varying, r_start_time time, r_name_state_appoinments character varying, r_date_appointments timestamp, emergency character varying) AS
+$BODY$
+begin
+	if(_id_user = 1) then
+		return query(
+		SELECT pa.ci, map.id_medical_appointments, map.appointment_description, pa.nombres, pa.ap_paterno, pa.ap_materno, mass.id_user, us.name m_name, us.apellidos m_apellidos, sch.name_schedules, ht.start_time, sap.name_state_appointments, map.date_appointments, map.emergency FROM medical_appointments map
+                            INNER JOIN pacientes pa
+                        ON pa.id_paciente = map.id_patient
+                            INNER JOIN medical_assignments mass
+                        ON mass.id_medical_assignments = map.id_medical_assignments
+                            INNER JOIN users us
+                        ON us.id = mass.id_user
+                            INNER JOIN schedules sch
+                        ON sch.id_schedule = mass.id_schedul
+                            INNER JOIN hour_turns ht
+                        ON ht.id_hour_turn = map.id_turn_hour
+                            INNER JOIN state_appointments sap
+                        ON sap.id_state_appointments = map.state_appointments
+                    WHERE date_trunc('day', map.date_appointments) = _date_now
+                        ORDER BY map.emergency desc, map.id_medical_appointments 
+		);
+	else	
+		return query(
+		SELECT pa.ci, map.id_medical_appointments, map.appointment_description, pa.nombres, pa.ap_paterno, pa.ap_materno, mass.id_user, us.name m_name, us.apellidos m_apellidos, sch.name_schedules, ht.start_time, sap.name_state_appointments, map.date_appointments, map.emergency FROM medical_appointments map
+                            INNER JOIN pacientes pa
+                        ON pa.id_paciente = map.id_patient
+                            INNER JOIN medical_assignments mass
+                        ON mass.id_medical_assignments = map.id_medical_assignments
+                            INNER JOIN users us
+                        ON us.id = mass.id_user
+                            INNER JOIN schedules sch
+                        ON sch.id_schedule = mass.id_schedul
+                            INNER JOIN hour_turns ht
+                        ON ht.id_hour_turn = map.id_turn_hour
+                            INNER JOIN state_appointments sap
+                        ON sap.id_state_appointments = map.state_appointments
+                    WHERE date_trunc('day', map.date_appointments) = _date_now AND mass.id_user = _id_user
+                        ORDER BY map.emergency desc, map.id_medical_appointments
+		);
+
+	end if;
+end
+$BODY$
+  LANGUAGE plpgsql VOLATILE
 
 
 
+SELECT map.id_medical_appointments, map.appointment_description, pa.nombres, pa.ap_paterno, pa.ap_materno, mass.id_user, us.name m_name, us.apellidos m_apellidos, sch.name_schedules, ht.start_time, sap.name_state_appointments, map.date_appointments FROM medical_appointments map
+                            INNER JOIN pacientes pa
+                        ON pa.id_paciente = map.id_patient
+                            INNER JOIN medical_assignments mass
+                        ON mass.id_medical_assignments = map.id_medical_assignments
+                            INNER JOIN users us
+                        ON us.id = mass.id_user
+                            INNER JOIN schedules sch
+                        ON sch.id_schedule = mass.id_schedul
+                            INNER JOIN hour_turns ht
+                        ON ht.id_hour_turn = map.id_turn_hour
+                            INNER JOIN state_appointments sap
+                        ON sap.id_state_appointments = map.state_appointments
+                        ORDER BY map.emergency desc, map.id_medical_appointments
+
+select * from public.view_list_appoinments(1,'05-08-2018')
 
 
-
-
-
-
-
-
+SELECT * FROM medical_appointments  map
+	INNER JOIN pacientes pa
+		ON pa.id_paciente = map.id_patient
+WHERE map.id_medical_appointments = 18
 
 
 

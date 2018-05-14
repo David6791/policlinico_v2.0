@@ -660,4 +660,29 @@ $(function(){
             }
         })
     })
+    $(document).on('click','.start_appointment',function(e){
+        //alert("llego")
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/start_appointment_date',
+            data:$(this).serialize(),
+            data:{id_appointments:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){                
+                $("#contentGlobal").html(data) 
+                swal(
+                    '',
+                    'El Paciente esta registrado',
+                    'success'
+                  )
+            },error:function(data){
+                swal(
+                    'Error!',
+                    'El Paciente aun no esta registrado',
+                    'error'
+                  )
+            }
+
+        })
+    })
 })

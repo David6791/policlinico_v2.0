@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $query2 = "select * from tipo_usuarios order by id_tipo asc";
+        $query2 = "select * from tipo_usuarios where view_link = 'si' order by id_tipo asc";
         $rows2=\DB::select(\DB::raw($query2));
         return view('home')->with('row',$rows2);
     }

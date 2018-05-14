@@ -108,3 +108,6 @@ Route::get('/view_emergency','EmergenciesController@index_emergency');
 Route::post('/search_patients','EmergenciesController@search_patient');
 
 Route::post('/store_emergencies','EmergenciesController@store_emergency');
+
+/* Rutas para la atencion de Citas Medicas */
+Route::get('/view_attention_lists','AttentionsController@view_attention_list');

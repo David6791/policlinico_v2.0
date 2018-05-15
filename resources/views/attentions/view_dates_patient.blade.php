@@ -108,7 +108,10 @@
                                                 <td>{{ $lista->appointment_description }}</td>
                                                 <td>{{ $lista->name_state_appointments }}</td>
                                                 <td>{{ $lista->start_time }}</td>
-                                                <td>Ver Registros</td>
+                                                @if()
+                                                    
+                                                @endif
+                                                <td>Ver Historial Medico</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

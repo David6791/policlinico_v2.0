@@ -685,4 +685,15 @@ $(function(){
 
         })
     })
+    $(document).on('click','.click_exec',function(e){
+        //alert('#.'+$(this).attr('value'))
+        var x = $(this).attr('value')
+        $('#'+x).removeAttr("disabled")
+    })
+    $(document).on('click','.click_cancel',function(e){
+        //alert('#.'+$(this).attr('value'))
+        var x = $(this).attr('value')
+        //$('#'+x).removeAttr("disabled")
+        $('#'+x).prop('disabled', true);
+    })
 })

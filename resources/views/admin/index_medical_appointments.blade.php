@@ -5,35 +5,37 @@
         <h2>Lista <small>Citas Medicas</small></h2><br>
     </div>
     <div class="x_content">
-        <table id="datatable" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Nro.</th>
-                    <th>Nombre Paciente</th>
-                    <th>Fecha Cita</th>
-                    <th>Turno</th>
-                    <th>Hora</th>
-                    <th>Estado Cita Medica</th>
-                    <th>Medico</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $a = 1 ?>
-                @foreach($row as $lista)
-                <tr>
-                    <td>{{ $a++ }}</td>
-                    <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>                
-                    <td>{{ date('m-d-Y', strtotime( $lista->date_appointments )) }}</td>
-                    <td>{{ $lista->name_schedules }}</td>
-                    <td>{{ $lista->start_time }}</td>
-                    <td>{{ $lista->name_state_appointments }} <button type="button" class="fa-hover btn btn-warning btn-xs modifi_state_appointment" value="{{$lista->id_medical_appointments}}"><i class="fa fa-cog"></i></button></td>
-                    <td>{{ $lista->m_name }} {{ $lista->m_apellidos }}</td>
-                    <td><button type="button" class="btn btn-primary btn-xs get_ViewAppointments" value="{{$lista->id_medical_appointments}}">Ver Detalles</button></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="x_panel">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nro.</th>
+                        <th>Nombre Paciente</th>
+                        <th>Fecha Cita</th>
+                        <th>Turno</th>
+                        <th>Hora</th>
+                        <th>Estado Cita Medica</th>
+                        <th>Medico</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $a = 1 ?>
+                    @foreach($row as $lista)
+                    <tr>
+                        <td>{{ $a++ }}</td>
+                        <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>                
+                        <td>{{ date('m-d-Y', strtotime( $lista->date_appointments )) }}</td>
+                        <td>{{ $lista->name_schedules }}</td>
+                        <td>{{ $lista->start_time }}</td>
+                        <td>{{ $lista->name_state_appointments }} <button type="button" class="fa-hover btn btn-warning btn-xs modifi_state_appointment" value="{{$lista->id_medical_appointments}}"><i class="fa fa-cog"></i></button></td>
+                        <td>{{ $lista->m_name }} {{ $lista->m_apellidos }}</td>
+                        <td><button type="button" class="btn btn-primary btn-xs get_ViewAppointments" value="{{$lista->id_medical_appointments}}">Ver Detalles</button></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>        
     </div>
     <div class="x_footer">
         <div class="row">
@@ -76,3 +78,6 @@
         </div>
     </div>
 </div>
+<script>
+    $('#datatable').DataTable();
+</script>

@@ -93,6 +93,7 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href="index_patients" class="load-page">Ver Pacientes</a></li> 
                       <li><a href="formulario_pacientes_nuevos" class="load-page">Filiacion Paciente</a></li>                      
                     </ul>
                   </li>

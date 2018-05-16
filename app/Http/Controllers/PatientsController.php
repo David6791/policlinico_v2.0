@@ -20,9 +20,8 @@ class PatientsController extends Controller
         return view('admin.form_patients')->with('row',$rows)->with('rows',$rows1);        
     }
     public function store_patient(Request $request){
-        //$json = '{ "key1" : "watevr1", "key2" : "watevr2", "key3" : "watevr3" }';
-        print_r(array_keys($request));
-        /*DB::table('pacientes')->insert([
+        //return $request->all();        
+        DB::table('pacientes')->insert([
             'ci' => $request->ci,
             'ap_paterno' => $request->apellido_pat,
             'ap_materno' => $request->apellido_mat,
@@ -31,15 +30,15 @@ class PatientsController extends Controller
             'direccion' => $request->direccion,
             'telefono' => $request->telefono,
             'celular' => $request->celular,
-            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'fecha_nacimento' => $request->fecha_nacimiento,
             'pais_nacimiento' => $request->pais,
             'ciudad_nacimiento' => $request->ciudad,
             'provincia' => $request->provincia,
             'localidad_nacimiento' => $request->localidad
         ]);
-        $query = "select id from pacientes order by id desc limit 1";
-        $rows=\DB::select(\DB::raw($query));*/
-        /*if($request->patologias != null){
+        $query = "select id_paciente from pacientes order by id_paciente desc limit 1";
+        $rows=\DB::select(\DB::raw($query));
+        if($request->patologias != null){
             //return 'lleno';
             foreach($request->patologias as $pat){
                 DB::table('pacientes_patologias')->insert([
@@ -56,11 +55,22 @@ class PatientsController extends Controller
                     'id_patologia' => $pat
                 ]);
             }            
-        }*/
-        $query = "select id_dato_medico from datos_medicos";
-        $rows=\DB::select(\DB::raw($query));
-        foreach($rows as $limi){
-            //echo($limi->id_dato_medico);
         }
+        $al = $request->all();
+        foreach($al as $row =>$val) {
+            if(is_numeric($row)){
+                DB::table('patients_dates_medic')->insert([
+                    'id_patient' => $rows[0]->id_paciente,
+                    'id_date_medic' => $row,
+                    'descripcion' => $val
+                ]);
+            }
+
+        }
+    }
+    public function index_patients(){
+        $query = "SELECT * FROM pacientes";
+        $rows=\DB::select(\DB::raw($query));
+        return view('admin.index_patients')->with('list_patients',$rows);
     }
 }

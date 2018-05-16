@@ -20,7 +20,8 @@ class PatientsController extends Controller
         return view('admin.form_patients')->with('row',$rows)->with('rows',$rows1);        
     }
     public function store_patient(Request $request){
-        return $request->all();
+        //$json = '{ "key1" : "watevr1", "key2" : "watevr2", "key3" : "watevr3" }';
+        print_r(array_keys($request));
         /*DB::table('pacientes')->insert([
             'ci' => $request->ci,
             'ap_paterno' => $request->apellido_pat,

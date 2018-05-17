@@ -40,4 +40,7 @@ class AttentionsController extends Controller
         $row=\DB::select(\DB::raw($querys),array('id_appoinments'=>$request->id_appointments));
         return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row);
     }
+    public function load_dates_appoinment(Request $request){
+        return $request->all();
+    }
 }

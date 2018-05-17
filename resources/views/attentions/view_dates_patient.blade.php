@@ -88,7 +88,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="x_panel">
-                                <table id="datatable" class="table table-striped table-bordered">
+                                <label for="">Lista de Citas Medicas Pasadas</label>
+                                <table id="datatable " class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Nro.</th>
@@ -100,7 +101,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $a = 1 ?>
+                                        <?php $a = 1; $e=1 ?>
                                         @foreach($list_app as $lista)
                                             <tr>   
                                                 <td>{{ $a++ }}</td>
@@ -108,14 +109,15 @@
                                                 <td>{{ $lista->appointment_description }}</td>
                                                 <td>{{ $lista->name_state_appointments }}</td>
                                                 <td>{{ $lista->start_time }}</td>
-                                                
-                                                <td>Ver Historial Medico</td>
+                                                <td><button class="btn btn-info btn-xs load_dates_appoinments"  href="" type="button" value="{{ $lista->id_medical_appointments }}">Ver Historial Medico</button></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>                            
                         </div>
+                    </div>                    
+                    <div class="cargar_completo">
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">

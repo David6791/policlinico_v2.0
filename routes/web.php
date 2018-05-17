@@ -50,6 +50,7 @@ Route::post('/saveSpecialties', 'SpecialtiesController@saveSpecialtie');
 
 Route::get('/formulario_pacientes_nuevos', 'PatientsController@formulario_pacientes_nuevo');
 Route::post('/store_patients', 'PatientsController@store_patient');
+Route::get('/index_patients','PatientsController@index_patients');
 
 
 /* Rutas para Los Horarios */
@@ -114,4 +115,7 @@ Route::get('/view_attention_lists','AttentionsController@view_attention_list');
 
 Route::post('/start_appointment_date','AttentionsController@start_appointment_dates');
 
-Route::get('/index_patients','PatientsController@index_patients');
+
+
+
+Route::post('/load_dates_appoinments','AttentionsController@load_dates_appoinment');

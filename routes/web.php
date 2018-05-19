@@ -119,3 +119,5 @@ Route::post('/start_appointment_date','AttentionsController@start_appointment_da
 
 
 Route::post('/load_dates_appoinments','AttentionsController@load_dates_appoinment');
+
+Route::post('/load_dates_filiation_full','AttentionsController@load_dates_filiation_full');

@@ -25,7 +25,7 @@ class MedicalAppointmentController extends Controller
                         ON ht.id_hour_turn = map.id_turn_hour
                             INNER JOIN state_appointments sap
                         ON sap.id_state_appointments = map.state_appointments
-                        ORDER BY map.id_medical_appointments";
+                        ORDER BY map.id_medical_appointments DESC";
         $rows=\DB::select(\DB::raw($query));
         $query1 = "SELECT * FROM state_appointments";
         $rows1=\DB::select(\DB::raw($query1));

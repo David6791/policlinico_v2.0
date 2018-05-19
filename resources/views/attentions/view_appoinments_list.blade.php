@@ -4,7 +4,17 @@
             <label for="">Lista de Citas Medicas para Atencion </label>
         </div>
         <div class="row">
-            <div class="col-md-9"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="alert alert-info">
+                    <ul class="fa-ul">
+                        <li>
+                        <i class="fa fa-user fa-lg fa-li"></i> Bienbenido Dr. {{ Auth::user()->name }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
             <div class="col-md-3 tile_stats_count">
                 <div class="count red"> <h3> {{ "Fecha: ".date("m-d-Y") }} </h3></div>
             </div>

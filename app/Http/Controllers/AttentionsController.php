@@ -25,7 +25,7 @@ class AttentionsController extends Controller
                             ON pa.id_paciente = map.id_patient
                     WHERE map.id_medical_appointments = :id_appoinments";
         $rows=\DB::select(\DB::raw($query),array('id_appoinments'=>$request->id_appointments));
-        $querys = "SELECT map.id_medical_appointments, map.id_patient, map.id_turn_hour, map.appointment_description, map.data_creation_appointments, sap.name_state_appointments, sch.name_schedules, ht.start_time from medical_appointments map
+        $querys = "SELECT map.id_medical_appointments, map.id_patient, map.id_turn_hour, map.appointment_description, map.date_appointments, map.data_creation_appointments, sap.name_state_appointments, sch.name_schedules, ht.start_time from medical_appointments map
                         INNER JOIN state_appointments sap
                             ON sap.id_state_appointments = map.state_appointments
                         INNER JOIN medical_assignments mass
@@ -43,4 +43,23 @@ class AttentionsController extends Controller
     public function load_dates_appoinment(Request $request){
         return $request->all();
     }
+    public function load_dates_filiation_full(Request $request){
+        $query = "SELECT * FROM pacientes pa
+                        INNER JOIN pacientes_patologias pap
+                            ON pa.id_paciente = pap.id_paciente
+                        INNER JOIN patologias pat
+                            ON pat.id_patologia = pap.id_patologia
+                    WHERE pa.id_paciente = :id_patient";
+        $rows=\DB::select(\DB::raw($query),array('id_patient'=>$request->id_patient));
+        $query1 = "SELECT * FROM pacientes pa
+                        INNER JOIN patients_dates_medic ptm
+                            ON pa.id_paciente = ptm.id_patient
+                        INNER JOIN datos_medicos dm
+                            ON dm.id_dato_medico = ptm.id_date_medic
+                    WHERE pa.id_paciente = :id_patient";
+        $rows1=\DB::select(\DB::raw($query1),array('id_patient'=>$request->id_patient));
+        //return $rows1;
+        return view('attentions.view_filiation_dates_full')->with('patologias',$rows)->with('datos_medicos',$rows1);
+    }
+
 }

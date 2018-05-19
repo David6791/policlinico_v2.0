@@ -23,7 +23,13 @@
                         <div class="col-md-9">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    Informacion Personal
+                                    <div class="alert alert-success">
+                                        <ul class="fa-ul">
+                                            <li>
+                                            <i class="fa fa-user fa-lg fa-li"></i> Informacion Personal
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="x_content"></div>
                                 <div class="row">
@@ -80,15 +86,29 @@
                                     </table>                                        
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-10"></div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-info load_filiation_dates_full" value="{{ $dates_patient[0]->id_paciente }}">Ver Datos Filiacion</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="load_dates_patients_full" id="load_dates_patients_full">
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="x_panel">
-                                <label for="">Lista de Citas Medicas Pasadas</label>
+                            <div class="alert alert-warning">
+                                <ul class="fa-ul">
+                                    <li>
+                                    <i class="fa fa-list fa-lg fa-li"></i> Lista de Citas Medicas Pasadas
+                                    </li>
+                                </ul>
+                            </div>
                                 <table id="datatable " class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -105,18 +125,23 @@
                                         @foreach($list_app as $lista)
                                             <tr>   
                                                 <td>{{ $a++ }}</td>
-                                                <td>{{ date('d/m/Y', strtotime($lista->data_creation_appointments)) }}</td>
-                                                <td>{{ $lista->appointment_description }}</td>
-                                                <td>{{ $lista->name_state_appointments }}</td>
+                                                <td>{{ date('d/m/Y', strtotime($lista->date_appointments)) }}</td>
+                                                <td>{{ $lista->appointment_description }}</td> 
+                                                @if( $lista->name_state_appointments === 'Atendido')                                               
+                                                    <td style="color:#1FC125"><span class="glyphicon glyphicon-ok"></span> {{ $lista->name_state_appointments }}</td>
+                                                @else
+                                                    <td style="color:#DA0000">{{ $lista->name_state_appointments }}</td>
+                                                @endif
+
                                                 <td>{{ $lista->start_time }}</td>
-                                                <td><button class="btn btn-info btn-xs load_dates_appoinments"  href="" type="button" value="{{ $lista->id_medical_appointments }}">Ver Historial Medico</button></td>
+                                                <td><button class="btn btn-success btn-xs load_dates_appoinments"  href="" type="button" value="{{ $lista->id_medical_appointments }}">Ver Datos Consulta</button></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>                            
+                            </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="cargar_completo">
                     </div>
                 </div>
@@ -124,8 +149,6 @@
                     <p>3</p>
                 </div>
             </div>
-        </div>
-
         </div>
     </div>
 </div>

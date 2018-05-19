@@ -670,11 +670,7 @@ $(function(){
             data:{id_appointments:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
             success:function(data){                
                 $("#contentGlobal").html(data) 
-                swal(
-                    '',
-                    'El Paciente esta registrado',
-                    'success'
-                  )
+                
             },error:function(data){
                 swal(
                     'Error!',
@@ -717,6 +713,21 @@ $(function(){
                     'El Paciente aun no esta registrado',
                     'error'
                   )
+            }
+
+        })
+    })
+    $(document).on('click','.load_filiation_dates_full',function(e){
+        //alert("llego")
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/load_dates_filiation_full',
+            data:$(this).serialize(),
+            data:{id_patient:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){                
+                $("#load_dates_patients_full").html(data)                
+            },error:function(data){
             }
 
         })

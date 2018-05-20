@@ -107,6 +107,9 @@
                   <li><a><i class="fa fa-table"></i> Administrar Datos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index_especialidades" class="load-page">Especialidades</a></li>
+                      <li><a href="index_pathologies" class="load-page">Patologias</a></li>
+                      <li><a href="index_medical_dates" class="load-page">Datos Medicos</a></li>
+                      <li><a href="index_data_medical_appointments" class="load-page">Datos Citas Medicas</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Citas Medicas <span class="fa fa-chevron-down"></span></a>

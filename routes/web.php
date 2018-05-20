@@ -121,3 +121,20 @@ Route::post('/start_appointment_date','AttentionsController@start_appointment_da
 Route::post('/load_dates_appoinments','AttentionsController@load_dates_appoinment');
 
 Route::post('/load_dates_filiation_full','AttentionsController@load_dates_filiation_full');
+
+
+
+
+/* Rutas para Administrar datos del sistema */
+Route::get('/index_pathologies','ManageDatesController@index_pathologie');
+Route::post('/create_phatologies','ManageDatesController@create_phatologies');
+
+
+
+Route::get('/index_medical_dates','ManageDatesController@index_medical_date');
+Route::post('/create_medical_dates','ManageDatesController@create_medical_date');
+
+
+
+Route::get('/index_data_medical_appointments','ManageDatesController@index_data_medical_appointment');
+

@@ -686,11 +686,22 @@ $(function(){
         var x = $(this).attr('value')
         $('#'+x).removeAttr("disabled")
     })
+    $(document).on('click','.click_exec_1',function(e){
+        //alert('#.'+$(this).attr('value'))
+        var x = $(this).attr('value')
+        $('#datos').removeAttr("disabled")
+    })
     $(document).on('click','.click_cancel',function(e){
         //alert('#.'+$(this).attr('value'))
         var x = $(this).attr('value')
         //$('#'+x).removeAttr("disabled")
         $('#'+x).prop('disabled', true);
+    })
+    $(document).on('click','.click_cancel_1',function(e){
+        //alert('#.'+$(this).attr('value'))
+        var x = $(this).attr('value')
+        //$('#'+x).removeAttr("disabled")
+        $('#datos').prop('disabled', true);
     })
     $(document).on('click','.load_dates_appoinments',function(e){
         //alert("llego")
@@ -761,6 +772,33 @@ $(function(){
     })
     $(document).on('submit','.sendform_medicla_dates',function(e){
         $('#create_medical_dates').modal('toggle')
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $("#contentGlobal").html(data)          
+                swal(
+                    'Felicidades',
+                    'Se registro correctamente el Nuevo Dato Medico',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
+    /* Funcion para guardar datos de las citas medicas */
+    $(document).on('submit','.form_send_dates_appointments_send',function(e){
         $.ajaxSetup({
             header:$('meta[name="_token"]').attr('content')
         })

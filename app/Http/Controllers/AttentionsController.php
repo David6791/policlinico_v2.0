@@ -25,20 +25,25 @@ class AttentionsController extends Controller
                             ON pa.id_paciente = map.id_patient
                     WHERE map.id_medical_appointments = :id_appoinments";
         $rows=\DB::select(\DB::raw($query),array('id_appoinments'=>$request->id_appointments));
-        $querys = "SELECT map.id_medical_appointments, map.id_patient, map.id_turn_hour, map.appointment_description, map.date_appointments, map.data_creation_appointments, sap.name_state_appointments, sch.name_schedules, ht.start_time from medical_appointments map
-                        INNER JOIN state_appointments sap
-                            ON sap.id_state_appointments = map.state_appointments
-                        INNER JOIN medical_assignments mass
-                            ON mass.id_medical_assignments = map.id_medical_assignments
-                        INNER JOIN schedules sch
-                            ON sch.id_schedule = mass.id_schedul
-                        INNER JOIN hour_turns ht
-                            ON ht.id_hour_turn = map.id_turn_hour
-                    WHERE id_patient =(
+        $querys = "SELECT map.id_medical_appointments, map.id_patient, map.id_turn_hour, ta.name_type, map.appointment_description, map.date_appointments, map.data_creation_appointments, sap.name_state_appointments, sch.name_schedules, ht.start_time from medical_appointments map
+                            INNER JOIN state_appointments sap
+                                ON sap.id_state_appointments = map.state_appointments
+                            INNER JOIN medical_assignments mass
+                                ON mass.id_medical_assignments = map.id_medical_assignments
+                            INNER JOIN schedules sch
+                                ON sch.id_schedule = mass.id_schedul
+                            INNER JOIN hour_turns ht
+                                ON ht.id_hour_turn = map.id_turn_hour
+                            INNER JOIN types_appointsment ta
+                    ON ta.id_type_appointments = map.state_appointments
+                        WHERE id_patient =(
                     SELECT id_patient FROM medical_appointments WHERE id_medical_appointments = :id_appoinments
                     ) ORDER BY data_creation_appointments";
         $row=\DB::select(\DB::raw($querys),array('id_appoinments'=>$request->id_appointments));
-        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row);
+        $query = "SELECT * FROM dates_of_register
+                    WHERE state_date_register = 'activo'";
+        $rows2=\DB::select(\DB::raw($query));
+        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2);
     }
     public function load_dates_appoinment(Request $request){
         return $request->all();
@@ -61,5 +66,7 @@ class AttentionsController extends Controller
         //return $rows1;
         return view('attentions.view_filiation_dates_full')->with('patologias',$rows)->with('datos_medicos',$rows1);
     }
-
+    public function save_dates_appoinments_date(Request $request){
+        return $request->all();
+    }
 }

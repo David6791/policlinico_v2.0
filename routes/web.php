@@ -111,9 +111,10 @@ Route::post('/search_patients','EmergenciesController@search_patient');
 Route::post('/store_emergencies','EmergenciesController@store_emergency');
 
 /* Rutas para la atencion de Citas Medicas */
-Route::get('/view_attention_lists','AttentionsController@view_attention_list');
+Route::get('/view_attention_lists','AttentionsController@view_attention_list'); 
 
 Route::post('/start_appointment_date','AttentionsController@start_appointment_dates');
+Route::post('/save_dates_appoinments_dates','AttentionsController@save_dates_appoinments_date');
 
 
 
@@ -137,4 +138,6 @@ Route::post('/create_medical_dates','ManageDatesController@create_medical_date')
 
 
 Route::get('/index_data_medical_appointments','ManageDatesController@index_data_medical_appointment');
+Route::get('/index_register_data_medical_appointments','ManageDatesController@index_register_data_medical_appointment');
+
 

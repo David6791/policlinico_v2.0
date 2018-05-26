@@ -12,7 +12,7 @@ use Auth;
 class MedicalAppointmentController extends Controller
 {
     public function index_Appointment(){
-        $query = "SELECT map.id_medical_appointments, map.appointment_description, pa.nombres, pa.ap_paterno, pa.ap_materno, mass.id_user, us.name m_name, us.apellidos m_apellidos, sch.name_schedules, ht.start_time, sap.name_state_appointments, map.date_appointments FROM medical_appointments map
+        $query = "SELECT map.id_medical_appointments, map.appointment_description, pa.nombres, pa.ap_paterno, pa.ap_materno, mass.id_user, us.name m_name, us.apellidos m_apellidos, sch.name_schedules, ht.start_time, sap.name_state_appointments, map.date_appointments, ta.name_type FROM medical_appointments map
                             INNER JOIN pacientes pa
                         ON pa.id_paciente = map.id_patient
                             INNER JOIN medical_assignments mass
@@ -25,6 +25,8 @@ class MedicalAppointmentController extends Controller
                         ON ht.id_hour_turn = map.id_turn_hour
                             INNER JOIN state_appointments sap
                         ON sap.id_state_appointments = map.state_appointments
+                    INNER JOIN types_appointsment ta
+                    ON ta.id_type_appointments = map.type_appoinment
                         ORDER BY map.id_medical_appointments DESC";
         $rows=\DB::select(\DB::raw($query));
         $query1 = "SELECT * FROM state_appointments";
@@ -101,6 +103,7 @@ class MedicalAppointmentController extends Controller
             'id_turn_hour' => $request->id_hour_appointsment,
             'appointment_description' => $request->description_appointment,
             'date_appointments' => $request->date_appointsment,
+            'type_appoinment' => $request->type_appointments,
             'emergency' => 'N'
         ]);
         return redirect()->action(
@@ -150,12 +153,14 @@ class MedicalAppointmentController extends Controller
         return view('admin.load_pages.load_dates_medic_patient_form')->with('dates',$rows)->with('date',$request->fecha)->with('types',$rows2)->with('id_assigment',$request->id_assignments);
     }
     public function insert_appointsments_medic(Request $request){
+        return $request->all();
         DB::table('medical_appointments')->insert([
             'id_patient' => $request->id_patient,
             'id_medical_assignments' => $request->id_assignments,
             'id_turn_hour' => $request->id_hour_appointsment,
             'appointment_description' => $request->description_appointment,
             'date_appointments' => $request->date_appointsment,
+            'type_appoinment' => $request->type_appointments,
             'emergency' => 'N'
         ]);
         return redirect()->action(

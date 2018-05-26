@@ -13,6 +13,14 @@
                 </li>
                 <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Atencion Cita</a>
                 </li>
+                <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Tratamiento</a>
+                </li>
+                <li role="presentation" class=""><a href="#tab_content5" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Internacion</a>
+                </li>
+                <li role="presentation" class=""><a href="#tab_content6" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Examen Medico</a>
+                </li>
+                <li role="presentation" class=""><a href="#tab_content7" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Traslado de Paciente</a>
+                </li>
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
@@ -114,6 +122,7 @@
                                         <tr>
                                             <th>Nro.</th>
                                             <th>Fecha</th>
+                                            <th>Tipo Cita Medica</th>
                                             <th>Descripcion Cita Medica</th>
                                             <th>Estado Cita Medica</th>
                                             <th>Hora Cita</th>
@@ -126,6 +135,7 @@
                                             <tr>   
                                                 <td>{{ $a++ }}</td>
                                                 <td>{{ date('d/m/Y', strtotime($lista->date_appointments)) }}</td>
+                                                <td>{{ $lista->name_type }}</td>
                                                 <td>{{ $lista->appointment_description }}</td> 
                                                 @if( $lista->name_state_appointments === 'Atendido')                                               
                                                     <td style="color:#1FC125"><span class="glyphicon glyphicon-ok"></span> {{ $lista->name_state_appointments }}</td>
@@ -148,7 +158,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                     <form class="form-horizontal form_send_dates_appointments_send" action="{{url('save_dates_appoinments_dates')}}" method="post">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                    <input type="hidden" name="" value="">
+                    <input type="hidden" name="id_appoinments" value="{{ $dates_cita_end[0]->id_medical_appointments }}">
                         <div class="row">
                             <div class="x_panel">
                                 <div class="x_title">
@@ -157,7 +167,7 @@
                                 <div class="x_content">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label for=""> Tipo Consulta: </label> {{ $list_app[0]->name_type }} 
+                                            <label for=""> Tipo Consulta: </label> {{ $dates_cita_end[0]->name_type }}
                                         </div>
                                         <div class="col-md-8"></div>
                                     </div>
@@ -211,6 +221,18 @@
                             </div>
                         </div>    
                     </form>                                    
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+                    4
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_content5" aria-labelledby="profile-tab">
+                    5
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="profile-tab">
+                    6
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_content7" aria-labelledby="profile-tab">
+                    7
                 </div>
             </div>
         </div>

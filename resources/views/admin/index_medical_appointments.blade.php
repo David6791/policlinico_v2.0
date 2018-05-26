@@ -11,6 +11,7 @@
                     <tr>
                         <th>Nro.</th>
                         <th>Nombre Paciente</th>
+                        <th>Tipo Cita</th>
                         <th>Fecha Cita</th>
                         <th>Turno</th>
                         <th><span class="glyphicon glyphicon-time"></span> Hora</th>
@@ -25,7 +26,8 @@
                     @if(date('m-d-Y', strtotime( $lista->date_appointments )) == date("m-d-Y") )
                         <tr bgcolor="FCEBEB">
                             <td>{{ $a++ }}</td>
-                            <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>                
+                            <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>
+                            <td>{{ $lista->name_type }}</td>             
                             <td>{{ date('m-d-Y', strtotime( $lista->date_appointments )) }}</td>
                             <td>{{ $lista->name_schedules }}</td>
                             <td>{{ $lista->start_time }}</td>
@@ -36,7 +38,8 @@
                     @else
                         <tr bgcolor="F0FCEB">
                             <td>{{ $a++ }}</td>
-                            <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>                
+                            <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>  
+                            <td>{{ $lista->name_type }}</td>                  
                             <td>{{ date('m-d-Y', strtotime( $lista->date_appointments )) }}</td>
                             <td>{{ $lista->name_schedules }}</td>
                             <td>{{ $lista->start_time }}</td>

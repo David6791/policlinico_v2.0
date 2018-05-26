@@ -29,6 +29,7 @@
                                 <th>Nro.</th>
                                 <th>Ci.</th>
                                 <th>Nombres y Apellidos</th>
+                                <th>Tipo Cita Medica</th>
                                 <th>Hora Atencion</th>                            
                                 <th>Estado Atencion</th>
                                 <th>Accion</th>
@@ -42,6 +43,7 @@
                                     <td>{{ $a++ }}</td>
                                     <td>{{ $lista->r_ci }}</td>
                                     <td>{{ $lista->r_nombres }} {{ $lista->r_apaterno }} {{ $lista->r_amaterno }}</td>
+                                    <td>{{ $lista->name_type }}</td>
                                     <td>{{ $lista->r_name_schedules }}</td>
                                     <td>{{ $lista->r_name_state_appoinments }}</td>
                                     <td><button class="btn btn-primary btn-xs start_appointment" value="{{ $lista->r_id_medical_appointments }}">Iniciar Atencion</button></td>
@@ -51,6 +53,7 @@
                                     <td>{{ $a++ }}</td>
                                     <td>{{ $lista->r_ci }}</td>
                                     <td>{{ $lista->r_nombres }} {{ $lista->r_apaterno }} {{ $lista->r_amaterno }}</td>
+                                    <td>{{ $lista->name_type }}</td>
                                     <td>{{ $lista->r_start_time }}</td>
                                     <td>{{ $lista->r_name_state_appoinments }}</td>
                                     <td><button class="btn btn-primary btn-xs start_appointment" value="{{ $lista->r_id_medical_appointments }}">Iniciar Atencion</button></td>

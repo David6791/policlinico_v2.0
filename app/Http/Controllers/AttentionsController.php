@@ -48,8 +48,13 @@ class AttentionsController extends Controller
                         on ta.id_type_appointments = map.type_appoinment
                     where id_medical_appointments = :id_appoinments AND state_appointments = 3";
         $rows3=\DB::select(\DB::raw($query3),array('id_appoinments'=>$request->id_appointments));
+        $query4 = "SELECT * FROM stock_medicines sm
+                        INNER JOIN medicines m
+                            ON m.id_medicines = sm.id_medicine
+                    WHERE sm.quantity_medicine > 1 AND sm.date_expiration > now() AND m.state_medicine = 'activo'";
+        $rows4=\DB::select(\DB::raw($query4));
 
-        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3);
+        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4);
     }
     public function load_dates_appoinment(Request $request){
         return $request->all();
@@ -115,5 +120,12 @@ class AttentionsController extends Controller
         $rows=\DB::select(\DB::raw($query));
         return json_decode($rows[0]->dates_register_appoinments);*/
 
+    }
+    public function load_medicine_table(Request $request){
+        //return $request->all();
+        $query = "SELECT * FROM medicines                        
+                    WHERE id_medicines = :id_medicines";
+        $rows=\DB::select(\DB::raw($query),array('id_medicines'=>$request->id_medicine));
+        return $rows;
     }
 }

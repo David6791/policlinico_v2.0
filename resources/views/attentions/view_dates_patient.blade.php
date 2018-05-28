@@ -223,7 +223,98 @@
                     </form>                                    
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
-                    4
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <label for="">Registro de Tratamiento</label>
+                            </div>
+                            <div class="x_content">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Fecha Incio <span class="required"></span></label>
+                                                        <div class="form-group">
+                                                            <div class='input-group date' id=''>
+                                                                <input name="treatment_start" id="myDatepicker3" type='text' class="form-control" value=""/>
+                                                                <span class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Fecha Fin <span class="required"></span></label>
+                                                        <div class="form-group">
+                                                            <div class='input-group date' id=''>
+                                                                <input name="treatment_end" id="myDatepicker2" type='text' class="form-control" value=""/>
+                                                                <span class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div> <br>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="x_panel">
+                                                        <div class="x_title">
+                                                            <label for="">Medicamentos Disponibles en el Policlinico</label>
+                                                        </div>
+                                                        <div class="x_content">
+                                                            <table id="datatable" class="table table-bordered datatable">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Nro.</th>
+                                                                        <th>Nombre Medicamento</th>
+                                                                        <th>Cantidad Existente</th>   
+                                                                        <th>Accion</th>
+                                                                    </tr>
+                                                                    <tbody>
+                                                                    <?php $a = 1 ?>
+                                                                        @foreach($list_mecines_disponibles as $lista)
+                                                                            <tr>
+                                                                                <td>{{ $a++ }}</td>
+                                                                                <td>{{ $lista->name_medicine }}</td>
+                                                                                <td>{{ $lista->quantity_medicine }}</td>
+                                                                                <td><button type="button" class="btn btn-primary btn-xs move_file" value="{{ $lista->id_medicines }}">Agregar</button></td>
+                                                                            </tr>
+                                                                        @endforeach
+                                                                    </tbody>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="x_panel">
+                                                        <div class="x_title">
+                                                            <label for="">Lista de Medicamentos para el Tratamiento</label>
+                                                        </div>
+                                                        <div class="x_content">
+                                                            <table  id="datatable" class="table table-bordered datatable add_medicines">
+                                                                <tr>
+                                                                    <th>Nro.</th>
+                                                                    <th>Nombre Medicamento</th>
+                                                                    <th>Cantidad Existente</th>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content5" aria-labelledby="profile-tab">
                     5
@@ -240,4 +331,6 @@
 </div>
 <script>
     $('#datatable').DataTable();
+    $('#myDatepicker3').datepicker({});
+    $('#myDatepicker2').datepicker({});
 </script>

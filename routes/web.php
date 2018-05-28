@@ -115,7 +115,7 @@ Route::get('/view_attention_lists','AttentionsController@view_attention_list');
 
 Route::post('/start_appointment_date','AttentionsController@start_appointment_dates');
 Route::post('/save_dates_appoinments_dates','AttentionsController@save_dates_appoinments_date');
-
+Route::post('/load_medicine_table','AttentionsController@load_medicine_table');
 
 
 
@@ -141,3 +141,10 @@ Route::get('/index_data_medical_appointments','ManageDatesController@index_data_
 Route::get('/index_register_data_medical_appointments','ManageDatesController@index_register_data_medical_appointment');
 
 
+/* Rutas para el registro de Medicamentos */
+Route::get('/view_medicines','MedicinesController@index_view_medicines');
+Route::post('/create_medicines','MedicinesController@create_medicine');
+
+
+Route::get('/view_stock_medicines','MedicinesController@view_stock_medicine');
+Route::post('/create_stock_medicines','MedicinesController@create_stock_medicines');

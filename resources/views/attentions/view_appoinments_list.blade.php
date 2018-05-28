@@ -9,7 +9,7 @@
                 <div class="alert alert-info">
                     <ul class="fa-ul">
                         <li>
-                        <i class="fa fa-user fa-lg fa-li"></i> Bienbenido Dr. {{ Auth::user()->name }}
+                        <i class="fa fa-user fa-lg fa-li"></i> Bienvenido Dr. {{ Auth::user()->name }}
                         </li>
                     </ul>
                 </div>

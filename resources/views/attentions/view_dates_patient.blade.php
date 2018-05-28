@@ -229,7 +229,9 @@
                                 <label for="">Registro de Tratamiento</label>
                             </div>
                             <div class="x_content">
-                                <form action="">
+                                <form class="form-horizontal form_send_dates_treatment" action="{{url('save_dates_treatment')}}" method="post">
+                                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                    <input type="hidden" name="id_appoinments" value="{{ $dates_cita_end[0]->id_medical_appointments }}">
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-10">
@@ -308,16 +310,40 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> <br>
+                                            <div class="row">                                                
+                                                <div class="col-md-1"></div>
+                                                    <div class="col-md-9">
+                                                    <label for="">Indicaciones para el Tratamiendo</label>
+                                                        <div class="col-md-12">
+                                                            <textarea class="form-control" placeholder="Escriba aqui las indicaciones del Tratamiento..." rows="5" name="indications_treatment" id=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <br>
+                                            <div class="row">
+                                                <div class="col-md-5"></div>
+                                                <div class="col-md-3">
+                                                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar Datos Tratamiento</button>
+                                                </div>
+                                            </div>   
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content5" aria-labelledby="profile-tab">
-                    5
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <label for=""> Formulario de Internacion</label>
+                            </div>
+                            <div class="x_content">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="profile-tab">
                     6

@@ -128,4 +128,27 @@ class AttentionsController extends Controller
         $rows=\DB::select(\DB::raw($query),array('id_medicines'=>$request->id_medicine));
         return $rows;
     }
+    public function save_dates_treatment(Request $request){
+        //return $request->all();
+        DB::table('treatment_patients')->insert([
+            'date_start_treatment' => $request->treatment_start,
+            'date_end_treatment' => $request->treatment_end,
+            'id_medical_appointments' => $request->id_appoinments,
+            'description_treatment' => $request->indications_treatment,
+            'id_users_register' => Auth::user()->id
+        ]);
+        $query = "SELECT id_treatment FROM treatment_patients                        
+                    ORDER BY id_treatment ASC LIMIT 1";
+        $rows2=\DB::select(\DB::raw($query));        
+        $tam = count($request->id_medicine);
+        for($i  = 0; $i<$tam ; $i++){
+            DB::table('treatment_details')->insert([
+                'id_treatment' => $rows2[0]->id_treatment,
+                'id_medicine' => $request->id_medicine[$i],
+                'quantity_medicine' => $request->cantidad[$i]
+            ]);
+            $query2 = "SELECT update_stock(:id_medicine, :quantity)";
+            $rows=\DB::select(\DB::raw($query2),array('id_medicine'=>$request->id_medicine[$i],'quantity'=>$request->cantidad[$i]));    
+        }
+    }
 }

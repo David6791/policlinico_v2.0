@@ -887,29 +887,40 @@ $(function(){
             success:function(data){                
                 //$("#contentGlobal").html(data) 
                 //alert('asdasdasd')
-                $('.add_medicines tbody').append('<tr style="text-align:center"><td>'+data[0].name_medicine+'</td><td style="text-align:center"><input type="text" name="cantidad[]" style="width:50px; text-align:center;" value="1"></td><td><button class="btn btn-danger btn-sm eliminar_medicine"><span class="fa fa-times-circle">Eliminar</span></button></td></tr>')
-                swal(
-                    '',
-                    'El Paciente esta registrado',
-                    'success'
-                  )
+                $('.add_medicines tbody').append('<tr style="text-align:center"><td>'+data[0].name_medicine+'</td><td style="text-align:center"><input type="text" name="cantidad[]" style="width:50px; text-align:center;" value="1"><input type="hidden" name="id_medicine[]" style="width:50px; text-align:center;" value="'+data[0].id_medicines+'"></td><td><button class="btn btn-danger btn-sm eliminar_medicine"><span class="fa fa-times-circle">Eliminar</span></button></td></tr>')               
             },error:function(data){
-                //alert('asdsad')
-                swal(
-                    'Error!',
-                    'El Paciente aun no esta registrado',
-                    'error'
-                  )
+                //alert('asdsad')                
             }
 
         })
     })
-    $(document).on('click', '.eliminar_medicine', function(e){
-        swal(
-            'Good job!',
-            'Se Elimino Correctamente!',
-            'error'
-          )
+    $(document).on('click', '.eliminar_medicine', function(e){        
         $(this).closest('tr').remove()
+    })
+    $(document).on('submit','.form_send_dates_treatment',function(e){
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $("#contentGlobal").html(data)          
+                swal(
+                    'Felicidades',
+                    'Se registro correctamente el Nuevo Dato Medico',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
     })
 })

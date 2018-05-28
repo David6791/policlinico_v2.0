@@ -116,6 +116,7 @@ Route::get('/view_attention_lists','AttentionsController@view_attention_list');
 Route::post('/start_appointment_date','AttentionsController@start_appointment_dates');
 Route::post('/save_dates_appoinments_dates','AttentionsController@save_dates_appoinments_date');
 Route::post('/load_medicine_table','AttentionsController@load_medicine_table');
+Route::post('/save_dates_treatment','AttentionsController@save_dates_treatment');
 
 
 

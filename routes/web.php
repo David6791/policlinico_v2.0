@@ -149,3 +149,14 @@ Route::post('/create_medicines','MedicinesController@create_medicine');
 
 Route::get('/view_stock_medicines','MedicinesController@view_stock_medicine');
 Route::post('/create_stock_medicines','MedicinesController@create_stock_medicines');
+
+
+
+/* rutas para administrar habitaciones */
+
+
+Route::get('/view_room','RoomsController@view_room');
+Route::post('/create_rooms','RoomsController@create_rooms');
+
+Route::get('/view_room_available','RoomsController@view_room_available');
+Route::get('/edit_hospitalizations','RoomsController@edit_hospitalizations');

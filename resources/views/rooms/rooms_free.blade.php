@@ -31,7 +31,7 @@
                                     @if($list->occupied_rom === "N")
                                     <li class="col_div">
                                         <p>
-                                            <span class="month">Estado:</span>
+                                            <span class="month">Disponible.?:</span>
                                             <span class="count">Libre</span>
                                         </p>
                                     </li>

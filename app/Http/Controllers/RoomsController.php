@@ -27,8 +27,8 @@ class RoomsController extends Controller
         );
     }
     public function view_room_available(){
-        $query  = "SELECT * FROM available_beds where id_available_beds NOT IN (
-                   SELECT id_patient_room FROM patients_rooms)";
+        $query  = "SELECT * FROM available_beds where id_available_beds NOT IN(
+                   SELECT id_room FROM patients_rooms)";
         $row = \DB::select(\DB::raw($query));
         return view('rooms.rooms_free')->with('rooms_free',$row);
     }
@@ -36,6 +36,8 @@ class RoomsController extends Controller
         $query  = "SELECT * FROM patients_rooms pr
                         INNER JOIN pacientes p
                             ON p.id_paciente = pr.id_patient
+                        INNER JOIN available_beds ab
+                            ON ab.id_available_beds = pr.id_room
                     WHERE state_internacion = 'activo'";
         $row = \DB::select(\DB::raw($query));
         return view('rooms.rooms_edit_hospitalizations')->with('rooms_edit',$row);

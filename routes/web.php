@@ -160,3 +160,7 @@ Route::post('/create_rooms','RoomsController@create_rooms');
 
 Route::get('/view_room_available','RoomsController@view_room_available');
 Route::get('/edit_hospitalizations','RoomsController@edit_hospitalizations');
+
+
+/* Rutas para examenes Medicos de los pacientes del policlinico */
+Route::get('/view_medical_exam','MedicalExamController@view_medical_exam');

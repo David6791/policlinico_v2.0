@@ -346,7 +346,32 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="profile-tab">
-                    6
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <label for="">Registrar Examenes Medicos del Paciente</label>
+                            </div>
+                            <div class="x_content">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-5">
+                                        @foreach($dat as $lo)
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <label for="">Seleccione tipo de Examen Medico: </label>
+                                                    <textarea rows=5 name="{{ $lo->id_date_register }}" placeholder="{{ $lo->description_dates }}..." id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>    
+                                                </div>                                
+                                            </div> <br>
+                                        @endforeach
+                                        </div>
+                                        <div class="col-md-5"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content7" aria-labelledby="profile-tab">
                     7

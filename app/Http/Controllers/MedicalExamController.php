@@ -16,4 +16,14 @@ class MedicalExamController extends Controller
         $rows=\DB::select(\DB::raw($query));
         return view('medical_exam.index_medical_exam')->with('list',$rows);
     }
+    public function create_medical_exam(Request $request){
+        DB::table('medical_exam')->insert([
+            'name_medical_exam' => $request->name_medical_exam,
+            'description_medical_exam' => $request->medical_exam_description,
+            'id_user_register' => Auth::user()->id
+        ]);
+        return redirect()->action(
+            'MedicalExamController@view_medical_exam'
+        );
+    }
 }

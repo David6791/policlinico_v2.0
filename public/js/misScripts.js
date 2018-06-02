@@ -960,8 +960,9 @@ $(function(){
             type:$(this).attr('method'),
             url:$(this).attr('action'),
             data:$(this).serialize(),
-            success:function(data){  
-                $("#contentGlobal").html(data)          
+            success:function(data){
+                $('.con1').remove()
+                $(".con2").html(data)          
                 swal(
                     'Felicidades',
                     'Se registro correctamente el Nuevo Dato Medico',

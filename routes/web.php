@@ -125,6 +125,9 @@ Route::post('/load_dates_appoinments','AttentionsController@load_dates_appoinmen
 Route::post('/load_dates_filiation_full','AttentionsController@load_dates_filiation_full');
 
 
+/* Ruta para guardar datos de examen medico de un paciente. */
+Route::post('/register_medical_exam','AttentionsController@register_medical_exam');
+
 
 
 /* Rutas para Administrar datos del sistema */
@@ -165,3 +168,4 @@ Route::get('/edit_hospitalizations','RoomsController@edit_hospitalizations');
 /* Rutas para examenes Medicos de los pacientes del policlinico */ 
 Route::get('/view_medical_exam','MedicalExamController@view_medical_exam');
 Route::post('/create_medical_exam','MedicalExamController@create_medical_exam');
+

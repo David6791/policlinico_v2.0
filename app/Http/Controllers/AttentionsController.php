@@ -53,8 +53,23 @@ class AttentionsController extends Controller
                             ON m.id_medicines = sm.id_medicine
                     WHERE sm.quantity_medicine > 1 AND sm.date_expiration > now() AND m.state_medicine = 'activo'";
         $rows4=\DB::select(\DB::raw($query4));
+        $query5 = "SELECT * FROM view_examens_medics(:id)";
+        $rows5=\DB::select(\DB::raw($query5),array('id'=>$request->id_appointments));
+        /*for($i = 0 ; $i < count($rows5) ; $i++){
+            $asd = json_encode($rows5[$i]->j);
+            $asdd = json_decode($asd);
+            //return $asdd;
+            $data2[] = [
+                $i => $asdd
+            ];
+        }
+        //$asd = json_encode($rows5[1]->j);
+        $aps = json_encode($data2);
+        return $data2[0];*/
 
-        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4);
+
+
+        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medic',$rows5);
     }
     public function load_dates_appoinment(Request $request){
         return $request->all();
@@ -74,7 +89,7 @@ class AttentionsController extends Controller
                             ON dm.id_dato_medico = ptm.id_date_medic
                     WHERE pa.id_paciente = :id_patient";
         $rows1=\DB::select(\DB::raw($query1),array('id_patient'=>$request->id_patient));
-        //return $rows1;
+        //return json_encode($rows1);
         return view('attentions.view_filiation_dates_full')->with('patologias',$rows)->with('datos_medicos',$rows1);
     }
     public function save_dates_appoinments_date(Request $request){
@@ -150,5 +165,35 @@ class AttentionsController extends Controller
             $query2 = "SELECT update_stock(:id_medicine, :quantity)";
             $rows=\DB::select(\DB::raw($query2),array('id_medicine'=>$request->id_medicine[$i],'quantity'=>$request->cantidad[$i]));    
         }
+    }
+    public function register_medical_exam(Request $request){
+        //return $request->all();
+        $query = "SELECT id_patient FROM medical_appointments WHERE id_medical_appointments = :id_appoinments";
+        $rows2=\DB::select(\DB::raw($query),array('id_appoinments'=>$request->id_appoinments));  
+        DB::table('medical_exam_patients')->insert([
+            'id_patient' => $rows2[0]->id_patient,
+            'id_appoinments' => $request->id_appoinments,
+            'id_medical_exam' => $request->id_medical_exam,
+            'reason_medical_examn' => $request->reason_medical_exam,
+            'observation_medical_exam' => $request->observations_medical_exam,
+            'id_user_creator' => Auth::user()->id
+        ]);
+        $query1 = "SELECT mep.id_medical_exam_patient, mep.id_appoinments, mep.reason_medical_examn, mep.observation_medical_exam, mep.date_creation, mass.id_user, us.name, us.apellidos,
+                        p.nombres, p.ap_paterno, p.ap_materno, p.fecha_nacimento, p.ci, mee.name_medical_exam
+                        FROM medical_exam_patients mep
+                        INNER JOIN medical_appointments mapp 
+                            ON mep.id_appoinments = mapp.id_medical_appointments
+                        INNER JOIN medical_assignments mass
+                            ON mass.id_medical_assignments = mapp.id_medical_assignments
+                        INNER JOIN users us
+                            ON us.id = mass.id_user
+                        INNER JOIN pacientes p
+                            ON p.id_paciente = mep.id_patient
+                        INNER JOIN medical_exam mee
+                            ON mee.id_medical_exam = mep.id_medical_exam
+                    ORDER BY id_medical_exam_patient ASC LIMIT 1";
+        $rows1=\DB::select(\DB::raw($query1));
+        //return $rows1;
+        return view('admin.load_pages_attentions.medical_exam')->with('exam_medic',$rows1);
     }
 }

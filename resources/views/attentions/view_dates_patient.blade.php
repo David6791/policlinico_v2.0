@@ -352,23 +352,47 @@
                                 <label for="">Registrar Examenes Medicos del Paciente</label>
                             </div>
                             <div class="x_content">
-                                <form action="">
-                                    <div class="row">
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-5">
-                                        @foreach($dat as $lo)
-                                            <div class="row">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-10">
-                                                    <label for="">Seleccione tipo de Examen Medico: </label>
-                                                    <textarea rows=5 name="{{ $lo->id_date_register }}" placeholder="{{ $lo->description_dates }}..." id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>    
-                                                </div>                                
-                                            </div> <br>
-                                        @endforeach
+                                <div class="x_panel con1">
+                                    <form class="form-horizontal form-label-left sendform_medical_exam" novalidate action="{{url('register_medical_exam')}}" method="post">
+                                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                        <input type="hidden" name="id_appoinments" value="{{ $dates_cita_end[0]->id_medical_appointments }}">
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-5">
+                                            <label for="">Seleccione tipo de Examen Medico: </label>
+                                                <select name="id_medical_exam" id="" class="select2_group form-control">
+                                                    @foreach($ex_medic as $lo)                                                
+                                                        <option value="{{ $lo->id_medical_exam }}">{{ $lo->name_medical_exam }}</option>                                                
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-5"></div>
+                                        </div> <br>
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-6">
+                                                <label for="">Describa el Motivo para solicitar el Exame Medico</label>
+                                                <textarea class="select2_group form-control" name="reason_medical_exam" id="" placeholder="Ingrese aqui los motivos."></textarea>
+                                            </div>
+                                        </div> <br>
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-6">
+                                                <label for="">Observaciones...</label>
+                                                <textarea class="select2_group form-control" name="observations_medical_exam" id="" placeholder="Ingrese observaciones."></textarea>
+                                            </div>
+                                        </div> <br>
+                                        <div class="row">
+                                            <div class="col-md-5"></div>
+                                            <div class="col-md-5">
+                                                <button type="submit" class="btn btn-primary">Registrar Examen Medico</button> 
+                                            </div>
                                         </div>
-                                        <div class="col-md-5"></div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>                                
+                            </div>
+                            <div class="con2">
+
                             </div>
                         </div>
                     </div>

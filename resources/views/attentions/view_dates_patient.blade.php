@@ -360,9 +360,9 @@
                                             <div class="col-md-2"></div>
                                             <div class="col-md-5">
                                             <label for="">Seleccione tipo de Examen Medico: </label>
-                                                <select name="id_medical_exam" id="" class="select2_group form-control">
-                                                    @foreach($ex_medic as $lo)                                                
-                                                        <option value="{{ $lo->id_medical_exam }}">{{ $lo->name_medical_exam }}</option>                                                
+                                                <select name="id_medical_exam" id="" class="select2_group form-control">                                                                                                  
+                                                    @foreach($ex_medics as $las)
+                                                    <option value="">{{ var_dump($las) }}</option>            
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -398,7 +398,16 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content7" aria-labelledby="profile-tab">
-                    7
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <label for="">Registro de Traslado de Pacientes</label>
+                            </div>
+                            <div class="x_content">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

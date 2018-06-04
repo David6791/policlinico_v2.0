@@ -55,21 +55,35 @@ class AttentionsController extends Controller
         $rows4=\DB::select(\DB::raw($query4));
         $query5 = "SELECT * FROM view_examens_medics(:id)";
         $rows5=\DB::select(\DB::raw($query5),array('id'=>$request->id_appointments));
-        /*for($i = 0 ; $i < count($rows5) ; $i++){
+        //return $rows5;
+        $data2 = array();
+        for($i = 0 ; $i < count($rows5) ; $i++){
             $asd = json_encode($rows5[$i]->j);
             $asdd = json_decode($asd);
+
+            
+
             //return $asdd;
-            $data2[] = [
-                $i => $asdd
-            ];
+            //return $asdd;
+            /*$data2[] = [
+                'j' => $asd
+            ];*/
+            //json_decode($data2[1],true)
+            // aqui ya tienes que poner un json_decode para que se guarde directo en tu array
+            $data2[]=json_decode($asdd,true);
         }
         //$asd = json_encode($rows5[1]->j);
-        $aps = json_encode($data2);
-        return $data2[0];*/
+        //$aps = json_encode($data2);
+        /*$aux=json_encode($data2[1]);
+        $aux=json_decode($data2[1]);
+        */
+        //return $data2;
+        //return var_dump(json_decode($data2[1],true)["name_medical_exam"]);
+        //return ['id_medical_exam'];
 
 
 
-        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medic',$rows5);
+        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2);
     }
     public function load_dates_appoinment(Request $request){
         return $request->all();

@@ -80,10 +80,17 @@ class AttentionsController extends Controller
         //return $data2;
         //return var_dump(json_decode($data2[1],true)["name_medical_exam"]);
         //return ['id_medical_exam'];
+        $query6 = "SELECT * FROM view_transfers_medics(:id)";
+        $rows6=\DB::select(\DB::raw($query6),array('id'=>$request->id_appointments));
 
-
-
-        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2);
+        $data3 = array();
+        for($i = 0 ; $i < count($rows6) ; $i++){
+            $asd = json_encode($rows6[$i]->j);
+            $asdd = json_decode($asd);
+            $data3[]=json_decode($asdd,true);
+        }
+        //return $data3;
+        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2)->with('types_transfer',$data3);
     }
     public function load_dates_appoinment(Request $request){
         return $request->all();
@@ -209,5 +216,32 @@ class AttentionsController extends Controller
         $rows1=\DB::select(\DB::raw($query1));
         //return $rows1;
         return view('admin.load_pages_attentions.medical_exam')->with('exam_medic',$rows1);
+    }
+    public function store_patients_transfer(Request $request){
+        //return $request->all();
+        DB::table('transfer_patients')->insert([
+            'id_patient_trasfer' => $request->id_patient,
+            'id_appoinments' => $request->id_appoinments,
+            'id_type_trasnfer' => $request->type_transfer,
+            'diagnostic' => $request->diagnostic,
+            'justified_transfer' => $request->justifi_transfer,
+            'origin_transfer' => $request->origin_trasnfer,
+            'destini_transfer' => $request->destyni_trasnfer,
+            'id_user_register' => Auth::user()->id
+        ]);
+        $query1 = "SELECT * FROM transfer_patients tp
+                        INNER JOIN pacientes p
+                            ON p.id_paciente = tp.id_patient_trasfer
+                        INNER JOIN types_transfer tt
+                            ON tt.id_type_transfer = tp.id_type_trasnfer
+                        INNER JOIN medical_appointments mapp
+                            ON mapp.id_medical_appointments = tp.id_appoinments
+                        INNER JOIN medical_assignments mass
+                            ON mass.id_medical_assignments = mapp.id_medical_assignments
+                        INNER JOIN users us
+                            ON us.id = mass.id_user
+                    WHERE id_appoinments = :id_appo";
+        $rows1=\DB::select(\DB::raw($query1),array('id_appo'=>$request->id_appoinments));
+        return view('admin.load_pages_attentions.medical_transfer')->with('transfer_medic',$rows1);
     }
 }

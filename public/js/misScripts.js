@@ -978,4 +978,31 @@ $(function(){
             }
         })
     })
+    $(document).on('submit','.sendform_transfer_patients',function(e){
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){  
+                $('.c_transfer1').remove()
+                $(".c_transfer2").html(data)        
+                swal(
+                    'Felicidades',
+                    'Se registro correctamente el Nuevo Dato Medico',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
 })

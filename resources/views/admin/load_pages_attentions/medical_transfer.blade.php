@@ -2,12 +2,12 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
         <div class="x_panel">
-        @foreach($exam_medic as $dat)
+        @foreach($transfer_medic as $dat)
             <div class="x_content">
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-5">
-                        <h4><label>ORDEN DE EXAMEN MEDICO</label></h4>  
+                    <div class="col-md-3"></div>
+                    <div class="col-md-7">
+                        <h4><label>ORDEN DE TRANSFERENCIA MEDICA</label></h4>  
                     </div>
                 </div>                
                 <div class="row">
@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-3"></div>
                     <div class="col-md-3">
-                        Nro. Cita Medica {{ $dat->id_appoinments }}
+                        Nro. Transferencia {{ $dat->id_transfer_patient }}
                     </div>
                 </div> <hr>
                 <div class="row">
@@ -38,27 +38,35 @@
                 </div> <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        Tipo Examen Medico: {{ $dat->name_medical_exam }}
+                        Tipo Transferencia Medica: {{ $dat->name_type_transfer }}
                     </div>
                 </div> <br>
                 <div class="row">
                     <div class="col-md-12">
-                        Motivo Examen Medico: {{ $dat->reason_medical_examn }}
+                        Diagnostico: {{ $dat->diagnostic }}
                     </div>
                 </div> <br>
                 <div class="row">
                     <div class="col-md-12">
-                        Observaciones: {{ $dat->observation_medical_exam }}
+                        Justificacion Transferencia: {{ $dat->justified_transfer }}
                     </div>
-                </div>
+                </div> <br>
                 <div class="row">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-success">Imprimir Orden Medica</button>
+                        Origen Tranferencia: {{ $dat->origin_transfer }}
+                    </div>
+                    <div class="col-md-6">
+                        Destino Transferencia: {{ $dat->destini_transfer }}
+                    </div>
+                </div> <br>
+                <div class="row">
+                    <div class="col-md-6">
+                    <button type="button" class="btn btn-success">Imprimir Orden Transferencia</button>
                     </div>
                     <div class="col-md-5">
-                        <button type="button" class="btn btn-success">Editar Orden Medica</button>
+                        <button type="button" class="btn btn-success">Editar Orden Transferencia</button>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
         @endforeach

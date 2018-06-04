@@ -352,45 +352,115 @@
                                 <label for="">Registrar Examenes Medicos del Paciente</label>
                             </div>
                             <div class="x_content">
-                                <div class="x_panel con1">
-                                    <form class="form-horizontal form-label-left sendform_medical_exam" novalidate action="{{url('register_medical_exam')}}" method="post">
-                                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                                        <input type="hidden" name="id_appoinments" value="{{ $dates_cita_end[0]->id_medical_appointments }}">
-                                        <div class="row">
-                                            <div class="col-md-2"></div>
-                                            <div class="col-md-5">
-                                            <label for="">Seleccione tipo de Examen Medico: </label>
-                                                <select name="id_medical_exam" id="" class="select2_group form-control">                                                                                                  
-                                                    @foreach($ex_medics as $las)
-                                                    <option value="">{{ var_dump($las) }}</option>            
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-5"></div>
-                                        </div> <br>
-                                        <div class="row">
-                                            <div class="col-md-2"></div>
-                                            <div class="col-md-6">
-                                                <label for="">Describa el Motivo para solicitar el Exame Medico</label>
-                                                <textarea class="select2_group form-control" name="reason_medical_exam" id="" placeholder="Ingrese aqui los motivos."></textarea>
-                                            </div>
-                                        </div> <br>
-                                        <div class="row">
-                                            <div class="col-md-2"></div>
-                                            <div class="col-md-6">
-                                                <label for="">Observaciones...</label>
-                                                <textarea class="select2_group form-control" name="observations_medical_exam" id="" placeholder="Ingrese observaciones."></textarea>
-                                            </div>
-                                        </div> <br>
-                                        <div class="row">
-                                            <div class="col-md-5"></div>
-                                            <div class="col-md-5">
-                                                <button type="submit" class="btn btn-primary">Registrar Examen Medico</button> 
+                                @if(empty($ex_medics[0]['id_medical_exam']))
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-6">
+                                        <div class="x_panel">
+                                        @foreach($ex_medics as $dat)
+                                            <div class="x_content">
+                                                <div class="row">
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-5">
+                                                        <h4><label>ORDEN DE EXAMEN MEDICO</label></h4>  
+                                                    </div>
+                                                </div>                
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        Fecha: {{ date('d/m/Y', strtotime($dat['date_creation'])) }}
+                                                    </div>
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-3">
+                                                        Nro. Cita Medica {{ $dat['id_appoinments'] }}
+                                                    </div>
+                                                </div> <hr>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        Nombre Paciente: {{ $dat['nombres'] }} {{ $dat['ap_paterno'] }} {{ $dat['ap_materno'] }}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Ci: {{ $dat['ci'] }}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Edad: 
+                                                    </div>
+                                                </div> <hr>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        Medico Solicitante: {{ $dat['name'] }} {{ $dat['apellidos'] }}
+                                                    </div>
+                                                    <div class="col-md-4"></div>                    
+                                                </div> <hr>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        Tipo Examen Medico: {{ $dat['name_medical_exam'] }}
+                                                    </div>
+                                                </div> <br>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        Motivo Examen Medico: {{ $dat['reason_medical_examn'] }}
+                                                    </div>
+                                                </div> <br>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        Observaciones: {{ $dat['observation_medical_exam'] }}
+                                                    </div>
+                                                </div> <br>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-6">
+                                                        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Imprimir Orden Medica</button>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <button type="button" value="{{ $dat['id_medical_exam_patient'] }}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Editar Orden Medica</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </form>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                @else
+                                    <div class="x_panel con1">
+                                        <form class="form-horizontal form-label-left sendform_medical_exam" novalidate action="{{url('register_medical_exam')}}" method="post">
+                                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                            <input type="hidden" name="id_appoinments" value="{{ $dates_cita_end[0]->id_medical_appointments }}">
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-5">
+                                                <label for="">Seleccione tipo de Examen Medico: </label>
+                                                    <select name="id_medical_exam" id="" class="select2_group form-control">                                                                                                                                                  
+                                                        @foreach($ex_medics as $li)
+                                                            <option value="{{ $li['id_medical_exam'] }}">{{ $li['name_medical_exam'] }}</option>        
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5"></div>
+                                            </div> <br>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-6">
+                                                    <label for="">Describa el Motivo para solicitar el Exame Medico</label>
+                                                    <textarea class="select2_group form-control" name="reason_medical_exam" id="" placeholder="Ingrese aqui los motivos."></textarea>
+                                                </div>
+                                            </div> <br>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-6">
+                                                    <label for="">Observaciones...</label>
+                                                    <textarea class="select2_group form-control" name="observations_medical_exam" id="" placeholder="Ingrese observaciones."></textarea>
+                                                </div>
+                                            </div> <br>
+                                            <div class="row">
+                                                <div class="col-md-5"></div>
+                                                <div class="col-md-5">
+                                                    <button type="submit" class="btn btn-primary">Registrar Examen Medico</button> 
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>                                                                
+                                @endif
                                 </div>                                
-                            </div>
                             <div class="con2">
 
                             </div>
@@ -403,7 +473,162 @@
                             <div class="x_title">
                                 <label for="">Registro de Traslado de Pacientes</label>
                             </div>
-                            <div class="x_content">
+                            <div class="x_content c_transfer1">
+                                @if(empty($types_transfer[0]['id_type_transfer']))
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-6">
+                                        <div class="x_panel">
+                                            @foreach($types_transfer as $dat)
+                                                <div class="x_content">
+                                                    <div class="row">
+                                                        <div class="col-md-3"></div>
+                                                        <div class="col-md-7">
+                                                            <h4><label>ORDEN DE TRANSFERENCIA MEDICA</label></h4>  
+                                                        </div>
+                                                    </div>                
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            Fecha: {{ date('d/m/Y', strtotime($dat['date_creation'])) }}
+                                                        </div>
+                                                        <div class="col-md-3"></div>
+                                                        <div class="col-md-3">
+                                                            Nro. Transferencia {{ $dat['id_transfer_patient'] }}
+                                                        </div>
+                                                    </div> <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            Nombre Paciente: {{ $dat['nombres'] }} {{ $dat['ap_paterno'] }} {{ $dat['ap_materno'] }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            Ci: {{ $dat['ci'] }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            Edad: 
+                                                        </div>
+                                                    </div> <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            Medico Solicitante: {{ $dat['name'] }} {{ $dat['apellidos'] }}
+                                                        </div>
+                                                        <div class="col-md-4"></div>                    
+                                                    </div> <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            Tipo Transferencia Medica: {{ $dat['name_type_transfer'] }}
+                                                        </div>
+                                                    </div> <br>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            Diagnostico: {{ $dat['diagnostic'] }}
+                                                        </div>
+                                                    </div> <br>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            Justificacion Transferencia: {{ $dat['justified_transfer'] }}
+                                                        </div>
+                                                    </div> <br>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            Origen Tranferencia: {{ $dat['origin_transfer'] }}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            Destino Transferencia: {{ $dat['destini_transfer'] }}
+                                                        </div>
+                                                    </div> <br>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                        <button type="button" class="btn btn-success">Imprimir Orden Transferencia</button>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <button type="button" class="btn btn-success">Editar Orden Transferencia</button>
+                                                        </div>
+                                                    </div>                
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="row">
+                                    <div class="x_panel">
+                                        <div class="x_content">
+                                            <form class="form-horizontal sendform_transfer_patients" action="{{url('store_patients_transfer')}}" method="post">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                                <input type="hidden" name="id_appoinments" value="{{ $dates_cita_end[0]->id_medical_appointments }}">
+                                                <input type="hidden" name="id_patient" value="{{ $dates_patient[0]->id_paciente }}">
+                                                <div class="row">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-6">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="x_panel">
+                                                                    <div class="row">
+                                                                        <div class="col-md-1"></div>
+                                                                        <div class="col-md-10">
+                                                                            <h3>Motivos Traslado</h3> <br>
+                                                                            Diagnostico
+                                                                            <textarea name="diagnostic" id="" class="select2_group form-control" placeholder="Escriba aqui."></textarea>
+                                                                        </div>
+                                                                    </div> <br>
+                                                                    <div class="row">
+                                                                        <div class="col-md-1"></div>
+                                                                        <div class="col-md-10">
+                                                                            Justificacion Traslado
+                                                                            <textarea name="justifi_transfer" id="" class="select2_group form-control" placeholder="Escriba aqui."></textarea>
+                                                                        </div>
+                                                                    </div> <br>
+                                                                    <div class="row">
+                                                                        <div class="col-md-1"></div>
+                                                                        <div class="col-md-10">
+                                                                            <label for="">Tipo Traslado</label> <br>
+                                                                            @foreach(array_chunk($types_transfer, 3) as $chunk)
+                                                                                <div class="row">                                            
+                                                                                    @foreach($chunk as $add)
+                                                                                        <div class="col-md-4">
+                                                                                            <div class="form-group col-md-12">
+                                                                                                <div class="">
+                                                                                                    <label class="control-label">
+                                                                                                        <input type="checkbox" name="type_transfer" value="{{ $add['id_type_transfer'] }}">                                                                                            
+                                                                                                        {{ $add['name_type_transfer'] }}
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    @endforeach
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-1"></div>
+                                                                        <div class="col-md-5">
+                                                                            <label for=""> Origen Traslado</label>
+                                                                            <input class="select2_group form-control" type="text" name="origin_trasnfer">
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <label for="">Destino Traslado</label>                                                            
+                                                                            <input class="select2_group form-control" type="text" name="destyni_trasnfer">
+                                                                        </div>
+                                                                    </div> <br>
+                                                                    <div class="row">
+                                                                        <div class="col-md-5"></div>
+                                                                        <div class="col-md-">
+                                                                            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-floppy-save"></span> Guardar Datos</button>
+                                                                        </div>
+                                                                    </div>                                                        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                @endif                                
+                            </div>
+                            <div class="c_transfer2">
 
                             </div>
                         </div>

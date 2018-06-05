@@ -474,7 +474,7 @@
                                 <label for="">Registro de Traslado de Pacientes</label>
                             </div>
                             <div class="x_content c_transfer1">
-                                @if(empty($types_transfer[0]['id_type_transfer']))
+                                @if(empty($types_transfer[0]['description_type_transfer']))
                                 <div class="row">
                                     <div class="col-md-3"></div>
                                     <div class="col-md-6">
@@ -538,10 +538,10 @@
                                                     </div> <br>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                        <button type="button" class="btn btn-success">Imprimir Orden Transferencia</button>
+                                                        <button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-print"></span> Imprimir Orden Transferencia</button>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <button type="button" class="btn btn-success">Editar Orden Transferencia</button>
+                                                            <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-edit"></span> Editar Orden Transferencia</button>
                                                         </div>
                                                     </div>                
                                                 </div>

@@ -1005,4 +1005,20 @@ $(function(){
             }
         })
     })
+    $(document).on('click','.get_view_record_medic',function(e){
+        //alert($(this).attr('value'))
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/load_dates_record_medic_full',
+            data:$(this).serialize(),
+            data:{id_patient:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('.delete_load').remove()        
+                $('.load_delete').html(data)                
+            },error:function(data){
+            }
+
+        })
+    })
 })

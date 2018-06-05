@@ -135,7 +135,11 @@
                   <li><a><i class="fa fa-clone"></i>Examenes Medicos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="view_medical_exam" class="load-page">Ver Lista de Examenes Medicos</a></li>
-                      <li><a href="" class="load-page">........</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-clone"></i>Historial Medico <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="view_medical_record" class="load-page">Ver Historial Medico</a></li>
                     </ul>
                   </li>
                   <!--li><a><i class="fa fa-clone"></i>Habitaciones <span class="fa fa-chevron-down"></span></a>

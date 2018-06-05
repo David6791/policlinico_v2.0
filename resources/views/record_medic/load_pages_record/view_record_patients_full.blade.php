@@ -43,6 +43,11 @@
                                                 Estado: {{ $add['name_state_appointments'] }}
                                             </div>
                                         </div> <br>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                Descripcion Cita Medica: {{ $add['appointment_description'] }}
+                                            </div>
+                                        </div> <br>
                                         <label for="">DATOS DEL MEDICO</label>
                                         <div class="row">
                                             <div class="col-md-8">
@@ -55,7 +60,7 @@
                                         <div class="row">
                                             <div class="col-md-2"></div>
                                             <div class="col-md-4">
-                                                <button type="button" class="btn btn-success" value="{{ $add['id_medical_appointments'] }}"> <span class="glyphicon glyphicon-eye-open"></span> Ver Detalles</button>
+                                                <button type="button" class="btn btn-success view_full_record_medic" value="{{ $add['id_medical_appointments'] }}"> <span class="glyphicon glyphicon-eye-open"></span> Ver Historial Completo</button>
                                             </div>
                                             <div class="col-md-1"></div>
                                             <div class="col-md-4">

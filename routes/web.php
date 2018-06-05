@@ -174,3 +174,4 @@ Route::post('/create_medical_exam','MedicalExamController@create_medical_exam');
 /* Ver Historiales Medicos */
 Route::get('/view_medical_record','MedicRecordsController@view_medical_record');
 Route::post('/load_dates_record_medic_full','MedicRecordsController@load_dates_record_medic_full');
+Route::post('/load_dates_record_medic_full_appoinment','MedicRecordsController@load_dates_record_medic_full_appoinment');

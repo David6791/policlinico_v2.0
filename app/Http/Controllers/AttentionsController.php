@@ -174,7 +174,7 @@ class AttentionsController extends Controller
             'id_users_register' => Auth::user()->id
         ]);
         $query = "SELECT id_treatment FROM treatment_patients                        
-                    ORDER BY id_treatment ASC LIMIT 1";
+                    ORDER BY id_treatment DESC LIMIT 1";
         $rows2=\DB::select(\DB::raw($query));        
         $tam = count($request->id_medicine);
         for($i  = 0; $i<$tam ; $i++){

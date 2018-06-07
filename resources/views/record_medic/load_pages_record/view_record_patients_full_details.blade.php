@@ -88,8 +88,120 @@
                         <div class="col-md-12">
                             <div class="x_panel">
                                 <div class="row"> <label for="">NOTAS MEDICAS REGISTRADAS AL MOMENTO DE LA CITA MEDICA</label> </div>
+                                <div class="row spa">
+                                    <div class="col-md-12">
+                                        <label for=""> NOTAS MEDICAS:</label> {{ $notes_medic[0]->observation_medical_appoinments }} 
+                                    </div>
+                                </div>
+                                <div class="row spa">
+                                    <div class="col-md-12">
+                                        @if(empty($notes_medic[0]->observation_re_medical_consusltation))
+                                            <label for="">NO TIENE RECONSULTA</label>
+                                        @else
+                                            <label for=""> SI TIENE RECONSULTA:</label> <br> OBSERVACIONES DE LA RECONSULTA: {{ $notes_medic[0]->observation_re_medical_consusltation }}
+                                        @endif
+                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                <div class="row"> <label for="">TRANSFERENCIAS MEDICAS DEL PACIENTE</label> </div>
+                                @if(empty($transfer_medic[0]->id_patient_trasfer))
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            El paciente no tuvo Transferencias medicas.
+                                        </div>
+                                    </div>
+                                @else
+                                <div class="row"> <br>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                    @foreach($transfer_medic as $dat)                                                      
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for=""> FECHA: </label>{{ date('d/m/Y', strtotime($dat->date_creation)) }}
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-3">
+                                                <label for=""> NRO. TRANSFERENCIA: </label>{{ $dat->id_transfer_patient }}
+                                            </div>
+                                        </div> <hr>                                                
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label for=""> MEDICO SOLICITANTE: </label>{{ $dat->name }} {{ $dat->apellidos }}  
+                                            </div>
+                                            <div class="col-md-4"></div>                    
+                                        </div> <hr>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for=""> TIPO TRANSFERENCIA MEDICA: </label>{{ $dat->name_type_transfer }}
+                                            </div>
+                                        </div> <br>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for=""> DIAGNOSTICO: </label>{{ $dat->diagnostic }}
+                                            </div>
+                                        </div> <br>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for=""> JUSTIFICACION TRANSFERENCIA: </label>{{ $dat->justified_transfer }}
+                                            </div>
+                                        </div> <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for=""> ORIGEN TRANSFERENCIA: </label>{{ $dat->origin_transfer }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for=""> DESTINO TRANSFERENCIA: </label>{{ $dat->destini_transfer }}
+                                            </div>
+                                        </div>  
+                                    @endforeach
+                                    </div>                                    
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="x_panel">
+                                <div class="row">
+                                    <label for=""> EXAMEN MEDICO SOLICITADO</label>
+                                </div>
+                                @if(count($exam_medics))
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <div class="row spa">
+                                                <div class="col-md-12">
+                                                    <label for=""> EXAMEN MEDICO SOLICITADO: </label>  {{ $exam_medics[0]->name_medical_exam }}
+                                                </div>                                                
+                                            </div>
+                                            <div class="row spa">
+                                                <div class="col-md-12">
+                                                    <label for=""> RAZON EXAMEN MEDICO SOLICITADO: </label>  {{ $exam_medics[0]->reason_medical_examn }}
+                                                </div>                                                
+                                            </div>
+                                            <div class="row spa">
+                                                <div class="col-md-12">
+                                                    <label for=""> OBSERVACIONES EXAMEN MEDICO SOLICITADO: </label>  {{ $exam_medics[0]->observation_medical_exam }}
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                @else
+                                    No tiene examenes medicos solicitado. 
+                                @endif
+                                <div class="row">
+                                    <label for="">RESULTADOS EXAMEN MEDICO</label>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

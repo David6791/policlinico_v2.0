@@ -46,7 +46,7 @@
                                         <tbody>
                                             <tr>
                                                 <td class="col-md-4"><label for="">CI.:</label></td>
-                                                <td> {{ $dates_patient[0]->ci }}</td>
+                                                <td> {{ $dates_patient[0]->ci_paciente }}</td>
                                             </tr>
                                             <tr>
                                                 <td class="col-md-5"><label for="">NOMBRES:</label></td>
@@ -379,7 +379,7 @@
                                                         Nombre Paciente: {{ $dat['nombres'] }} {{ $dat['ap_paterno'] }} {{ $dat['ap_materno'] }}
                                                     </div>
                                                     <div class="col-md-3">
-                                                        Ci: {{ $dat['ci'] }}
+                                                        Ci: {{ $dat['ci_paciente'] }}
                                                     </div>
                                                     <div class="col-md-3">
                                                         Edad: 
@@ -409,7 +409,7 @@
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-6">
-                                                        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Imprimir Orden Medica</button>
+                                                        <a type="button" target="_blank" href="http://10.10.165.108:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Asss.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $dates_cita_end[0]->id_medical_appointments }}" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Imprimir Orden Medica</a>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <button type="button" value="{{ $dat['id_medical_exam_patient'] }}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Editar Orden Medica</button>
@@ -501,7 +501,7 @@
                                                             Nombre Paciente: {{ $dat['nombres'] }} {{ $dat['ap_paterno'] }} {{ $dat['ap_materno'] }}
                                                         </div>
                                                         <div class="col-md-3">
-                                                            Ci: {{ $dat['ci'] }}
+                                                            Ci: {{ $dat['ci_paciente'] }}
                                                         </div>
                                                         <div class="col-md-3">
                                                             Edad: 
@@ -538,7 +538,7 @@
                                                     </div> <br>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                        <button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-print"></span> Imprimir Orden Transferencia</button>
+                                                        <a type="button" target="_blank" href="http://10.10.165.108:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Atraslado.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $dates_cita_end[0]->id_medical_appointments }}" class="btn btn-info"> <span class="glyphicon glyphicon-print"></span> Imprimir Orden Transferencia</a>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-edit"></span> Editar Orden Transferencia</button>

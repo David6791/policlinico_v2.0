@@ -117,7 +117,7 @@
                     <ul class="nav child_menu">
                       <li><a href="view_medical_appointment" class="load-page">Ver Citas Medicas </a></li>
                       <li><a href="create_medical_appointment" class="load-page">Crear Cita Medica </a></li>
-                      <li><a href="morisjs.html">Buscar Cita Medica </a></li>
+                      <li><a href="morisjs.html"> Buscar Cita Medica </a></li>
                       <li><a href="view_emergency" class="load-page">Emergencias</a></li>
                     </ul>
                   </li>
@@ -126,20 +126,25 @@
                       <li><a href="view_attention_lists" class="load-page">Ver Citas Medicas</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-clone"></i>Medicamentos <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-clone"></i> Medicamentos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="view_medicines" class="load-page">Ver Lista de Medicamentos</a></li>
                       <li><a href="view_stock_medicines" class="load-page">Stock Mecicamentos</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-clone"></i>Examenes Medicos <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-clone"></i> Examenes Medicos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="view_medical_exam" class="load-page">Ver Lista de Examenes Medicos</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-clone"></i>Historial Medico <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-clone"></i> Historial Medico <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="view_medical_record" class="load-page">Ver Historial Medico</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-clone"></i> Reportes <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="view_list_report_daily" class="load-page">Atencion diaria</a></li>
                     </ul>
                   </li>
                   <!--li><a><i class="fa fa-clone"></i>Habitaciones <span class="fa fa-chevron-down"></span></a>

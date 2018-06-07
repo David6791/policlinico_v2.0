@@ -20,7 +20,7 @@ class AttentionsController extends Controller
     }
     public function start_appointment_dates(Request $request){
         //return $request->all();
-        $query = "SELECT id_paciente, ci, ap_paterno, ap_materno, nombres, sexo, direccion, telefono, celular, fecha_nacimento, pais_nacimiento, ciudad_nacimiento, provincia, localidad_nacimiento, fecha_creacion, esta_paciente FROM medical_appointments  map
+        $query = "SELECT id_paciente, ci_paciente, ap_paterno, ap_materno, nombres, sexo, direccion, telefono, celular, fecha_nacimento, pais_nacimiento, ciudad_nacimiento, provincia, localidad_nacimiento, fecha_creacion, esta_paciente FROM medical_appointments  map
                         INNER JOIN pacientes pa
                             ON pa.id_paciente = map.id_patient
                     WHERE map.id_medical_appointments = :id_appoinments";
@@ -200,7 +200,7 @@ class AttentionsController extends Controller
             'id_user_creator' => Auth::user()->id
         ]);
         $query1 = "SELECT mep.id_medical_exam_patient, mep.id_appoinments, mep.reason_medical_examn, mep.observation_medical_exam, mep.date_creation, mass.id_user, us.name, us.apellidos,
-                        p.nombres, p.ap_paterno, p.ap_materno, p.fecha_nacimento, p.ci, mee.name_medical_exam
+                        p.nombres, p.ap_paterno, p.ap_materno, p.fecha_nacimento, p.ci_paciente, mee.name_medical_exam
                         FROM medical_exam_patients mep
                         INNER JOIN medical_appointments mapp 
                             ON mep.id_appoinments = mapp.id_medical_appointments
@@ -212,8 +212,9 @@ class AttentionsController extends Controller
                             ON p.id_paciente = mep.id_patient
                         INNER JOIN medical_exam mee
                             ON mee.id_medical_exam = mep.id_medical_exam
-                    ORDER BY id_medical_exam_patient ASC LIMIT 1";
-        $rows1=\DB::select(\DB::raw($query1));
+                    WHERE id_medical_appointments = :id_appoinments
+                        ORDER BY id_medical_exam_patient ASC LIMIT 1";
+        $rows1=\DB::select(\DB::raw($query1),array('id_appoinments'=>$request->id_appoinments));
         //return $rows1;
         return view('admin.load_pages_attentions.medical_exam')->with('exam_medic',$rows1);
     }

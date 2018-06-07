@@ -61,6 +61,14 @@ class MedicRecordsController extends Controller
         $rows3=\DB::select(\DB::raw($query3),array('id_appointments'=>$request->id_appointments)); 
         /* Trasnferencias medicas que tuvo el paciente en la cita medica */
         $query4 = "SELECT * FROM transfer_patients trp
+                        INNER JOIN medical_appointments mapp
+                            ON mapp.id_medical_appointments = trp.id_appoinments
+                        INNER JOIN medical_assignments mass
+                            ON mass.id_medical_assignments = mapp.id_medical_assignments
+                        INNER JOIN users us
+                            ON us.id = mass.id_user
+                        INNER JOIN types_transfer tp
+		                    ON trp.id_type_trasnfer = tp.id_type_transfer
                     WHERE trp.id_appoinments = :id_appointments ORDER BY id_transfer_patient ASC";
         $rows4=\DB::select(\DB::raw($query4),array('id_appointments'=>$request->id_appointments));
         /* Tratamientos del Paciente */
@@ -75,8 +83,8 @@ class MedicRecordsController extends Controller
         $query6 = "SELECT * FROM pacientes p
                     WHERE id_paciente = (SELECT id_patient FROM medical_appointments WHERE id_medical_appointments = :id_appointments)";
         $rows6=\DB::select(\DB::raw($query6),array('id_appointments'=>$request->id_appointments));
-        /*$asd =  json_decode($rows3[0]->dates_register_appoinments);
-        return $asd;*/
+        /*$asd =  json_decode($rows3[0]->dates_register_appoinments);*/
+        //return $rows1;
         return view('record_medic.load_pages_record.view_record_patients_full_details')->with('date_medic',$data)->with('exam_medics',$rows1)->with('patologies_medic',$data2)->with('notes_medic',$rows3)->with('transfer_medic',$rows4)->with('treatment_medic',$rows5)->with('paciente',$rows6);
     }
 }

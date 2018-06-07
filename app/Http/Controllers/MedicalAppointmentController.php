@@ -87,7 +87,7 @@ class MedicalAppointmentController extends Controller
     }
     public function load_patient_date(Request $request){
         //return $request->all();
-        $query = "SELECT * FROM pacientes WHERE ci = :ci";
+        $query = "SELECT * FROM pacientes WHERE ci_paciente = :ci";
         $row = \DB::select(\DB::raw($query),array('ci'=>$request->ci_patient));
         //return $row;
         return view('admin.load_pages.load_dates_patient')->with('dates_patient',$row);

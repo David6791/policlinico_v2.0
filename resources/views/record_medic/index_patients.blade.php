@@ -23,7 +23,7 @@
                             @foreach($list as $lista)
                             <tr>
                                 <td>{{ $a++ }}</td>
-                                <td>{{ $lista->ci }}</td>
+                                <td>{{ $lista->ci_paciente }}</td>
                                 <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>                 
                                 <td>{{ $lista->fecha_nacimento }}</td>
                                 <td>{{ $lista->fecha_creacion}}</td>

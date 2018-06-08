@@ -180,3 +180,5 @@ Route::post('/load_dates_record_medic_full_appoinment','MedicRecordsController@l
 
 /* Reportes del Sistema */
 Route::get('/view_list_report_daily','ReportsController@view_list_report_daily');
+Route::get('/view_list_report_month','ReportsController@view_list_report_month');
+Route::post('/send_range_dates_controller','ReportsController@send_range_dates_controller');

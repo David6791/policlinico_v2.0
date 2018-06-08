@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="row spa">
                                             <div class="col-md-12">
-                                                <label for="">CI:</label> {{ $paciente[0]->ci }}
+                                                <label for="">CI:</label> {{ $paciente[0]->ci_paciente }}
                                             </div>
                                         </div>
                                         <div class="row spa">

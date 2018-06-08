@@ -26,7 +26,7 @@
                                         </div> <br>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                CI: {{ $add['ci'] }}
+                                                CI: {{ $add['ci_paciente'] }}
                                             </div>
                                             <div class="col-md-8">
                                                 Fecha Nacimiento: {{ date('d/m/Y', strtotime($add['fecha_nacimento'])) }}

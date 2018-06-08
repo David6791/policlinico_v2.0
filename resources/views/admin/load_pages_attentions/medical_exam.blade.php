@@ -24,7 +24,7 @@
                         Nombre Paciente: {{ $dat->nombres }} {{ $dat->ap_paterno }} {{ $dat->ap_materno }}
                     </div>
                     <div class="col-md-3">
-                        Ci: {{ $dat->ci }}
+                        Ci: {{ $dat->ci_paciente }}
                     </div>
                     <div class="col-md-3">
                         Edad: 

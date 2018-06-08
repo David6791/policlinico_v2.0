@@ -357,7 +357,6 @@
                                     <div class="col-md-3"></div>
                                     <div class="col-md-6">
                                         <div class="x_panel">
-                                        @foreach($ex_medics as $dat)
                                             <div class="x_content">
                                                 <div class="row">
                                                     <div class="col-md-4"></div>
@@ -367,19 +366,19 @@
                                                 </div>                
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        Fecha: {{ date('d/m/Y', strtotime($dat['date_creation'])) }}
+                                                        Fecha: {{ date('d/m/Y', strtotime($ex_medics[0]['date_creation'])) }}
                                                     </div>
                                                     <div class="col-md-3"></div>
                                                     <div class="col-md-3">
-                                                        Nro. Cita Medica {{ $dat['id_appoinments'] }}
+                                                        Nro. Cita Medica {{ $ex_medics[0]['id_appoinments'] }}
                                                     </div>
                                                 </div> <hr>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        Nombre Paciente: {{ $dat['nombres'] }} {{ $dat['ap_paterno'] }} {{ $dat['ap_materno'] }}
+                                                        Nombre Paciente: {{ $ex_medics[0]['nombres'] }} {{ $ex_medics[0]['ap_paterno'] }} {{ $ex_medics[0]['ap_materno'] }}
                                                     </div>
                                                     <div class="col-md-3">
-                                                        Ci: {{ $dat['ci_paciente'] }}
+                                                        Ci: {{ $ex_medics[0]['ci_paciente'] }}
                                                     </div>
                                                     <div class="col-md-3">
                                                         Edad: 
@@ -387,37 +386,36 @@
                                                 </div> <hr>
                                                 <div class="row">
                                                     <div class="col-md-8">
-                                                        Medico Solicitante: {{ $dat['name'] }} {{ $dat['apellidos'] }}
+                                                        Medico Solicitante: {{ $ex_medics[0]['name'] }} {{ $ex_medics[0]['apellidos'] }}
                                                     </div>
                                                     <div class="col-md-4"></div>                    
                                                 </div> <hr>
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        Tipo Examen Medico: {{ $dat['name_medical_exam'] }}
+                                                        Tipo Examen Medico: {{ $ex_medics[0]['name_medical_exam'] }}
                                                     </div>
                                                 </div> <br>
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        Motivo Examen Medico: {{ $dat['reason_medical_examn'] }}
+                                                        Motivo Examen Medico: {{ $ex_medics[0]['reason_medical_examn'] }}
                                                     </div>
                                                 </div> <br>
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        Observaciones: {{ $dat['observation_medical_exam'] }}
+                                                        Observaciones: {{ $ex_medics[0]['observation_medical_exam'] }}
                                                     </div>
                                                 </div> <br>
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-6">
-                                                        <a type="button" target="_blank" href="http://10.10.165.108:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Asss.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $dates_cita_end[0]->id_medical_appointments }}" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Imprimir Orden Medica</a>
+                                                        <a type="button" target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Aexamen_medico.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $dates_cita_end[0]->id_medical_appointments }}" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Imprimir Orden Medica</a>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <button type="button" value="{{ $dat['id_medical_exam_patient'] }}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Editar Orden Medica</button>
+                                                        <button type="button" value="{{ $ex_medics[0]['id_medical_exam_patient'] }}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Editar Orden Medica</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
                                     </div>
                                 </div>
                                 @else
@@ -538,7 +536,7 @@
                                                     </div> <br>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                        <a type="button" target="_blank" href="http://10.10.165.108:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Atraslado.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $dates_cita_end[0]->id_medical_appointments }}" class="btn btn-info"> <span class="glyphicon glyphicon-print"></span> Imprimir Orden Transferencia</a>
+                                                        <a type="button" target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Atraslado.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $dates_cita_end[0]->id_medical_appointments }}" class="btn btn-info"> <span class="glyphicon glyphicon-print"></span> Imprimir Orden Transferencia</a>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-edit"></span> Editar Orden Transferencia</button>

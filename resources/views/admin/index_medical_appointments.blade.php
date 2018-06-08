@@ -33,7 +33,8 @@
                             <td>{{ $lista->start_time }}</td>
                             <td><button type="button" class="fa-hover btn btn-warning btn-xs modifi_state_appointment" value="{{$lista->id_medical_appointments}}"><i class="fa fa-cog"></i></button> {{ $lista->name_state_appointments }} </td>
                             <td>{{ $lista->m_name }} {{ $lista->m_apellidos }}</td>
-                            <td><button type="button" class="btn btn-primary btn-xs get_ViewAppointments" value="{{$lista->id_medical_appointments}}">Ver Detalles</button></td>
+                            <td><button type="button" class="btn btn-primary btn-xs get_ViewAppointments" value="{{$lista->id_medical_appointments}}">Ver Detalles</button><a target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Aboleta_reserva_2.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $lista->id_medical_appointments }}" type="button" class="btn btn-primary btn-xs" >Imprimir</a></td>
+                            
                         </tr>
                     @else
                         <tr bgcolor="F0FCEB">
@@ -45,7 +46,8 @@
                             <td>{{ $lista->start_time }}</td>
                             <td><button type="button" class="fa-hover btn btn-warning btn-xs modifi_state_appointment" value="{{$lista->id_medical_appointments}}"><i class="fa fa-cog"></i></button> {{ $lista->name_state_appointments }} </td>
                             <td>{{ $lista->m_name }} {{ $lista->m_apellidos }}</td>
-                            <td><button type="button" class="btn btn-primary btn-xs get_ViewAppointments" value="{{$lista->id_medical_appointments}}">Ver Detalles</button></td>
+                            <td><button type="button" class="btn btn-primary btn-xs get_ViewAppointments" value="{{$lista->id_medical_appointments}}">Ver Detalles</button><a target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Aboleta_reserva_2.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ $lista->id_medical_appointments }}" type="button" class="btn btn-primary btn-xs" >Imprimir</a></td>
+                            
                         </tr>
                     @endif
                     @endforeach

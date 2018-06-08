@@ -1037,4 +1037,33 @@ $(function(){
 
         })
     })
+    $(document).on('click','.send_range_dates',function(e){
+        //alert($(this).attr('value'))
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/send_range_dates_controller',
+            data:$(this).serialize(),
+            data:{date_start:$('input:text[name=date_start]').val(),date_end:$('input:text[name=date_end]').val(),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                if(data.length>1){
+                    swal(
+                        'Error!',
+                        'No Existen Citas Atendidas en el Rango!',
+                        'error'
+                      )
+                      $('.load_table_range_date').html(data)                       
+                }else{
+                    swal(
+                        'Correcto!',
+                        'Datos Cargados Correctamente!',
+                        'success'
+                      )
+                    $('.load_table_range_date').html(data)                     
+                }                
+            },error:function(data){
+            }
+
+        })
+    })
 })

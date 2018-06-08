@@ -182,3 +182,6 @@ Route::post('/load_dates_record_medic_full_appoinment','MedicRecordsController@l
 Route::get('/view_list_report_daily','ReportsController@view_list_report_daily');
 Route::get('/view_list_report_month','ReportsController@view_list_report_month');
 Route::post('/send_range_dates_controller','ReportsController@send_range_dates_controller');
+Route::get('/view_list_report_daily_all','ReportsController@view_list_report_daily_all');
+Route::get('/view_list_report_range_daily_all','ReportsController@view_list_report_range_daily_all');
+Route::post('/send_range_dates_controller_full_user','ReportsController@send_range_dates_controller_full_user');

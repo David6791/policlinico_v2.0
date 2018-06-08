@@ -21,7 +21,7 @@
                                     <th>NOMBRE PACIENTE</th>
                                     <th>HORA ATENCION</th>
                                     <th>ESTADO CITA MEDICA</th>
-                                    <th>DESCRIPCION CITA</th>
+                                    <th>MEDICO ATENDIO</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,10 +30,10 @@
                                     <tr>
                                         <td> {{ $a++ }}</td>
                                         <td> {{ $lista->ci_paciente }} </td>
-                                        <td> {{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }}</td>
+                                        <td> {{ $lista->pac }}</td>
                                         <td> {{ $lista->start_time }}</td>
                                         <td> {{ $lista->name_state_appointments }}</td>
-                                        <td> {{ $lista->appointment_description}} </td>
+                                        <td> {{ $lista->doc}} </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -46,7 +46,7 @@
             <div class="col-md-10"></div>
             <div class="col-md-2">
                 <!--a class="btn btn-success" target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Aatencion_diaria_medicos.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{Auth::user()->id}}"> <span class="glyphicon glyphicon-print "></span> Imprimir</a-->
-                <a class="btn btn-success" target="_blank" href="http://10.10.165.108:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Aatencion_diaria_medicos.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{Auth::user()->id}}"> <span class="glyphicon glyphicon-print "></span> Imprimir</a>                
+                <a class="btn btn-success" target="_blank" href="http://10.10.165.108:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Aatencion_diaria_medicos.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{Auth::user()->id}}"> <span class="glyphicon glyphicon-print "></span> Imprimir Reporte Diario</a>                
             </div>
         </div>       
     </div>

@@ -150,7 +150,8 @@
                   </li>
                   <li><a><i class="fa fa-clone"></i> Reportes en General<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                     
+                      <li><a href="view_list_report_daily_all" class="load-page">Atencion Diaria Completa</a></li>
+                      <li><a href="view_list_report_range_daily_all" class="load-page">Rango de Fechas Completo</a></li>
                     </ul>
                   </li>
                   <!--li><a><i class="fa fa-clone"></i>Habitaciones <span class="fa fa-chevron-down"></span></a>

@@ -26,7 +26,7 @@ class MedicRecordsController extends Controller
             $asdd = json_decode($asd);
             $data3[]=json_decode($asdd,true);
         }
-        //return $data3;
+        //return $data3;   
         return view('record_medic.load_pages_record.view_record_patients_full')->with('list_record',$data3);
     }
     public function load_dates_record_medic_full_appoinment(Request $request){

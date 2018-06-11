@@ -48,6 +48,7 @@ class AttentionsController extends Controller
                         on ta.id_type_appointments = map.type_appoinment
                     where id_medical_appointments = :id_appoinments AND state_appointments = 3";
         $rows3=\DB::select(\DB::raw($query3),array('id_appoinments'=>$request->id_appointments));
+
         $query4 = "SELECT * FROM stock_medicines sm
                         INNER JOIN medicines m
                             ON m.id_medicines = sm.id_medicine
@@ -90,7 +91,27 @@ class AttentionsController extends Controller
             $data3[]=json_decode($asdd,true);
         }
         //return $data3;
-        return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2)->with('types_transfer',$data3);
+        $query7 = "SELECT count(id_treatment) FROM treatment_patients WHERE id_medical_appointments = :id_appointments";
+        $rows7=\DB::select(\DB::raw($query7),array('id_appointments'=>$request->id_appointments));
+
+        $query8 = "SELECT * FROM treatment_patients tp
+                    INNER JOIN treatment_details td
+                        ON tp.id_treatment = td.id_treatment
+                    INNER JOIN medicines m
+                        ON m.id_medicines = td.id_medicine
+                WHERE tp.id_medical_appointments = :id_appointments";
+        $rows8=\DB::select(\DB::raw($query8),array('id_appointments'=>$request->id_appointments));
+        //return $rows7[0]->count;
+        if($rows7[0]->count === 0){
+            //return $rows7;
+            $array1 = ["detalle"=>'si'];
+            //return $array1['detalle'];
+            return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2)->with('types_transfer',$data3)->with('control',$array1);
+        }else{
+            return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2)->with('types_transfer',$data3)->with('control',$array1)->with('view_treatment',$rows8);
+        }
+        return $rows7;
+        //return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2)->with('types_transfer',$data3);
     }
     public function load_dates_appoinment(Request $request){
         return $request->all();

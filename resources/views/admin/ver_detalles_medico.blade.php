@@ -80,7 +80,7 @@
                         </table>
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-block btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Actualizar Datos Personales</button>
+                                <button type="button" class="btn btn-block btn-info btn-xs" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Actualizar Datos Personales</button>
                             </div>
                             <div class="col-md-6">
                                 <button type="button" class="btn btn-block btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Actualizar Especialidades</button>

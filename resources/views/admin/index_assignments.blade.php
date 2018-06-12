@@ -24,10 +24,10 @@
                     <td>{{ $lista->name }} {{ $lista->apellidos }}</td>
                     <td>{{ $lista->nombre_tipo }}</td>
                     <td>
-                        <button class="btn btn-success btn-xs viewAssignments" name="id_user" value="{{$lista->id_user}}">Ver Asignaciones</button>
+                        <button class="btn btn-warning btn-xs viewAssignments" name="id_user" value="{{$lista->id_user}}"> <span class="glyphicon glyphicon-eye-open"></span> Ver Asignaciones</button>                        
                     </td>
                     <td>{{ $lista->nombre_tipo }}</td>
-                    <td><button class="btn btn-primary btn-xs editAssignments" name="id_assignments" value="{{$lista->id_user}}">Editar Especialidad</button></td>               
+                    <td><button class="btn btn-primary btn-xs editAssignments" name="id_assignments" value="{{$lista->id_user}}"> <span class="glyphicon glyphicon-edit"></span> Editar Especialidad</button><button class="btn btn-success btn-xs" name="id_user" value="{{$lista->id_user}}"> <span class="glyphicon glyphicon-print"></span> Imprmir</button> </td>               
                 </tr>
                 @endforeach
             </tbody>
@@ -36,7 +36,7 @@
     <div class="x_footer">
         <div class="row">
             <div class="col-md-10"></div>
-            <div class="col-md-2"><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar Nueva Asignacion</button></div>
+            <div class="col-md-2"><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <span class="glyphicon glyphicon-plus  "></span> Agregar Nueva Asignacion</button></div>
         </div>
     </div>
 </div>

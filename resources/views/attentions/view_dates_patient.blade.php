@@ -21,6 +21,8 @@
                 </li>
                 <li role="presentation" class=""><a href="#tab_content7" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Traslado de Paciente</a>
                 </li>
+                <li role="presentation" class=""><a href="#tab_content8" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Finalizar Cita Medica</a>
+                </li>
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
@@ -229,6 +231,7 @@
                                 <label for="">Registro de Tratamiento</label>
                             </div>
                             <div class="x_content">
+                                @if(($control['detalle'])=='si')
                                 <form class="form-horizontal form_send_dates_treatment" action="{{url('save_dates_treatment')}}" method="post">
                                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                     <input type="hidden" name="id_appoinments" value="{{ $dates_cita_end[0]->id_medical_appointments }}">
@@ -330,6 +333,10 @@
                                         </div>
                                     </div>
                                 </form>
+                                @else
+                                    no
+                                @endif
+                                
                             </div>
                         </div>
                 </div>
@@ -633,6 +640,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_content8" aria-labelledby="">
+                    Finalizar Cita medica
                 </div>
             </div>
         </div>

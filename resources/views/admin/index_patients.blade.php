@@ -23,13 +23,13 @@
                                     @foreach($list_patients as $lista)
                                         <tr>   
                                             <td>{{ $a++ }}</td>
-                                            <td>{{ $lista->ci }}</td>
+                                            <td>{{ $lista->ci_paciente }}</td>
                                             <td>{{ $lista->nombres }} {{ $lista->ap_paterno }} {{ $lista->ap_materno }} </td>
                                             <td>{{ $lista->sexo }}</td>
                                             <td>{{ $lista->fecha_nacimento }}</td>
                                             <td>{{ $lista->localidad_nacimiento }}</td>
                                             <td>{{ $lista->esta_paciente }}</td>
-                                            <td><button class="btn btn-success btn-xs">Ver Detalles</button></td>
+                                            <td><button class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-eye-open"></span> Ver</button> <button class="btn btn-info btn-xs"> <span class="glyphicon glyphicon-print"></span> Imprimir</button> <button class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</button></td>
                                         </tr>
                                     @endforeach
                             </tbody>

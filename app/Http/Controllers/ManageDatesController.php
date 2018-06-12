@@ -48,8 +48,10 @@ class ManageDatesController extends Controller
     public function index_data_medical_appointment(){
         $query = "select * from schedules order by id_schedule";
         $rows=\DB::select(\DB::raw($query));
+        return $rows;
         return view('manage_dates.data_medical_appointment')->with('list',$rows);
     }
+
     public function index_register_data_medical_appointment(){
         $query = "select * from dates_of_register order by id_date_register";
         $rows=\DB::select(\DB::raw($query));

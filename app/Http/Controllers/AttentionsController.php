@@ -108,6 +108,7 @@ class AttentionsController extends Controller
             //return $array1['detalle'];
             return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2)->with('types_transfer',$data3)->with('control',$array1);
         }else{
+            $array1 = ["detalle"=>'no'];
             return view('attentions.view_dates_patient')->with('dates_patient',$rows)->with('list_app',$row)->with('dat',$rows2)->with('dates_cita_end',$rows3)->with('list_mecines_disponibles',$rows4)->with('ex_medics',$data2)->with('types_transfer',$data3)->with('control',$array1)->with('view_treatment',$rows8);
         }
         return $rows7;

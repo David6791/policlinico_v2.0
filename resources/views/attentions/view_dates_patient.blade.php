@@ -334,11 +334,23 @@
                                     </div>
                                 </form>
                                 @else
-                                    no
-                                @endif
-                                
+                                    <div class="row">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <label for="">Tratamiento Registrado del Paciente</label>
+                                            </div>
+                                            <div class="x_content">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif                                
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content5" aria-labelledby="profile-tab">
                     <div class="row">
@@ -642,12 +654,30 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content8" aria-labelledby="">
-                    Finalizar Cita medica
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <label for="">Desea terminar la Cita Medica...?</label>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-md-2 col-md-offset-5">
+                                    <div class="center-block">
+                                        <button type="button" class="btn btn-warning end_medical_appointments">Finalizar Cita Medica</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<style>
+.center-block{
+    position:relative;
+}
+</style>
 <script>
     $('#datatable').DataTable();
     $('#myDatepicker3').datepicker({});

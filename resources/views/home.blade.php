@@ -101,7 +101,7 @@
                     <ul class="nav child_menu">
                       <li><a href="index_schedules" class="load-page">Horarios</a></li>
                       <li><a href="index_assignment" class="load-page">Asignacion de Horarios</a></li>
-                      <li><a href="typography.html">Impresion de Horarios</a></li>
+                      <!--li><a href="typography.html">Impresion de Horarios</a></li-->
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Administrar Datos <span class="fa fa-chevron-down"></span></a>
@@ -124,6 +124,7 @@
                   <li><a><i class="fa fa-clone"></i>Atencion Citas Medicas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="view_attention_lists" class="load-page">Ver Citas Medicas</a></li>
+                      <li><a href="view_attention_lists_full_medic" class="load-page">Ver Citas Medicas Atendidas</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-clone"></i> Medicamentos <span class="fa fa-chevron-down"></span></a>
@@ -163,7 +164,7 @@
                   </li-->
                 </ul>
               </div>
-              <div class="menu_section">
+              <!--div class="menu_section">
                 <h3>Live On</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
@@ -204,7 +205,7 @@
                   </li>                  
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
-              </div>
+              </div-->
 
             </div>
             <!-- /sidebar menu -->

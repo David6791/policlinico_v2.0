@@ -40,7 +40,7 @@ class UsersController extends Controller
         $rows=\DB::select(\DB::raw($query));
         $query1 = "select * from estados_civil order by id_estado_civil asc";
         $rows1=\DB::select(\DB::raw($query1));
-        $query2 = "select * from especialidades where tipo_usuario = 2 order by id_especialidad asc";
+        $query2 = "select * from especialidades where tipo_usuario = 2 and estado_especialidad = 'Activo' order by id_especialidad asc";
         $rows2=\DB::select(\DB::raw($query2));
         return view('admin.crear_medico')->with('rows',$rows)->with('rows1',$rows1)->with('rows2',$rows2);
     }
@@ -105,7 +105,7 @@ class UsersController extends Controller
         $rows=\DB::select(\DB::raw($query),array('id_medico'=>$request->id_medico));
         $query1 = "select es.id_especialidad, es.nombre_especialidad
         from especialidades es
-        where es.tipo_usuario = :tip and es.id_especialidad  NOT IN
+        where es.tipo_usuario = :tip and es.estado_especialidad = 'Activo' and es.id_especialidad  NOT IN
             (
                 select id_especialidad 
                 from usuarios_especialidades
@@ -186,5 +186,25 @@ class UsersController extends Controller
                 }
             }
         }    
+    }
+    public function update_users(Request $request){
+        //return $request->all();
+        $update_user = DB::table('users')
+            ->where('id', '=', $request->id_user)
+            ->update([
+                'name' => $request->name_user,
+                'apellidos' => $request->apellidos,
+                'fecha_nacimiento' => $request->fecha_nacimiento,
+                'ci' => $request->ci_patient,
+                'email' => $request->email,
+                'ocupacion' => $request->profesion,
+                'telefono' => $request->telefono,
+                'celular' => $request->celular,
+                'estado_civil' => $request->estado_civil
+            ]);
+            return redirect()->action(
+                'UsersController@index_medico'
+            );
+            //return back()->withInput();
     }
 }

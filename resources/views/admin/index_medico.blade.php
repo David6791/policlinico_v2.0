@@ -31,7 +31,7 @@
                     @else
                         <td><button class="btn btn-danger btn-xs get_BajaUser" name="id_medico" value="{{$lista->id}}"> <span class="glyphicon glyphicon-arrow-down"></span> Inactivo</button></td>
                     @endif   
-                    <td><button class="btn btn-info btn-xs getVerMedico" name="id_medico" value="{{$lista->id}}"> <span class="glyphicon glyphicon-eye-open"></span> Ver</button> <button class="btn btn-danger btn-xs " name="id_medico" value="{{$lista->id}}"> <span class="glyphicon glyphicon-edit"></span> Editar</button> <button class="btn btn-primary btn-xs " name="id_medico" value="{{$lista->id}}"> <span class="glyphicon glyphicon-print"></span> Imprimir</button></td>
+                    <td><button class="btn btn-info btn-xs getVerMedico" name="id_medico" value="{{$lista->id}}"> <span class="glyphicon glyphicon-eye-open"></span> Ver</button> <button class="btn btn-primary btn-xs " name="id_medico" value="{{$lista->id}}"> <span class="glyphicon glyphicon-print"></span> Imprimir</button></td>
                 </tr>
                 @endforeach
             </tbody>

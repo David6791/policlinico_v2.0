@@ -161,12 +161,12 @@ class AttentionsController extends Controller
                 'observation_re_medical_consusltation' => $request->observations_appointments,
                 're_medical_consultation' => 'S'
             ]);
-            $add_re = DB::table('medical_appointments')
+            /*$add_re = DB::table('medical_appointments')
             ->where('id_medical_appointments', '=', $request->id_appoinments)
             ->update([
                 'reconsulta_register' => 'S',
                 'state_appointments' => 1
-            ]);
+            ]);*/
         }else{
             DB::table('notes_medic_dates_appoinments')->insert([
                 'id_medical_appoinments' => $request->id_appoinments,
@@ -208,6 +208,14 @@ class AttentionsController extends Controller
             $query2 = "SELECT update_stock(:id_medicine, :quantity)";
             $rows=\DB::select(\DB::raw($query2),array('id_medicine'=>$request->id_medicine[$i],'quantity'=>$request->cantidad[$i]));    
         }
+        $query1 = "SELECT * FROM treatment_patients tp
+                        INNER JOIN treatment_details td
+                            ON tp.id_treatment = td.id_treatment
+                        INNER JOIN medicines m
+                            ON m.id_medicines = td.id_medicine
+                    WHERE tp.id_medical_appointments = :id_appointments";
+        $rows1=\DB::select(\DB::raw($query1),array('id_appointments'=>$request->id_appoinments));
+        return view('admin.load_pages_attentions.medical_treatment')->with('treat',$rows1);     
     }
     public function register_medical_exam(Request $request){
         //return $request->all();
@@ -266,5 +274,23 @@ class AttentionsController extends Controller
                     WHERE id_appoinments = :id_appo";
         $rows1=\DB::select(\DB::raw($query1),array('id_appo'=>$request->id_appoinments));
         return view('admin.load_pages_attentions.medical_transfer')->with('transfer_medic',$rows1);
+    }
+    public function end_medical_appointment(Request $request){
+        //return $request->all();
+        $add_re = DB::table('medical_appointments')
+            ->where('id_medical_appointments', '=', $request->id_appointments)
+            ->update([
+                'reconsulta_register' => 'S',
+                'state_appointments' => 1
+            ]);
+            return redirect()->action(
+                'AttentionsController@view_attention_list'
+            );
+    }
+    public function view_attention_lists_full_medic(){
+        $query = "select * from view_list_appoinments_atendidos(:id_user)";
+        $rows=\DB::select(\DB::raw($query),array('id_user'=>Auth::user()->id));
+        //return $rows;
+        return view('attentions.view_appoinments_list_completo')->with('list',$rows);
     }
 }

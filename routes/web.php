@@ -27,6 +27,7 @@ Route::post('/verMedicos', 'UsersController@verMedico');
 Route::post('update1/{id}', 'UsersController@update1');
 Route::post('/darBajaUser', 'UsersController@baja_user');
 
+Route::post('/update_users', 'UsersController@update_users');
 
 
 Route::get('/index_enfermeras', 'UsersController@index_enfermera');
@@ -118,6 +119,8 @@ Route::post('/save_dates_appoinments_dates','AttentionsController@save_dates_app
 Route::post('/load_medicine_table','AttentionsController@load_medicine_table');
 Route::post('/save_dates_treatment','AttentionsController@save_dates_treatment'); 
 Route::post('/store_patients_transfer','AttentionsController@store_patients_transfer');
+Route::post('/end_medical_appointment','AttentionsController@end_medical_appointment');
+Route::get('/view_attention_lists_full_medic','AttentionsController@view_attention_lists_full_medic'); 
 
 
 

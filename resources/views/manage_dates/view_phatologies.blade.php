@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-md-9"></div>
                 <div class="col-md-3">
-                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#create_phatologies" data-whatever="@mdo">Agregar nueva Patologia</button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#create_phatologies" data-whatever="@mdo"> <span class="glyphicon glyphicon-plus"></span> Agregar nueva Patologia</button>
                 </div>
             </div>
         </div>

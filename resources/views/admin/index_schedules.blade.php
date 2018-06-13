@@ -27,9 +27,9 @@
                     <td>{{ $lista->schedules_end }}</td>
                     <td>{{ $lista->description }}</td>
                     @if($lista->state==='activo')
-                    <td><button class="btn btn-success btn-xs get_BajaSchedule" name="id_medico" value="{{$lista->id_schedule}}"> <span class="glyphicon glyphicon-arrow-up"></span> Activo</button></td>
+                    <td><button type="button" class="btn btn-success btn-xs get_BajaSchedule" name="id_medico" value="{{$lista->id_schedule}}"> <span class="glyphicon glyphicon-arrow-up"></span> Activo</button></td>
                     @else
-                    <td><button class="btn btn-danger btn-xs get_BajaSchedule" name="id_medico" value="{{$lista->id_schedule}}"> <span class="glyphicon glyphicon-arrow-down"></span> Inactivo</button></td>
+                    <td><button type="button" class="btn btn-danger btn-xs get_BajaSchedule" name="id_medico" value="{{$lista->id_schedule}}"> <span class="glyphicon glyphicon-arrow-down"></span> Inactivo</button></td>
                     @endif 
                     <td><div class="col-md-2"><button type="button" class="btn btn-primary btn-xs get_EditSchedule" value="{{$lista->id_schedule}}"> <span class="glyphicon glyphicon-edit"></span> Editar Horario</button></div></td>
                 </tr>

@@ -77,30 +77,61 @@ class AssignmentsController extends Controller
                         ON us.tipo_usuario = tus.id_tipo
                             INNER JOIN schedules sch
                         ON sch.id_schedule = mass.id_schedul
-                    WHERE id_user = :id";
+                    WHERE id_user = :id AND state_assignments = 'activo'";
         $rows=\DB::select(\DB::raw($query),array('id'=>$request->id_user));
         return $rows;
     }
     public function edit_Assignment(Request $request){
-        $query = "SELECT sch.id_schedule, mass.id_user, tus.nombre_tipo, us.name, us.apellidos, sch.name_schedules, sch.schedules_start, sch.schedules_end FROM medical_assignments mass 
+        $query = "SELECT sch.id_schedule, mass.id_user, tus.nombre_tipo, us.name, us.apellidos, sch.name_schedules, sch.schedules_start, sch.schedules_end, mass.state_assignments FROM medical_assignments mass 
                             INNER JOIN users us
                         ON us.id = mass.id_user
                             INNER JOIN tipo_usuarios tus
                         ON us.tipo_usuario = tus.id_tipo
                             INNER JOIN schedules sch
                         ON sch.id_schedule = mass.id_schedul
-                    WHERE id_user = :id";
+                    WHERE id_user = :id AND mass.state_assignments = 'activo'";
         $rows=\DB::select(\DB::raw($query),array('id'=>$request->id_user));
         $query1 = "SELECT sch.id_schedule, sch.name_schedules FROM schedules sch 
-                        WHERE sch.state = 'activo' AND sch.id_schedule NOT IN(
-                            SELECT mass.id_schedul
-                            FROM medical_assignments mass
-                            WHERE mass.id_user = :id)";
+        WHERE  sch.state = 'activo' AND  sch.id_schedule NOT IN(
+            SELECT mass.id_schedul
+            FROM medical_assignments mass
+            WHERE mass.id_user = :id and state_assignments = 'activo')";
         $rows1=\DB::select(\DB::raw($query1),array('id'=>$request->id_user));
         return $var=['datos'=>$rows, 'datos1'=>$rows1];
     }
     public function save_edit_assignment(Request $request){
-        return $request->all();
-        //Terminar de hacer aqui llamando las funciones de DB
+        //return $request->all();
+        //Terminar de hacer aqui llamando las funciones de DB eliminar_schedul
+        if(isset($request->schedul_remove)){
+            foreach($request->schedul_remove as $esp){
+                //return $esp;
+                if($esp!=0)
+                {
+                    $query1 = "select public.agregar_horario(:id, :id_espe)";
+                    $rows2 = \DB::select(\DB::raw($query1),array('id'=>$request->id_user,'id_espe'=>$esp));        
+                }
+            }
+        }
+        /*foreach($request->schedul_remove as $esp){
+            //return $esp;
+            if($esp!=0)
+            {
+                $query1 = "select public.agregar_horario(:id, :id_espe)";
+                $rows2 = \DB::select(\DB::raw($query1),array('id'=>$request->id_user,'id_espe'=>$esp));        
+            }
+        }*/
+        if(isset($request->schedul_add)){
+            foreach($request->schedul_add as $esp){
+                //return $esp;
+                if($esp!=0)
+                {
+                    $query2 = "select public.eliminar_schedul(:id, :id_espe)";
+                    $rows3 = \DB::select(\DB::raw($query2),array('id'=>$request->id_user,'id_espe'=>$esp));
+                }
+            }
+        }
+        return redirect()->action(
+            'AssignmentsController@index_Assignments'                   
+        );
     }
 }

@@ -116,9 +116,10 @@
                   <li><a><i class="fa fa-table"></i> Citas Medicas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="view_medical_appointment" class="load-page">Ver Citas Medicas </a></li>
-                      <li><a href="create_medical_appointment" class="load-page">Crear Cita Medica </a></li>
-                      <li><a href="morisjs.html"> Buscar Cita Medica </a></li>
+                      <li><a href="create_medical_appointment" class="load-page">Crear Cita Medica </a></li>                      
                       <li><a href="view_emergency" class="load-page">Emergencias</a></li>
+                      <li><a href="morisjs.html"> Editar Reserva</a></li>
+                      <li><a href="morisjs.html"> Confirmar Cita Medica</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-clone"></i>Atencion Citas Medicas <span class="fa fa-chevron-down"></span></a>

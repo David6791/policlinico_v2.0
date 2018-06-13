@@ -80,10 +80,10 @@
                         </table>
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-block btn-info btn-xs" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Actualizar Datos Personales</button>
+                                <button type="button" class="btn btn-block btn-info btn-xs" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"> <span class="glyphicon glyphicon-edit"></span> Actualizar Datos Personales</button>
                             </div>
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-block btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Actualizar Especialidades</button>
+                                <button type="button" class="btn btn-block btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo"> <span class="glyphicon glyphicon-edit"></span> Actualizar Especialidades</button>
                             </div>
                         </div>
                     </div>
@@ -157,3 +157,121 @@
         </div>
     </div>
 </div>
+<div class="modal fade bs-example-modal-lg in" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Actualizar Datos del Medico: <label for=""> Ci: {{ $rows[0]->ci }}</label></h4>
+        </div>
+        <div class="modal-body">
+            <form class="sendform_update_users" action="{{url('update_users')}}" method="post">
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            <input type="hidden" name="id_user" value="{{ $rows[0]->id }}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">CI:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" name="ci_patient" placeholder="Default Input" value="{{ $rows[0]->ci }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombres:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="name_user" value="{{ $rows[0]->name }}">
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">A. Paterno:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="apellidos" value="{{ $rows[0]->apellidos }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">A. Materno:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input">
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha Nac.:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="fecha_nacimiento" value="{{ $rows[0]->fecha_nacimiento }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Profesion:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="profesion" value="{{ $rows[0]->ocupacion }}">
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado Civil:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="estado_civil" value="{{ $rows[0]->estado_civil }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Email:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="email" value="{{ $rows[0]->email }}">
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="telefono" value="{{ $rows[0]->telefono }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Celular:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input" name="celular" value="{{ $rows[0]->celular }}">
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="row">
+                    <div class="col-md-12 center">
+                        <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-floppy-disk"></span> Guardar Datos</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">            
+        </div>
+        </div>
+    </div>
+</div>
+<style>
+.center{
+    text-align: center;
+}
+</style>

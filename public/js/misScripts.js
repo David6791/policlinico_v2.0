@@ -363,6 +363,7 @@ $(function(){
     })
     /* Editar asignacion de Horarios a  usuarios  */
     $(document).on('submit','.send_form_assignments_edit',function(e){
+        $('#modalEditAssignments').modal('toggle')
         $.ajaxSetup({
             header:$('meta[name="_token"]').attr('content')
         })
@@ -907,7 +908,8 @@ $(function(){
             url:$(this).attr('action'),
             data:$(this).serialize(),
             success:function(data){  
-                $("#contentGlobal").html(data)          
+                $(".borrar_1").remove()
+                $(".treat_content").html(data)          
                 swal(
                     'Felicidades',
                     'Se registro correctamente el Nuevo Dato Medico',
@@ -1064,7 +1066,7 @@ $(function(){
             },error:function(data){
             }
         })
-    })
+    }) 
     $(document).on('click','.send_range_dates_full_users',function(e){
         //alert($(this).attr('value'))
         e.preventDefault(e)
@@ -1092,6 +1094,48 @@ $(function(){
             },error:function(data){
             }
 
+        })
+    })
+    $(document).on('click','.end_medical_appointments',function(e){
+        //alert($(this).attr('value'))
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/end_medical_appointment',
+            data:$(this).serialize(),
+            data:{id_appointments:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)                
+            },error:function(data){
+            }
+
+        })
+    })
+    $(document).on('submit','.sendform_update_users',function(e){
+        $('#exampleModal2').modal('toggle')
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){
+                $("#contentGlobal").html(data)
+                swal(
+                    'Felicidades',
+                    'Se registro correctamente el Nuevo Dato Medico',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
         })
     })
 })

@@ -48,7 +48,7 @@ class ManageDatesController extends Controller
     public function index_data_medical_appointment(){
         $query = "select * from schedules order by id_schedule";
         $rows=\DB::select(\DB::raw($query));
-        return $rows;
+        return '$rows';
         return view('manage_dates.data_medical_appointment')->with('list',$rows);
     }
 
@@ -98,6 +98,13 @@ class ManageDatesController extends Controller
                 'pregunta_dato_medico' => $request->mesage_answer_yes,
                 'pregunta_mostrar' => $request->question_view
             ]);
+        return redirect()->action(
+            'ManageDatesController@index_medical_date'
+        );
+    }
+    public function get_BajaDatemedics(Request $request){
+        $query = "select * from eliminar_date_medic(:pat,:us)";
+        $rows=\DB::select(\DB::raw($query),array('pat'=>$request->id,'us'=>Auth::user()->id));
         return redirect()->action(
             'ManageDatesController@index_medical_date'
         );

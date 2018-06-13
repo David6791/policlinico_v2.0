@@ -152,6 +152,7 @@ Route::post('/edit_medical_dates','ManageDatesController@edit_medical_dates');
 
 Route::get('/index_data_medical_appointments','ManageDatesController@index_data_medical_appointment');
 Route::get('/index_register_data_medical_appointments','ManageDatesController@index_register_data_medical_appointment');
+Route::post('/get_BajaDatemedics','ManageDatesController@get_BajaDatemedics');
 
 
 /* Rutas para el registro de Medicamentos */

@@ -1254,4 +1254,19 @@ $(function(){
             }
         })
     })
+    $(document).on('click','.get_BajaDatemedic',function(e){   
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/get_BajaDatemedics',
+            data:{id:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)   
+                
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })
+    })
 })

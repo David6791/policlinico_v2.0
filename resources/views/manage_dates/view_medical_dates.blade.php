@@ -26,7 +26,11 @@
                                     <td> {{ $lista->nombre_dato_medico }}</td>
                                     <td> {{ $lista->pregunta_dato_medico }}</td>
                                     <td> {{ $lista->pregunta_mostrar }}</td>
-                                    <td> {{ $lista->estado_dato_medico }} </td>
+                                    @if($lista->estado_dato_medico==='activo')
+                                        <td><button class="btn btn-success btn-xs get_BajaDatemedic" name="id_medico" value="{{$lista->id_dato_medico}}"> <span class="glyphicon glyphicon-arrow-up"></span> Activo</button></td>
+                                    @else
+                                        <td><button class="btn btn-danger btn-xs get_BajaDatemedic" name="id_medico" value="{{$lista->id_dato_medico}}"> <span class="glyphicon glyphicon-arrow-down"></span> Inactivo</button></td>
+                                    @endif  
                                     <td> {{ $lista->fecha_creacion_dato_medico }} </td>
                                     <td> <button class="btn btn-warning btn-xs edit_medical_dates" value="{{ $lista->id_dato_medico }}" data-original-title="Editar"><span class="glyphicon glyphicon-edit"></span> Actualizar   </button> </td>
                                 </tr>

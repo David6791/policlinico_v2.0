@@ -1138,4 +1138,120 @@ $(function(){
             }
         })
     })
+    $(document).on('click','.edit_phatologies_function',function(e){
+        //alert($(this).attr('value'))
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/edit_patologies_charge',
+            data:$(this).serialize(),
+            data:{id_patologie:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#edit_phatologies').modal({
+                    show: 'true',
+                    backdrop: 'static',
+                    keyboard: false,
+                })  
+                $('#id_pathologie').val(data[0].id_patologia)
+                $('#name_pat').val(data[0].nombre_patologia)
+                $('#phatologie_description').val(data[0].descripcion_patologia)
+                //$("#contentGlobal").html(data)                
+            },error:function(data){
+            }
+
+        })
+    })
+    $(document).on('submit','.sendform_phatologies_edit',function(e){
+        $('#edit_phatologies').modal('toggle')
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){
+                $("#contentGlobal").html(data)
+                swal(
+                    'Felicidades',
+                    'Se registro correctamente el Nuevo Dato Medico',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
+    $(document).on('click','.get_BajaPatologie',function(e){   
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/darBajaPatologie',
+            data:{id:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)   
+                
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })
+    })
+    $(document).on('click','.edit_medical_dates',function(e){
+        alert($(this).attr('value'))
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/edit_medical_charge',
+            data:$(this).serialize(),
+            data:{id_date_medic:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $('#edit_medical_dates').modal({
+                    show: 'true',
+                    backdrop: 'static',
+                    keyboard: false,
+                })  
+                $('#id_date_medic').val(data[0].id_dato_medico)
+                $('#name_medical_date').val(data[0].nombre_dato_medico)
+                $('#mesage_answer_yes').val(data[0].pregunta_dato_medico)
+                $('#question_view').val(data[0].pregunta_mostrar)
+                //$("#contentGlobal").html(data)                
+            },error:function(data){
+            }
+
+        })
+    })
+    $(document).on('submit','.sendform_medicla_dates_edit',function(e){
+        $('#edit_medical_dates').modal('toggle')
+        $.ajaxSetup({
+            header:$('meta[name="_token"]').attr('content')
+        })
+        e.preventDefault(e)
+        $.ajax({
+            type:$(this).attr('method'),
+            url:$(this).attr('action'),
+            data:$(this).serialize(),
+            success:function(data){
+                $("#contentGlobal").html(data)
+                swal(
+                    'Felicidades',
+                    'Se registro correctamente el Nuevo Dato Medico',
+                    'success'
+                  )
+            },
+            error:function(data){
+                swal(
+                    'Good job!',
+                    'You clicked the button!',
+                    'error'
+                  )
+            }
+        })
+    })
 })

@@ -137,12 +137,17 @@ Route::post('/register_medical_exam','AttentionsController@register_medical_exam
 /* Rutas para Administrar datos del sistema */
 Route::get('/index_pathologies','ManageDatesController@index_pathologie');
 Route::post('/create_phatologies','ManageDatesController@create_phatologies');
+Route::post('/edit_patologies_charge','ManageDatesController@edit_patologies_charge');
 
+Route::post('/edit_phatologies','ManageDatesController@edit_phatologies');
+Route::post('/darBajaPatologie','ManageDatesController@darBajaPatologie');
 
 
 Route::get('/index_medical_dates','ManageDatesController@index_medical_date');
 Route::post('/create_medical_dates','ManageDatesController@create_medical_date');
+Route::post('/edit_medical_charge','ManageDatesController@edit_medical_charge');
 
+Route::post('/edit_medical_dates','ManageDatesController@edit_medical_dates');
 
 
 Route::get('/index_data_medical_appointments','ManageDatesController@index_data_medical_appointment');

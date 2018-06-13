@@ -37,8 +37,15 @@
     </div>
     <div class="x_footer">
         <div class="row">
-            <div class="col-md-10"></div>
-            <div class="col-md-2"><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar Nuevo Especialidad</button></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-print"></span> Imprmir Lista de Especialidades</button>
+            </div>
+            <div class="col-md-7"></div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <span class="glyphicon glyphicon-plus"></span> Agregar Nuevo Especialidad</button>
+            </div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 </div>

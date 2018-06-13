@@ -57,4 +57,49 @@ class ManageDatesController extends Controller
         $rows=\DB::select(\DB::raw($query));
         return view('manage_dates.dates_register_appointment')->with('list',$rows);
     }
+    public function edit_patologies_charge(Request $request){
+        //return $request->all();
+        $query = "SELECT * FROM patologias WHERE id_patologia = :idp";
+        $rows=\DB::select(\DB::raw($query),array('idp'=>$request->id_patologie));
+        return $rows;
+        //return view('manage_dates.dates_register_appointment')->with('list',$rows);
+    }
+    public function edit_phatologies(Request $request){
+        //return $request->all();
+        $edit_patologies = DB::table('patologias')
+            ->where('id_patologia', '=', $request->id_pathologie)
+            ->update([
+                'nombre_patologia' => $request->name_phatologie,
+                'descripcion_patologia' => $request->phatologie_description
+            ]);
+        return redirect()->action(
+            'ManageDatesController@index_pathologie'
+        );
+    }
+    public function darBajaPatologie(Request $request){
+        //return $request->all(); eliminar_patologie
+        $query = "select * from eliminar_patologie(:pat,:us)";
+        $rows=\DB::select(\DB::raw($query),array('pat'=>$request->id,'us'=>Auth::user()->id));
+        return redirect()->action(
+            'ManageDatesController@index_pathologie'
+        );
+    }
+    public function edit_medical_charge(Request $request){
+        //return $request->all();
+        $query = "select * from datos_medicos where id_dato_medico = :id_med";
+        $rows=\DB::select(\DB::raw($query),array('id_med'=>$request->id_date_medic));
+        return $rows;
+    }
+    public function edit_medical_dates(Request $request){
+        $edit_dates_medics = DB::table('datos_medicos')
+            ->where('id_dato_medico', '=', $request->id_date_medic)
+            ->update([
+                'nombre_dato_medico' => $request->name_medical_date,
+                'pregunta_dato_medico' => $request->mesage_answer_yes,
+                'pregunta_mostrar' => $request->question_view
+            ]);
+        return redirect()->action(
+            'ManageDatesController@index_medical_date'
+        );
+    }
 }

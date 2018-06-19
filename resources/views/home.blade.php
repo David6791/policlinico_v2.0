@@ -408,6 +408,7 @@
     <script src="{{ asset('js/jquery.smartWizard.js') }}"></script>
 
     <script src="{{ asset('js/custom.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.validate.js') }}"></script>
     <script src="{{ asset('js/misScripts.js') }}"></script>
 	
   </body>

@@ -419,7 +419,6 @@
                                 </div>                        
                             </div>                         
                         </div>
-                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab_content5" aria-labelledby="profile-tab">
                     <div class="row">

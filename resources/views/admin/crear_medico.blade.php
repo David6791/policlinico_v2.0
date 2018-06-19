@@ -66,7 +66,7 @@
                             </a>
                         </li>
                     </ul>
-                    <form class="form-horizontal form-label-left sendform" novalidate action="{{url('crear_medico')}}" method="get">
+                    <form class="form-horizontal form-label-left sendform" novalidate action="{{url('crear_medico')}}" method="get" autocomplete="off">
                         
                         <div id="step-1">
                             <div class="row">

@@ -5,7 +5,7 @@
                 <div class="x_title with-border">
                     <h3 class="box-title">Registro Pacientes</h3>
                 </div>
-                <form class="form-horizontal sendform" action="{{url('store_patients')}}" method="post">
+                <form class="form-horizontal sendform" action="{{url('store_patients')}}" method="post" autocomplete="off">
                 <!--form class="form-horizontal" method="post"-->
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="x_panel coldiv" id="coldiv">
@@ -265,5 +265,5 @@
     }
   </style>
 <script>
-    $('#datepicker').datepicker({})
+    $('#datepicker').datepicker({});  
 </script>

@@ -22,7 +22,7 @@ class PatientsController extends Controller
     public function store_patient(Request $request){
         //return $request->all();        
         DB::table('pacientes')->insert([
-            'ci' => $request->ci,
+            'ci_paciente' => $request->ci,
             'ap_paterno' => $request->apellido_pat,
             'ap_materno' => $request->apellido_mat,
             'nombres' => $request->nombres,

@@ -60,7 +60,7 @@
                     <div class="col-md-6">  
                         <div class="form-group">
                             <label for="">Nombre Examen Medico</label>
-                                <input name="name_medical_exam" class="form-control" type="text" value="">
+                                <input name="name_medical_exam" class="form-control" type="text" value="" required>
                         </div>               
                     </div>
                 </div>
@@ -92,4 +92,33 @@
 </div>
 <script>
     $('#datatable').DataTable();
+    $('.sendform_medical_sexam').validate({
+        rules:{
+            name_medical_exam:{
+                required:true,
+                minlength:5,
+                maxlength:30,
+                number:false            
+            }, 
+            medical_exam_description:{
+                required:true,
+
+            }
+                   
+        },
+        messages:{
+            name_medical_exam:{
+                required:"Ingrese el Nombre del Examen Medico",
+                minlength:"Debe ser mas de 5 caracteres",
+                maxlength:"Debe ser menor a 30 caracteres",
+                number:"Solo ingrese caracteres alfabeticos"
+            },
+            medical_exam_description:{
+                required:"Ingrese la descripcion del Examen Medico"
+            }
+        }
+        
+
+    });
+    validator.resetForm();
 </script>

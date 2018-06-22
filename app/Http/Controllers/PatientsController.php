@@ -67,6 +67,9 @@ class PatientsController extends Controller
             }
 
         }
+        return redirect()->action(
+            'PatientsController@index_patients'
+        );
     }
     public function index_patients(){
         $query = "SELECT * FROM pacientes";

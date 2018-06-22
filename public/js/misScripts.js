@@ -59,10 +59,10 @@ $(function(){
             data:$(this).serialize(),
             success:function(data){
             
-                console.log(data);
+                $("#contentGlobal").html(data);
                 swal(
                     'Felicidades',
-                    'Los datos de '+ data +' se guardaron correctamente',
+                    'Los datos se guardaron correctamente',
                     'success'
                   )
             },

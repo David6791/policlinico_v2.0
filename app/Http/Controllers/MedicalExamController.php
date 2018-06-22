@@ -20,7 +20,7 @@ class MedicalExamController extends Controller
     }
     public function create_medical_exam(Request $request){
         //return $request->all();
-        $v  = $this->validate($request, [
+        /*$v  = $this->validate($request, [
             'medical_exam_description'  => 'required|min:5',
             'name_medical_exam'      => 'required'
         ]);
@@ -28,7 +28,7 @@ class MedicalExamController extends Controller
         if ($v->fails())
         {
             return redirect()->back()->withErrors($v->errors());
-        }
+        }*/
         
         DB::table('medical_exam')->insert([
             'name_medical_exam' => $request->name_medical_exam,

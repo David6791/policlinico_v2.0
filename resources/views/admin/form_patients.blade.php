@@ -21,34 +21,34 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Ci</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Ci</label>
+                                                    <div class="col-sm-6">
                                                         <input name="ci" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Apellido Paterno</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Apellido Paterno</label>
+                                                    <div class="col-sm-6">
                                                         <input type="text" class="form-control" name="apellido_pat" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Apellido Materno</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Apellido Materno</label>
+                                                    <div class="col-sm-6">
                                                         <input name="apellido_mat" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Nombre(s)</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre(s)</label>
+                                                    <div class="col-sm-6">
                                                         <input name="nombres" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                     </div>
                                                 </div>                                            
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Sexo</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Sexo</label>
+                                                    <div class="col-sm-6">
                                                         <select name="sexo" class="form-control">
                                                             <option selected="selected">Masculino</option>
                                                             <option>Femenino</option>
@@ -56,20 +56,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Direccion</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Direccion</label>
+                                                    <div class="col-sm-6">
                                                         <input name="direccion" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Telefono</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Telefono</label>
+                                                    <div class="col-sm-6">
                                                         <input name="telefono" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                        <label for="inputEmail3" class="col-sm-4 control-label">Celular</label>
-                                                        <div class="col-sm-8">
+                                                        <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Celular</label>
+                                                        <div class="col-sm-6">
                                                             <input name="celular" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                         </div>
                                                     </div>   
@@ -93,8 +93,8 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Fecha Nacimiento:</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Fecha Nacimiento:</label>
+                                                    <div class="col-sm-6">
                                                         <div class="input-group date">
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
@@ -104,28 +104,28 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Pais</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Pais</label>
+                                                    <div class="col-sm-6">
                                                         <input name="pais" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Ciudad</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Ciudad</label>
+                                                    <div class="col-sm-6">
                                                         <input name="ciudad" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-4 control-label">Provincia</label>
-                                                <div class="col-sm-8">
+                                                <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Provincia</label>
+                                                <div class="col-sm-6">
                                                     <input name="provincia" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                 </div>
                                                 </div>
                                                 <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-4 control-label">Localidad</label>
-                                                <div class="col-sm-8">
+                                                <label for="inputEmail3" class="control-label col-md-3 col-sm-3 col-xs-12">Localidad</label>
+                                                <div class="col-sm-6">
                                                     <input name="localidad" type="text" class="form-control" id="inputEmail3" placeholder="">
                                                 </div>
                                                 </div>
@@ -136,7 +136,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="x_panel coldiv" id="coldiv">
+                    <!--div class="x_panel coldiv" id="coldiv">
                         <div class="row">
                             <div class="col-md-1">                            
                             </div>
@@ -177,7 +177,6 @@
                                     <div class="box-header">
                                         <h4 class="box-title col-md-12">Tiene algunas de las siguientes patologias, (Aunque esten controladas con medicacion.)</h4>
                                     </div>
-                                    <!-- 1 aqui -->
                                     <div class="box-body">
                                         @foreach(array_chunk($row, 3) as $chunk)
                                             <div class="row">                                            
@@ -208,7 +207,6 @@
                                     <div class="box-header">
                                         <h4 class="box-title col-md-12">Datos Medicos</h4>
                                     </div>
-                                    <!-- 2 aqui -->
                                     <div class="box-body">
                                         @foreach(array_chunk($rows, 1) as $chunk)
                                         <div class="row">                                            
@@ -241,7 +239,7 @@
                                 </div>
                             </div>
                         </div>       
-                    </div>
+                    </div-->
                                
                     <div class="row">
                         <div class="col-md-5">                            

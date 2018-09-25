@@ -53,6 +53,7 @@ Route::get('/formulario_pacientes_nuevos', 'PatientsController@formulario_pacien
 Route::post('/store_patients', 'PatientsController@store_patient');
 Route::get('/index_patients','PatientsController@index_patients');
 
+Route::post('/filiation_completing', 'PatientsController@filiation_completing');
 
 /* Rutas para Los Horarios */
 

@@ -76,4 +76,7 @@ class PatientsController extends Controller
         $rows=\DB::select(\DB::raw($query));
         return view('admin.index_patients')->with('list_patients',$rows);
     }
+    public function filiation_completing(Request $request){
+        return $request->all();
+    }
 }

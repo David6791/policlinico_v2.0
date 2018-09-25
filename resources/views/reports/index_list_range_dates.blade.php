@@ -45,7 +45,8 @@
         <div class="row">
             <div class="col-md-10"></div>
             <div class="col-md-2">
-                <a class="btn btn-success" target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Areporte_rango_fechas.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ Auth::user()->id }}&f1={{ $dates[0] }}&f2={{ $dates[1] }}"> <span class="glyphicon glyphicon-print "></span> Imprimir Reporte</a>                
+                <!--a class="btn btn-success" target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Areporte_rango_fechas.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ Auth::user()->id }}&f1={{ $dates[0] }}&f2={{ $dates[1] }}"> <span class="glyphicon glyphicon-print "></span> Imprimir Reporte</a--> 
+                <a class="btn btn-success" target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Areporte_rango_fechas.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p={{ Auth::user()->id }}&f1={{ $dates[0] }}&f2={{ $dates[1] }}"> <span class="glyphicon glyphicon-print "></span> Imprimir Reporte</a>                               
                 <!--a class="btn btn-success" target="_blank" href="http://192.168.1.106:8080/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3AReports%3Areporte_rango_fechas.prpt/generatedContent?userid=admin&password=password&output-target=pageable/pdf&p=4&f1={{ $dates[0] }}&f2={{ $dates[1] }}"> <span class="glyphicon glyphicon-print "></span> Imprimir2</a-->
             </div>
         </div>       

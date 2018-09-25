@@ -20,7 +20,7 @@ class AttentionsController extends Controller
     }
     public function start_appointment_dates(Request $request){
         //return $request->all();
-        $query = "SELECT id_paciente, ci_paciente, ap_paterno, ap_materno, nombres, sexo, direccion, telefono, celular, fecha_nacimento, pais_nacimiento, ciudad_nacimiento, provincia, localidad_nacimiento, fecha_creacion, esta_paciente FROM medical_appointments  map
+        $query = "SELECT filiacion_completa, id_paciente, ci_paciente, ap_paterno, ap_materno, nombres, sexo, direccion, telefono, celular, fecha_nacimento, pais_nacimiento, ciudad_nacimiento, provincia, localidad_nacimiento, fecha_creacion, esta_paciente FROM medical_appointments  map
                         INNER JOIN pacientes pa
                             ON pa.id_paciente = map.id_patient
                     WHERE map.id_medical_appointments = :id_appoinments";

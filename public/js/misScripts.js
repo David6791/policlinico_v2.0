@@ -1269,4 +1269,21 @@ $(function(){
             }
         })
     })
+    
+    $(document).on('click','.filiation_completing',function(e){   
+        //alert('asdasdas')
+        e.preventDefault(e)
+        $.ajax({
+            type:'POST',
+            url:'/filiation_completing',
+            data:{id:$(this).attr('value'),_token:$('meta[name="csrf-token"]').attr('content')},
+            success:function(data){
+                $("#contentGlobal").html(data)   
+                
+            },
+            error:function(data){
+                //console.log(data)
+            }
+        })
+    })
 })

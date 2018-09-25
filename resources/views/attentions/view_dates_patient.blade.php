@@ -33,6 +33,17 @@
                         <div class="col-md-9">
                             <div class="x_panel">
                                 <div class="x_title">
+                                        @if(($dates_patient[0]->filiacion_completa)=='n')
+                                        <div class="alert alert-danger">
+                                            <ul class="fa-ul">
+                                                <li>
+                                                <i class="fa fa-user fa-lg fa-li"></i> La Filiacion del Paciente no esta COMPLETA...!
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        @else
+                                            <!--button type="button" class="btn btn-info"> <span class=""></span> Ver datos Filiacion</button-->
+                                        @endif                                    
                                     <div class="alert alert-success">
                                         <ul class="fa-ul">
                                             <li>
@@ -97,7 +108,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-10"></div>
+                                    <div class="col-md-5">
+                                        @if(($dates_patient[0]->filiacion_completa)=='n')
+                                            <button type="button" value="{{ $dates_patient[0]->id_paciente }}" class="filiation_completing btn btn-danger"> <span class=""></span> Completar datos Filiacion</button>
+                                        @else
+                                            <!--button type="button" class="btn btn-info"> <span class=""></span> Ver datos Filiacion</button-->
+                                        @endif
+                                    </div>
                                     <div class="col-md-2">
                                         <button class="btn btn-info load_filiation_dates_full" value="{{ $dates_patient[0]->id_paciente }}">Ver Datos Filiacion</button>
                                     </div>
